@@ -23,6 +23,40 @@
   }
 
   CMS.init();
+</script><div id="admin" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:white; padding:20px; overflow:auto;">
+
+<h2>Admin Verde Istinto</h2>
+
+<input id="titolo" placeholder="Nome pulcino"><br><br>
+<input id="prezzo" placeholder="Prezzo"><br><br>
+<textarea id="descrizione" placeholder="Descrizione"></textarea><br><br>
+
+<button onclick="salva()">Salva</button>
+<button onclick="chiudi()">Chiudi</button>
+
+<div id="output"></div>
+
+</div>
+  <script>
+function salva(){
+  let t = document.getElementById('titolo').value;
+  let p = document.getElementById('prezzo').value;
+  let d = document.getElementById('descrizione').value;
+
+  let data = {titolo:t, prezzo:p, descrizione:d};
+
+  localStorage.setItem('pulcino', JSON.stringify(data));
+
+  document.getElementById('output').innerHTML =
+  "Salvato! (solo su questo dispositivo)";
+}
+
+function chiudi(){
+  document.getElementById('admin').style.display='none';
+}
 </script>
 </body>
 </html>
+<button onclick="document.getElementById('admin').style.display='block'">
+Admin
+</button>
