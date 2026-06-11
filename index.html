@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Verde Istinto | Allevamento Pulcini</title>
+
+<meta name="description" content="Verde Istinto: allevamento professionale di pulcini ovaiole, ornamentali e rustici. Vendita diretta in Puglia.">
+
+<style>
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#f4f7f4;
+    color:#222;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(90deg,#145a14,#2e7d32);
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1 {
+    margin:0;
+    font-size:40px;
+}
+
+/* NAV */
+nav {
+    background:#0f3d0f;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a {
+    color:white;
+    padding:14px 18px;
+    text-decoration:none;
+}
+
+nav a:hover {
+    background:#1f6b1f;
+}
+
+/* HERO */
+.hero {
+    background:url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7') center/cover;
+    height:380px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:32px;
+    text-shadow:2px 2px 8px black;
+    text-align:center;
+    padding:20px;
+}
+
+/* SECTIONS */
+section {
+    padding:50px 20px;
+    text-align:center;
+}
+
+h2 {
+    color:#145a14;
+}
+
+/* CARDS */
+.cards {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.card {
+    background:white;
+    width:280px;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover {
+    transform:translateY(-5px);
+}
+
+/* ORDER FORM */
+.order-box {
+    max-width:500px;
+    margin:auto;
+}
+
+input, select, textarea {
+    width:100%;
+    margin:8px 0;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+button {
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:12px;
+    width:100%;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover {
+    background:#1da851;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:15px;
+    border-radius:50%;
+    text-decoration:none;
+    font-size:22px;
+}
+
+/* FOOTER */
+footer {
+    background:#0f3d0f;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>🌿 Verde Istinto</h1>
+<p>Allevamento professionale di pulcini selezionati</p>
+</header>
+
+<nav>
+<a href="#chi">Chi Siamo</a>
+<a href="#pulcini">Pulcini</a>
+<a href="#ordini">Ordina</a>
+<a href="#contatti">Contatti</a>
+</nav>
+
+<div class="hero">
+Qualità, selezione e crescita naturale
+</div>
+
+<section id="chi">
+<h2>Chi Siamo</h2>
+<p>
+Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti.
+Operiamo in Puglia con vendita diretta e assistenza clienti.
+</p>
+</section>
+
+<section id="pulcini">
+<h2>I Nostri Pulcini</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🐓 Ovaiole</h3>
+<p>Alta produzione di uova per uso familiare e allevamento.</p>
+<p><b>€3 - €5</b></p>
+</div>
+
+<div class="card">
+<h3>🌸 Ornamentali</h3>
+<p>Razze rare e decorative, selezionate con cura.</p>
+<p><b>€6 - €15</b></p>
+</div>
+
+<div class="card">
+<h3>🐥 Rustici</h3>
+<p>Resistenti e ideali per allevamento all’aperto.</p>
+<p><b>€4 - €7</b></p>
+</div>
+
+</div>
+</section>
+
+<section id="ordini">
+<h2>📩 Ordina Subito</h2>
+
+<div class="order-box">
+
+<input id="nome" placeholder="Nome">
+<input id="telefono" placeholder="Telefono">
+
+<select id="tipo">
+<option>Ovaiole</option>
+<option>Ornamentali</option>
+<option>Rustici</option>
+</select>
+
+<input id="quantita" type="number" placeholder="Quantità">
+<textarea id="note" placeholder="Note"></textarea>
+
+<button onclick="sendOrder()">Invia su WhatsApp</button>
+
+</div>
+</section>
+
+<section id="contatti">
+<h2>Contatti</h2>
+<p>📍 Bari e provincia</p>
+<p>📞 +39 327 81 31 071</p>
+<p>✉️ info@verdeistinto.it</p>
+</section>
+
+<footer>
+© 2026 Verde Istinto
+</footer>
+
+<a class="whatsapp" href="https://wa.me/393331234567">💬</a>
+
+<script>
+function sendOrder(){
+let nome=document.getElementById("nome").value;
+let telefono=document.getElementById("telefono").value;
+let tipo=document.getElementById("tipo").value;
+let quantita=document.getElementById("quantita").value;
+let note=document.getElementById("note").value;
+
+let msg=`Nuovo ordine Verde Istinto:%0A
+Nome: ${nome}%0A
+Telefono: ${telefono}%0A
+Tipo: ${tipo}%0A
+Quantità: ${quantita}%0A
+Note: ${note}`;
+
+window.open("https://wa.me/393331234567?text="+msg,"_blank");
+}
+</script>
+
+</body>
+</html>
