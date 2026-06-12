@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rustici - Verde Istinto</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+margin:0;
+}
+
+header{
+background:#145a14;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.card img{
+width:100%;
+max-width:350px;
+border-radius:10px;
+}
+
+.prezzo{
+font-size:24px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.status{
+display:inline-block;
+padding:8px 15px;
+border-radius:20px;
+color:white;
+font-weight:bold;
+margin-top:10px;
+}
+
+.disponibile{
+background:green;
+}
+
+.arrivo{
+background:orange;
+}
+
+.non{
+background:red;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🐓 Pulcini Rustici</h1>
+</header>
+
+<div class="container">
+
+<div class="card">
+<img src="foto/collo-nudo.jpg">
+<h2>Collo Nudo</h2>
+<p>Razza molto resistente e ideale per allevamenti all'aperto.</p>
+<div class="prezzo">€8</div>
+<div class="status disponibile">🟢 Disponibile</div>
+</div>
+
+<div class="card">
+<img src="foto/romagnola.jpg">
+<h2>Romagnola</h2>
+<p>Razza italiana rustica, robusta e adatta alla vita in cortile.</p>
+<div class="prezzo">€9</div>
+<div class="status arrivo">🟡 In Arrivo</div>
+</div>
+
+<div class="card">
+<img src="foto/bionda-piemontese.jpg">
+<h2>Bionda Piemontese</h2>
+<p>Razza tradizionale italiana conosciuta per rusticità e adattabilità.</p>
+<div class="prezzo">€10</div>
+<div class="status disponibile">🟢 Disponibile</div>
+</div>
+
+<div class="card">
+<img src="foto/valdarnese.jpg">
+<h2>Valdarnese Bianca</h2>
+<p>Razza vigorosa e resistente, molto apprezzata negli allevamenti rurali.</p>
+<div class="prezzo">€10</div>
+<div class="status non">🔴 Non Disponibile</div>
+</div>
+
+</div>
+
+</body>
+</html>
