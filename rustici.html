@@ -213,12 +213,26 @@ Ordina su WhatsApp
 </button>
 
 </div>
-    <script>
+<script>
 
-let cart = [];
+let cart = {};
 
 function addToCart(item){
-    cart.push(item);
+    if(cart[item]){
+        cart[item]++;
+    } else {
+        cart[item] = 1;
+    }
+    updateCart();
+}
+
+function removeFromCart(item){
+    if(cart[item]){
+        cart[item]--;
+        if(cart[item] <= 0){
+            delete cart[item];
+        }
+    }
     updateCart();
 }
 
@@ -226,23 +240,31 @@ function updateCart(){
     let list = document.getElementById("cart-items");
     list.innerHTML = "";
 
-    cart.forEach((item, index) => {
+    for(let item in cart){
         let li = document.createElement("li");
-        li.innerHTML = item;
+
+        li.innerHTML = `
+            ${item} x${cart[item]}
+            <button onclick="removeFromCart('${item}')">➖</button>
+        `;
+
         list.appendChild(li);
-    });
+    }
 }
 
 function sendOrder(){
-    if(cart.length === 0){
-        alert("Il carrello è vuoto");
+
+    let keys = Object.keys(cart);
+
+    if(keys.length === 0){
+        alert("Carrello vuoto");
         return;
     }
 
-    let message = "Salve, vorrei ordinare:%0A";
+    let message = "Salve, vorrei ordinare:%0A%0A";
 
-    cart.forEach(item => {
-        message += "- " + item + "%0A";
+    keys.forEach(item => {
+        message += "- " + item + " x" + cart[item] + "%0A";
     });
 
     let phone = "3278131071";
