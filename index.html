@@ -299,7 +299,43 @@ setInterval(() => {
 }, 4000);
 
 </script>
+<script>
 
+let currentVideo = 0;
+let videos = document.getElementsByClassName("video-slide");
+
+function showVideo(index){
+
+    for(let i = 0; i < videos.length; i++){
+        videos[i].classList.remove("active");
+        videos[i].pause();
+    }
+
+    videos[index].classList.add("active");
+    videos[index].play();
+}
+
+function changeVideo(step){
+
+    currentVideo += step;
+
+    if(currentVideo >= videos.length){
+        currentVideo = 0;
+    }
+
+    if(currentVideo < 0){
+        currentVideo = videos.length - 1;
+    }
+
+    showVideo(currentVideo);
+}
+
+// autoplay cambio video ogni 6 secondi
+setInterval(() => {
+    changeVideo(1);
+}, 6000);
+
+</script>
 <body>
 
 <header>
