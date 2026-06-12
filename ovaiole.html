@@ -196,8 +196,23 @@ width:250px;
 z-index:9999;
 ">
 
+<div id="cart" style="
+position:fixed;
+bottom:80px;
+right:20px;
+background:white;
+padding:15px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+width:270px;
+z-index:9999;
+">
+
 <h4>🛒 Carrello</h4>
+
 <ul id="cart-items" style="padding-left:15px;"></ul>
+
+<div id="cart-total" style="margin:10px 0;"></div>
 
 <button onclick="sendOrder()" style="
 background:#25D366;
@@ -211,6 +226,8 @@ cursor:pointer;
 ">
 Ordina su WhatsApp
 </button>
+
+</div>
 
 </div>
 <script>
