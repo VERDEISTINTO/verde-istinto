@@ -226,6 +226,39 @@ footer {
 }
 
 </head>
+    <script>
+
+let currentSlide = 0;
+let slides = document.getElementsByClassName("slide");
+
+function showSlide(index){
+    for(let i = 0; i < slides.length; i++){
+        slides[i].classList.remove("active");
+    }
+
+    slides[index].classList.add("active");
+}
+
+function changeSlide(step){
+    currentSlide += step;
+
+    if(currentSlide >= slides.length){
+        currentSlide = 0;
+    }
+
+    if(currentSlide < 0){
+        currentSlide = slides.length - 1;
+    }
+
+    showSlide(currentSlide);
+}
+
+// autoplay
+setInterval(() => {
+    changeSlide(1);
+}, 4000);
+
+</script>
 
 <body>
 
