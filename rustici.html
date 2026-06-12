@@ -169,5 +169,43 @@ Ordina su WhatsApp
 </button>
 
 </div>
+    <script>
+
+let cart = [];
+
+function addToCart(item){
+    cart.push(item);
+    updateCart();
+}
+
+function updateCart(){
+    let list = document.getElementById("cart-items");
+    list.innerHTML = "";
+
+    cart.forEach((item, index) => {
+        let li = document.createElement("li");
+        li.innerHTML = item;
+        list.appendChild(li);
+    });
+}
+
+function sendOrder(){
+    if(cart.length === 0){
+        alert("Il carrello è vuoto");
+        return;
+    }
+
+    let message = "Salve, vorrei ordinare:%0A";
+
+    cart.forEach(item => {
+        message += "- " + item + "%0A";
+    });
+
+    let phone = "3278131071";
+
+    window.open("https://wa.me/" + phone + "?text=" + message, "_blank");
+}
+
+</script>
 </body>
 </html>
