@@ -215,43 +215,76 @@ Ordina su WhatsApp
 </div>
 <script>
 
-let cart = {};
+let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
-function addToCart(item){
-    if(cart[item]){
-        cart[item]++;
+function saveCart(){
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+// aggiungi prodotto con prezzo
+function addToCart(name, price){
+
+    if(cart[name]){
+        cart[name].qty++;
     } else {
-        cart[item] = 1;
+        cart[name] = {
+            qty: 1,
+            price: price
+        };
     }
+
+    saveCart();
     updateCart();
 }
 
-function removeFromCart(item){
-    if(cart[item]){
-        cart[item]--;
-        if(cart[item] <= 0){
-            delete cart[item];
+// rimuovi unità
+function removeFromCart(name){
+
+    if(cart[name]){
+        cart[name].qty--;
+
+        if(cart[name].qty <= 0){
+            delete cart[name];
         }
     }
+
+    saveCart();
     updateCart();
 }
 
+// aggiorna UI
 function updateCart(){
+
     let list = document.getElementById("cart-items");
+    if(!list) return;
+
     list.innerHTML = "";
 
-    for(let item in cart){
+    let total = 0;
+
+    for(let name in cart){
+
+        let item = cart[name];
+        let subtotal = item.qty * item.price;
+        total += subtotal;
+
         let li = document.createElement("li");
 
         li.innerHTML = `
-            ${item} x${cart[item]}
-            <button onclick="removeFromCart('${item}')">➖</button>
+            ${name} x${item.qty} - €${subtotal.toFixed(2)}
+            <button onclick="removeFromCart('${name}')">➖</button>
         `;
 
         list.appendChild(li);
     }
+
+    let totalBox = document.getElementById("cart-total");
+    if(totalBox){
+        totalBox.innerHTML = "<b>Totale: €" + total.toFixed(2) + "</b>";
+    }
 }
 
+// invia ordine WhatsApp
 function sendOrder(){
 
     let keys = Object.keys(cart);
@@ -261,16 +294,27 @@ function sendOrder(){
         return;
     }
 
-    let message = "Salve, vorrei ordinare:%0A%0A";
+    let message = "🛒 ORDINE VERDE ISTINTO:%0A%0A";
+    let total = 0;
 
-    keys.forEach(item => {
-        message += "- " + item + " x" + cart[item] + "%0A";
+    keys.forEach(name => {
+
+        let item = cart[name];
+        let subtotal = item.qty * item.price;
+
+        total += subtotal;
+
+        message += "- " + name + " x" + item.qty + " = €" + subtotal.toFixed(2) + "%0A";
     });
+
+    message += "%0A💰 TOTALE: €" + total.toFixed(2);
 
     let phone = "3278131071";
 
     window.open("https://wa.me/" + phone + "?text=" + message, "_blank");
 }
+
+window.onload = updateCart;
 
 </script>
 </body>
