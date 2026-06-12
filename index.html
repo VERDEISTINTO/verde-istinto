@@ -9,66 +9,7 @@
 <meta name="description" content="Verde Istinto: allevamento professionale di pulcini ovaiole, ornamentali e rustici. Vendita diretta in Puglia.">
 
 <style>
-.cta-box{
-    text-align:center;
-    background:linear-gradient(135deg,#145a14,#1e7a1e);
-    color:white;
-    padding:50px 20px;
-    border-radius:18px;
-    margin:40px 20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.25);
-}
 
-.cta-box h2{
-    font-size:32px;
-    margin-bottom:10px;
-}
-
-.cta-box p{
-    opacity:0.9;
-    margin-bottom:25px;
-}
-
-/* GRID BOTTONI */
-.cta-grid{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:20px;
-}
-
-/* CARD CLICCABILI */
-.cta-card{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    width:180px;
-    height:140px;
-
-    background:white;
-    color:#145a14;
-    text-decoration:none;
-
-    border-radius:14px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-
-    transition:0.3s;
-    font-weight:bold;
-}
-
-.cta-card span{
-    font-size:12px;
-    font-weight:normal;
-    margin-top:5px;
-    color:#333;
-}
-
-.cta-card:hover{
-    transform:translateY(-6px) scale(1.05);
-    background:#f2f2f2;
-}
 /* ===== BASE ===== */
 body {
     margin:0;
@@ -84,7 +25,10 @@ header {
     padding:30px;
 }
 
-header h1 { margin:0; font-size:40px; }
+header h1 {
+    margin:0;
+    font-size:40px;
+}
 
 nav {
     background:#0f3d0f;
@@ -99,8 +43,11 @@ nav a {
     text-decoration:none;
 }
 
-nav a:hover { background:#1f6b1f; }
+nav a:hover {
+    background:#1f6b1f;
+}
 
+/* HERO */
 .hero {
     background:url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7') center/cover;
     height:380px;
@@ -114,14 +61,17 @@ nav a:hover { background:#1f6b1f; }
     padding:20px;
 }
 
+/* SECTIONS */
 section {
     padding:50px 20px;
     text-align:center;
 }
 
-h2 { color:#145a14; }
+h2 {
+    color:#145a14;
+}
 
-/* ===== CARDS ===== */
+/* CARDS */
 .cards {
     display:flex;
     flex-wrap:wrap;
@@ -135,95 +85,77 @@ h2 { color:#145a14; }
     padding:20px;
     border-radius:12px;
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
 }
 
-/* ===== CTA ===== */
-<div class="cta-box">
-
-  <h2>🐔 Ordina i tuoi pulcini</h2>
-
-  <p>Scegli la categoria e inizia il tuo ordine in pochi secondi</p>
-
-  <div class="cta-grid">
-
-    <a class="cta-card" href="ovaiole.html">
-      🥚<br>
-      <b>Ovaiole</b>
-      <span>Alta produzione uova</span>
-    </a>
-
-    <a class="cta-card" href="ornamentali.html">
-      🦚<br>
-      <b>Ornamentali</b>
-      <span>Razze rare e decorative</span>
-    </a>
-
-    <a class="cta-card" href="rustici.html">
-      🐥<br>
-      <b>Rustici</b>
-      <span>Resistenti e forti</span>
-    </a>
-
-  </div>
-
-</div>
+.card:hover {
+    transform:translateY(-5px);
 }
 
-/* ===== SLIDER PRO ===== */
-.slider-pro{
+/* CTA */
+.cta-box{
+    text-align:center;
+    background:linear-gradient(135deg,#145a14,#1e7a1e);
+    color:white;
+    padding:40px 20px;
+    border-radius:16px;
+    margin:20px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
+
+.cta-button{
+    display:inline-block;
+    margin:10px;
+    padding:12px 18px;
+    background:white;
+    color:#145a14;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+/* SLIDER */
+.slider{
     position:relative;
-    max-width:800px;
+    max-width:700px;
     margin:30px auto;
     overflow:hidden;
-    border-radius:18px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    border-radius:15px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.2);
 }
 
 .slide{
     width:100%;
-    height:420px;
+    height:400px;
     object-fit:cover;
     display:none;
 }
 
-.slide.active{ display:block; }
+.slide.active{
+    display:block;
+}
 
-.nav{
+.prev, .next{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    border:none;
-    cursor:pointer;
-    background:rgba(20,90,20,0.85);
+    background:rgba(0,0,0,0.5);
     color:white;
-    font-size:24px;
-}
-
-.prev{ left:15px; }
-.next{ right:15px; }
-
-.dots{
-    position:absolute;
-    bottom:12px;
-    left:50%;
-    transform:translateX(-50%);
-    display:flex;
-    gap:8px;
-}
-
-.dot{
-    width:10px;
-    height:10px;
+    border:none;
+    padding:10px 15px;
+    cursor:pointer;
+    font-size:20px;
     border-radius:50%;
-    background:rgba(255,255,255,0.5);
 }
 
-.dot.active{ background:white; }
+.prev{ left:10px; }
+.next{ right:10px; }
 
-/* ===== VIDEO SLIDER ===== */
+.prev:hover, .next:hover{
+    background:rgba(0,0,0,0.8);
+}
+
+/* VIDEO */
 .video-slider{
     position:relative;
     max-width:750px;
@@ -240,9 +172,11 @@ h2 { color:#145a14; }
     display:none;
 }
 
-.video-slide.active{ display:block; }
+.video-slide.active{
+    display:block;
+}
 
-/* ===== WHATSAPP ===== */
+/* WHATSAPP */
 .whatsapp {
     position:fixed;
     bottom:20px;
@@ -256,6 +190,7 @@ h2 { color:#145a14; }
 }
 
 </style>
+
 </head>
 
 <body>
@@ -276,18 +211,16 @@ h2 { color:#145a14; }
 Qualità, selezione e crescita naturale
 </div>
 
-<!-- SLIDER FOTO -->
-<div class="slider-pro">
+<!-- SLIDER -->
+<div class="slider">
 
   <img class="slide active" src="foto/livorno.jpg">
   <img class="slide" src="foto/sebright.jpg">
   <img class="slide" src="foto/isa-brown.jpg">
   <img class="slide" src="foto/sussex.jpg">
 
-  <button class="nav prev" onclick="changeSlide(-1)">❮</button>
-  <button class="nav next" onclick="changeSlide(1)">❯</button>
-
-  <div class="dots" id="dots"></div>
+  <button class="prev" onclick="changeSlide(-1)">❮</button>
+  <button class="next" onclick="changeSlide(1)">❯</button>
 
 </div>
 
@@ -306,17 +239,18 @@ Qualità, selezione e crescita naturale
 
 <!-- CTA -->
 <div class="cta-box">
+
 <h2>🐔 Ordina i tuoi pulcini</h2>
-<p>Seleziona tra ovaiole, ornamentali e rustici</p>
 
 <a class="cta-button" href="ovaiole.html">Ovaiole</a>
 <a class="cta-button" href="ornamentali.html">Ornamentali</a>
 <a class="cta-button" href="rustici.html">Rustici</a>
+
 </div>
 
 <section id="chi">
 <h2>Chi Siamo</h2>
-<p>Verde Istinto è un allevamento specializzato in pulcini sani e selezionati in Puglia.</p>
+<p>Verde Istinto è un allevamento specializzato in pulcini sani e selezionati.</p>
 </section>
 
 <section id="pulcini">
@@ -343,6 +277,7 @@ Qualità, selezione e crescita naturale
 </div>
 
 </div>
+
 </section>
 
 <section id="contatti">
@@ -358,64 +293,37 @@ Qualità, selezione e crescita naturale
 
 <script>
 
-/* ===== SLIDER FOTO ===== */
+/* SLIDER */
 let current = 0;
 let slides = document.getElementsByClassName("slide");
-let dotsContainer = document.getElementById("dots");
-
-function initDots(){
-    for(let i=0;i<slides.length;i++){
-        let dot = document.createElement("div");
-        dot.classList.add("dot");
-        dot.onclick = ()=>goToSlide(i);
-        dotsContainer.appendChild(dot);
-    }
-}
 
 function showSlide(index){
     for(let i=0;i<slides.length;i++){
         slides[i].classList.remove("active");
     }
     slides[index].classList.add("active");
-
-    let dots = document.getElementsByClassName("dot");
-    for(let i=0;i<dots.length;i++){
-        dots[i].classList.remove("active");
-    }
-    if(dots[index]) dots[index].classList.add("active");
 }
 
 function changeSlide(step){
     current += step;
-    if(current>=slides.length) current=0;
-    if(current<0) current=slides.length-1;
+    if(current >= slides.length) current = 0;
+    if(current < 0) current = slides.length - 1;
     showSlide(current);
 }
 
-function goToSlide(i){
-    current=i;
-    showSlide(i);
-}
+setInterval(()=>changeSlide(1),4000);
 
-setInterval(()=>changeSlide(1),5000);
-
-window.onload = ()=>{
-    initDots();
-    showSlide(current);
-};
-
-/* ===== VIDEO ===== */
-let v=0;
-let vids=document.getElementsByClassName("video-slide");
+/* VIDEO */
+let v = 0;
+let vids = document.getElementsByClassName("video-slide");
 
 setInterval(()=>{
     for(let i=0;i<vids.length;i++){
         vids[i].classList.remove("active");
     }
     v++;
-    if(v>=vids.length) v=0;
+    if(v >= vids.length) v = 0;
     vids[v].classList.add("active");
-    vids[v].play();
 },6000);
 
 </script>
