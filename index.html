@@ -27,26 +27,38 @@
     display:none;
 }
 
-.slide.active{ display:block; }
+.slide.active{
+    display:block;
+}
 
+/* ✅ PULSANTI SISTEMATI (NON IN MEZZO) */
 .prev, .next{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    background:rgba(0,0,0,0.5);
+    background:rgba(0,0,0,0.35);
     color:white;
     border:none;
-    padding:10px 15px;
+    padding:12px 14px;
     cursor:pointer;
     font-size:20px;
     border-radius:50%;
+    z-index:10;
+    transition:0.3s;
 }
 
-.prev{ left:10px; }
-.next{ right:10px; }
+/* fuori dal contenuto */
+.prev{
+    left:-18px;
+}
+
+.next{
+    right:-18px;
+}
 
 .prev:hover, .next:hover{
-    background:rgba(0,0,0,0.8);
+    background:rgba(0,0,0,0.7);
+    transform:translateY(-50%) scale(1.1);
 }
 
 /* VIDEO */
@@ -66,7 +78,9 @@
     display:none;
 }
 
-.video-slide.active{ display:block; }
+.video-slide.active{
+    display:block;
+}
 
 /* BASE */
 body {
@@ -140,28 +154,12 @@ h2 { color:#145a14; }
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* ORDER */
-.order-box {
-    max-width:500px;
-    margin:auto;
-}
-
-input, select, textarea {
-    width:100%;
-    margin:8px 0;
-    padding:10px;
-    border-radius:6px;
-    border:1px solid #ccc;
-}
-
 button {
     background:#25D366;
     color:white;
     border:none;
-    padding:12px;
-    width:100%;
+    padding:10px;
     border-radius:8px;
-    font-size:16px;
     cursor:pointer;
 }
 
@@ -182,7 +180,6 @@ button:hover {
     font-size:22px;
 }
 
-/* FOOTER */
 footer {
     background:#0f3d0f;
     color:white;
@@ -191,6 +188,7 @@ footer {
 }
 
 </style>
+
 </head>
 
 <body>
@@ -267,33 +265,13 @@ Qualità, selezione e crescita naturale
 </div>
 
 </div>
-</section>
 
-<section id="ordini">
-<h2>📩 Ordina Subito</h2>
-
-<div class="order-box">
-<input id="nome" placeholder="Nome">
-<input id="telefono" placeholder="Telefono">
-
-<select id="tipo">
-<option>Ovaiole</option>
-<option>Ornamentali</option>
-<option>Rustici</option>
-</select>
-
-<input id="quantita" type="number" placeholder="Quantità">
-<textarea id="note" placeholder="Note"></textarea>
-
-<button onclick="sendOrder()">Invia su WhatsApp</button>
-</div>
 </section>
 
 <section id="contatti">
 <h2>Contatti</h2>
 <p>📍 Lecce e provincia</p>
 <p>📞 +39 327 81 31 071</p>
-<p>✉️ info@verdeistinto.it</p>
 </section>
 
 <footer>
@@ -336,25 +314,6 @@ setInterval(()=>{
     if(v >= vids.length) v = 0;
     vids[v].classList.add("active");
 },6000);
-
-/* WHATSAPP */
-function sendOrder(){
-
-let nome=document.getElementById("nome").value;
-let telefono=document.getElementById("telefono").value;
-let tipo=document.getElementById("tipo").value;
-let quantita=document.getElementById("quantita").value;
-let note=document.getElementById("note").value;
-
-let msg=`Nuovo ordine Verde Istinto:%0A
-Nome: ${nome}%0A
-Telefono: ${telefono}%0A
-Tipo: ${tipo}%0A
-Quantità: ${quantita}%0A
-Note: ${note}`;
-
-window.open("https://wa.me/3278131071?text="+msg,"_blank");
-}
 
 </script>
 
