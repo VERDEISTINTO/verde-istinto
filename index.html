@@ -10,7 +10,65 @@
 
 <style>
 
-/* ===== BASE ===== */
+/* ===== SLIDER ===== */
+.slider{
+    position:relative;
+    max-width:700px;
+    margin:30px auto;
+    overflow:hidden;
+    border-radius:15px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
+
+.slide{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+    display:none;
+}
+
+.slide.active{ display:block; }
+
+.prev, .next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,0,0,0.5);
+    color:white;
+    border:none;
+    padding:10px 15px;
+    cursor:pointer;
+    font-size:20px;
+    border-radius:50%;
+}
+
+.prev{ left:10px; }
+.next{ right:10px; }
+
+.prev:hover, .next:hover{
+    background:rgba(0,0,0,0.8);
+}
+
+/* VIDEO */
+.video-slider{
+    position:relative;
+    max-width:750px;
+    margin:30px auto;
+    overflow:hidden;
+    border-radius:15px;
+    background:black;
+}
+
+.video-slide{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    display:none;
+}
+
+.video-slide.active{ display:block; }
+
+/* BASE */
 body {
     margin:0;
     font-family: Arial, sans-serif;
@@ -47,7 +105,6 @@ nav a:hover {
     background:#1f6b1f;
 }
 
-/* HERO */
 .hero {
     background:url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7') center/cover;
     height:380px;
@@ -61,17 +118,13 @@ nav a:hover {
     padding:20px;
 }
 
-/* SECTIONS */
 section {
     padding:50px 20px;
     text-align:center;
 }
 
-h2 {
-    color:#145a14;
-}
+h2 { color:#145a14; }
 
-/* CARDS */
 .cards {
     display:flex;
     flex-wrap:wrap;
@@ -85,91 +138,35 @@ h2 {
     padding:20px;
     border-radius:12px;
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    transition:0.3s;
 }
 
-.card:hover {
-    transform:translateY(-5px);
+/* ORDER */
+.order-box {
+    max-width:500px;
+    margin:auto;
 }
 
-/* CTA */
-.cta-box{
-    text-align:center;
-    background:linear-gradient(135deg,#145a14,#1e7a1e);
-    color:white;
-    padding:40px 20px;
-    border-radius:16px;
-    margin:20px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.2);
-}
-
-.cta-button{
-    display:inline-block;
-    margin:10px;
-    padding:12px 18px;
-    background:white;
-    color:#145a14;
-    text-decoration:none;
-    border-radius:30px;
-    font-weight:bold;
-}
-
-/* SLIDER */
-.slider{
-    position:relative;
-    max-width:700px;
-    margin:30px auto;
-    overflow:hidden;
-    border-radius:15px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.2);
-}
-
-.slide{
+input, select, textarea {
     width:100%;
-    height:400px;
-    object-fit:cover;
-    display:none;
+    margin:8px 0;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
 }
 
-.slide.active{
-    display:block;
-}
-
-.prev, .next{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    background:rgba(0,0,0,0.5);
+button {
+    background:#25D366;
     color:white;
     border:none;
-    padding:10px 15px;
-    cursor:pointer;
-    font-size:20px;
-    border-radius:50%;
-}
-
-.prev{ left:10px; }
-.next{ right:10px; }
-
-/* VIDEO */
-.video-slider{
-    position:relative;
-    max-width:750px;
-    margin:30px auto;
-    overflow:hidden;
-    border-radius:15px;
-    background:black;
-}
-
-.video-slide{
+    padding:12px;
     width:100%;
-    height:420px;
-    object-fit:cover;
-    display:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
 }
 
-.video-slide.active{
-    display:block;
+button:hover {
+    background:#1da851;
 }
 
 /* WHATSAPP */
@@ -185,8 +182,15 @@ h2 {
     font-size:22px;
 }
 
-</style>
+/* FOOTER */
+footer {
+    background:#0f3d0f;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
 
+</style>
 </head>
 
 <body>
@@ -231,22 +235,15 @@ Qualità, selezione e crescita naturale
     <source src="video/pulcini2.mp4">
   </video>
 
-</div>
-
-<!-- CTA -->
-<div class="cta-box">
-
-<h2>🐔 Ordina i tuoi pulcini</h2>
-
-<a class="cta-button" href="ovaiole.html">Ovaiole</a>
-<a class="cta-button" href="ornamentali.html">Ornamentali</a>
-<a class="cta-button" href="rustici.html">Rustici</a>
+  <video class="video-slide" autoplay muted loop>
+    <source src="video/pulcini3.mp4">
+  </video>
 
 </div>
 
 <section id="chi">
 <h2>Chi Siamo</h2>
-<p>Verde Istinto è un allevamento specializzato in pulcini sani e selezionati.</p>
+<p>Verde Istinto è un allevamento professionale in Puglia.</p>
 </section>
 
 <section id="pulcini">
@@ -256,29 +253,47 @@ Qualità, selezione e crescita naturale
 
 <div class="card">
 <h3>Ovaiole</h3>
-<p>Alta produzione uova</p>
-<a href="ovaiole.html"><button>Visualizza</button></a>
+<a href="ovaiole.html"><button>Visualizza Razze</button></a>
 </div>
 
 <div class="card">
 <h3>Ornamentali</h3>
-<p>Razze rare</p>
-<a href="ornamentali.html"><button>Visualizza</button></a>
+<a href="ornamentali.html"><button>Visualizza Razze</button></a>
 </div>
 
 <div class="card">
 <h3>Rustici</h3>
-<p>Resistenti</p>
-<a href="rustici.html"><button>Visualizza</button></a>
+<a href="rustici.html"><button>Visualizza Razze</button></a>
 </div>
 
 </div>
+</section>
 
+<section id="ordini">
+<h2>📩 Ordina Subito</h2>
+
+<div class="order-box">
+<input id="nome" placeholder="Nome">
+<input id="telefono" placeholder="Telefono">
+
+<select id="tipo">
+<option>Ovaiole</option>
+<option>Ornamentali</option>
+<option>Rustici</option>
+</select>
+
+<input id="quantita" type="number" placeholder="Quantità">
+<textarea id="note" placeholder="Note"></textarea>
+
+<button onclick="sendOrder()">Invia su WhatsApp</button>
+</div>
 </section>
 
 <section id="contatti">
 <h2>Contatti</h2>
-<p>📞 327 81 31 071</p>
+<p>📍 Lecce e provincia</p>
+<p>📞 +39 327 81 31 071</p>
+<p>✉️ info@verdeistinto.it</p>
 </section>
 
 <footer>
@@ -321,6 +336,25 @@ setInterval(()=>{
     if(v >= vids.length) v = 0;
     vids[v].classList.add("active");
 },6000);
+
+/* WHATSAPP */
+function sendOrder(){
+
+let nome=document.getElementById("nome").value;
+let telefono=document.getElementById("telefono").value;
+let tipo=document.getElementById("tipo").value;
+let quantita=document.getElementById("quantita").value;
+let note=document.getElementById("note").value;
+
+let msg=`Nuovo ordine Verde Istinto:%0A
+Nome: ${nome}%0A
+Telefono: ${telefono}%0A
+Tipo: ${tipo}%0A
+Quantità: ${quantita}%0A
+Note: ${note}`;
+
+window.open("https://wa.me/3278131071?text="+msg,"_blank");
+}
 
 </script>
 
