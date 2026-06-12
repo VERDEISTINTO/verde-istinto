@@ -54,6 +54,46 @@
 .back-button:hover{
     background:#0d3d0d;
 }
+    .video-slider{
+    position:relative;
+    max-width:750px;
+    margin:30px auto;
+    overflow:hidden;
+    border-radius:15px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.3);
+    background:black;
+}
+
+.video-slide{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    display:none;
+}
+
+.video-slide.active{
+    display:block;
+}
+
+.prev, .next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,0,0,0.5);
+    color:white;
+    border:none;
+    padding:10px 15px;
+    cursor:pointer;
+    font-size:20px;
+    border-radius:50%;
+}
+
+.prev{ left:10px; }
+.next{ right:10px; }
+
+.prev:hover, .next:hover{
+    background:rgba(0,0,0,0.8);
+}
 body {
     margin:0;
     font-family: Arial, sans-serif;
