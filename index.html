@@ -30,7 +30,7 @@ margin:0;
 font-size:38px;
 }
 
-/* 🔍 SEARCH ICON SOLO */
+/* 🔍 SEARCH */
 .search-wrapper{
 position:fixed;
 top:15px;
@@ -49,7 +49,6 @@ font-size:20px;
 box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* BOX */
 .search-box{
 display:none;
 position:absolute;
@@ -106,11 +105,14 @@ padding:12px 18px;
 text-decoration:none;
 font-weight:bold;
 background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
 border-radius:30px;
+transition:0.25s;
 }
 
 nav a:hover{
 background:#25d366;
+transform:scale(1.05);
 }
 
 /* HERO */
@@ -145,72 +147,115 @@ width:100%;
 height:400px;
 object-fit:cover;
 display:none;
+border-radius:14px;
 }
 
 .slide.active{display:block;}
 
 /* DISPONIBILITÀ */
-.slide::after{
-content:attr(data-status);
+.slide[data-color="green"]::after,
+.slide[data-color="yellow"]::after,
+.slide[data-color="red"]::after{
 position:absolute;
-top:10px;
-left:10px;
+top:12px;
+left:12px;
 padding:6px 12px;
 border-radius:20px;
 color:white;
-font-size:14px;
 font-weight:bold;
+font-size:14px;
 }
 
-/* CATEGORIE (COME PRIMA) */
+.slide[data-color="green"]::after{
+content:"🟢 Disponibile";
+background:#28a745;
+}
+
+.slide[data-color="yellow"]::after{
+content:"🟡 In arrivo";
+background:#ffc107;
+color:#222;
+}
+
+.slide[data-color="red"]::after{
+content:"🔴 Non disponibile";
+background:#dc3545;
+}
+
+/* CATEGORIE MIGLIORATE */
 .cards{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:20px;
+gap:25px;
+margin-top:20px;
 }
 
 .card{
-background:white;
-width:260px;
+background:linear-gradient(145deg,#ffffff,#f3f6f3);
+width:270px;
 padding:25px;
-border-radius:14px;
-box-shadow:0 6px 18px rgba(0,0,0,0.1);
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,0.12);
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 35px rgba(0,0,0,0.18);
+}
+
+.card h3{
+font-size:22px;
+margin-bottom:10px;
+color:#145a14;
+}
+
+.card p{
+font-size:14px;
+color:#555;
+line-height:1.5;
+margin-bottom:15px;
 }
 
 .card button{
-background:#145a14;
+background:linear-gradient(90deg,#145a14,#1f7a1f);
 color:white;
 border:none;
-padding:12px 18px;
-border-radius:25px;
+padding:12px 20px;
+border-radius:30px;
 cursor:pointer;
+font-weight:bold;
 width:100%;
+}
+
+.card button:hover{
+transform:scale(1.05);
+background:linear-gradient(90deg,#1f7a1f,#25d366);
 }
 
 /* CONTATTI */
 #contatti{
 background:#fff;
+padding:50px 20px;
 }
 
-.social a{
-display:inline-block;
-margin:8px;
-padding:10px 18px;
-border-radius:25px;
-color:white;
-text-decoration:none;
-font-weight:bold;
-}
-
-.ig{background:#E1306C;}
-.yt{background:#FF0000;}
-
+/* FOOTER */
 footer{
 background:#0f3d0f;
 color:white;
 text-align:center;
 padding:20px;
+}
+
+/* SEARCH EXTRA */
+.search-wrapper{
+position:fixed;
+top:15px;
+right:15px;
+z-index:9999;
 }
 
 </style>
@@ -222,17 +267,18 @@ padding:20px;
 <h1>🌿 Verde Istinto</h1>
 </header>
 
-<!-- SEARCH -->
+<!-- 🔍 SEARCH -->
 <div class="search-wrapper">
+
 <button class="search-btn" onclick="toggleSearch()">🔍</button>
 
 <div class="search-box" id="searchBox">
 <input id="searchInput" oninput="searchBreed()" placeholder="Cerca razza...">
 <div id="results"></div>
 </div>
+
 </div>
 
-<!-- NAV -->
 <nav>
 <a href="#chi">Chi Siamo</a>
 <a href="#slider">Razze</a>
@@ -246,50 +292,59 @@ Qualità, selezione e crescita naturale
 
 <!-- CHI SIAMO -->
 <section id="chi">
-<h2>Chi Siamo</h2>
-<p>Allevamento professionale in Puglia con selezione pulcini di alta qualità.</p>
+<h2>👨‍🌾 Chi Siamo</h2>
+<p style="max-width:900px;margin:auto;line-height:1.7;font-size:17px;">
+Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti, con cura quotidiana e attenzione al benessere animale.
+Operiamo in Puglia garantendo qualità e affidabilità.
+</p>
 </section>
 
 <!-- SLIDER -->
 <section id="slider">
-<h2>🐓 Razze</h2>
+
+<h2>🐓 Le Nostre Razze</h2>
 
 <div class="slider">
 
-<img class="slide active" id="ancona" data-status="🟢 Disponibile" src="foto/ancona.jpg">
-<img class="slide" id="brahma" data-status="🔴 Non disponibile" src="foto/brahma.jpg">
-<img class="slide" id="isa brown" data-status="🟡 In arrivo" src="foto/isa-brown.jpg">
-<img class="slide" id="lakenvelder" data-status="🟢 Disponibile" src="foto/lakenvelder.jpg">
-<img class="slide" id="livorno" data-status="🟢 Disponibile" src="foto/livorno.jpg">
-<img class="slide" id="marans" data-status="🟡 In arrivo" src="foto/marans.jpg">
-<img class="slide" id="moroseta" data-status="🟢 Disponibile" src="foto/moroseta.jpg">
-<img class="slide" id="padovana" data-status="🟡 In arrivo" src="foto/padovana.jpg">
-<img class="slide" id="sebright" data-status="🟢 Disponibile" src="foto/sebright.jpg">
-<img class="slide" id="sussex" data-status="🟢 Disponibile" src="foto/sussex.jpg">
+<img class="slide active" data-color="green" src="foto/ancona.jpg" id="Ancona">
+<img class="slide" data-color="red" src="foto/brahma.jpg" id="Brahma">
+<img class="slide" data-color="yellow" src="foto/isa-brown.jpg" id="Isa Brown">
+<img class="slide" data-color="green" src="foto/lakenvelder.jpg" id="Lakenvelder">
+<img class="slide" data-color="green" src="foto/livorno.jpg" id="Livorno">
+<img class="slide" data-color="yellow" src="foto/livornocollooro.jpg" id="Livorno Collo Oro">
+<img class="slide" data-color="red" src="foto/marans.jpg" id="Marans">
+<img class="slide" data-color="green" src="foto/moroseta.jpg" id="Moroseta">
+<img class="slide" data-color="yellow" src="foto/padovana.jpg" id="Padovana">
+<img class="slide" data-color="green" src="foto/sebright.jpg" id="Sebright">
+<img class="slide" data-color="green" src="foto/sussex.jpg" id="Sussex">
 
 </div>
+
 </section>
 
-<!-- CATEGORIE UGUALI -->
+<!-- CATEGORIE -->
 <section id="categorie">
 
-<h2>Categorie</h2>
+<h2>🐣 Categorie</h2>
 
 <div class="cards">
 
 <div class="card">
 <h3>🥚 Ovaiole</h3>
-<a href="ovaiole.html"><button>Visualizza Razze</button></a>
+<p>Alta produzione di uova</p>
+<a href="ovaiole.html"><button>Visualizza</button></a>
 </div>
 
 <div class="card">
 <h3>🌸 Ornamentali</h3>
-<a href="ornamentali.html"><button>Visualizza Razze</button></a>
+<p>Razze decorative e rare</p>
+<a href="ornamentali.html"><button>Visualizza</button></a>
 </div>
 
 <div class="card">
 <h3>🐓 Rustici</h3>
-<a href="rustici.html"><button>Visualizza Razze</button></a>
+<p>Forti e resistenti all’aperto</p>
+<a href="rustici.html"><button>Visualizza</button></a>
 </div>
 
 </div>
@@ -299,15 +354,10 @@ Qualità, selezione e crescita naturale
 <!-- CONTATTI -->
 <section id="contatti">
 
-<h2>Contatti</h2>
-
-<p>📍 Puglia</p>
+<h2>📞 Contatti</h2>
+<p>📍 Puglia, Italia</p>
 <p>📱 327 813 1071</p>
-
-<div class="social">
-<a class="ig" href="https://instagram.com/verdeistinto" target="_blank">Instagram</a>
-<a class="yt" href="https://youtube.com/@verdeistinto" target="_blank">YouTube</a>
-</div>
+<p>✉️ info@verdeistinto.it</p>
 
 </section>
 
@@ -317,66 +367,68 @@ Qualità, selezione e crescita naturale
 
 <script>
 
+/* SLIDER */
 let slides = document.getElementsByClassName("slide");
 let current = 0;
 
-function show(i){
-for(let s of slides) s.classList.remove("active");
-slides[i].classList.add("active");
-current = i;
-}
-
 setInterval(()=>{
+for(let s of slides) s.classList.remove("active");
 current++;
 if(current >= slides.length) current = 0;
-show(current);
+slides[current].classList.add("active");
 },3000);
 
 /* SEARCH */
 const breeds = [
-{n:"Ancona",id:"ancona",img:"foto/ancona.jpg"},
-{n:"Brahma",id:"brahma",img:"foto/brahma.jpg"},
-{n:"Isa Brown",id:"isa brown",img:"foto/isa-brown.jpg"},
-{n:"Lakenvelder",id:"lakenvelder",img:"foto/lakenvelder.jpg"},
-{n:"Livorno",id:"livorno",img:"foto/livorno.jpg"},
-{n:"Marans",id:"marans",img:"foto/marans.jpg"},
-{n:"Moroseta",id:"moroseta",img:"foto/moroseta.jpg"},
-{n:"Padovana",id:"padovana",img:"foto/padovana.jpg"},
-{n:"Sebright",id:"sebright",img:"foto/sebright.jpg"},
-{n:"Sussex",id:"sussex",img:"foto/sussex.jpg"}
+{ name:"Ancona", img:"foto/ancona.jpg" },
+{ name:"Brahma", img:"foto/brahma.jpg" },
+{ name:"Isa Brown", img:"foto/isa-brown.jpg" },
+{ name:"Lakenvelder", img:"foto/lakenvelder.jpg" },
+{ name:"Livorno", img:"foto/livorno.jpg" },
+{ name:"Livorno Collo Oro", img:"foto/livornocollooro.jpg" },
+{ name:"Marans", img:"foto/marans.jpg" },
+{ name:"Moroseta", img:"foto/moroseta.jpg" },
+{ name:"Padovana", img:"foto/padovana.jpg" },
+{ name:"Sebright", img:"foto/sebright.jpg" },
+{ name:"Sussex", img:"foto/sussex.jpg" }
 ];
 
 function toggleSearch(){
-document.getElementById("searchBox").style.display =
-document.getElementById("searchBox").style.display === "block" ? "none" : "block";
+let box = document.getElementById("searchBox");
+box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
 function searchBreed(){
 let val = document.getElementById("searchInput").value.toLowerCase();
-let res = document.getElementById("results");
-res.innerHTML="";
+let results = document.getElementById("results");
 
-breeds.filter(b=>b.n.toLowerCase().includes(val))
+results.innerHTML = "";
+
+breeds
+.filter(b => b.name.toLowerCase().includes(val))
 .forEach(b=>{
-let d=document.createElement("div");
-d.className="result";
-d.innerHTML=`<img src="${b.img}"><span>${b.n}</span>`;
-d.onclick=()=>goTo(b.id);
-res.appendChild(d);
+let div = document.createElement("div");
+div.className = "result";
+div.innerHTML = `<img src="${b.img}"><span>${b.name}</span>`;
+div.onclick = () => goToBreed(b.name);
+results.appendChild(div);
 });
 }
 
-/* 🔥 PORTA DIRETTAMENTE NELLO SLIDER */
-function goTo(id){
-for(let i=0;i<slides.length;i++){
-if(slides[i].id.toLowerCase()===id.toLowerCase()){
-show(i);
-document.getElementById("slider").scrollIntoView({behavior:"smooth"});
+function goToBreed(name){
+let all = document.getElementsByClassName("slide");
+
+for(let i=0;i<all.length;i++){
+if(all[i].id.toLowerCase() === name.toLowerCase()){
+for(let s of all) s.classList.remove("active");
+all[i].classList.add("active");
+current = i;
 break;
 }
 }
-document.getElementById("searchBox").style.display="none";
-document.getElementById("searchInput").value="";
+
+document.getElementById("searchBox").style.display = "none";
+document.getElementById("searchInput").value = "";
 }
 
 </script>
