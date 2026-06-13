@@ -25,7 +25,12 @@ padding:25px;
 position:relative;
 }
 
-/* 🔍 SEARCH FIXED */
+header h1{
+margin:0;
+font-size:38px;
+}
+
+/* 🔍 SEARCH */
 .search-wrapper{
 position:fixed;
 top:15px;
@@ -72,9 +77,7 @@ padding:8px;
 cursor:pointer;
 }
 
-.result:hover{
-background:#f0f0f0;
-}
+.result:hover{background:#f0f0f0;}
 
 .result img{
 width:40px;
@@ -124,6 +127,12 @@ font-size:28px;
 text-shadow:2px 2px 8px black;
 }
 
+/* SEZIONI */
+section{
+padding:50px 20px;
+text-align:center;
+}
+
 /* SLIDER */
 .slider{
 max-width:800px;
@@ -144,8 +153,9 @@ border-radius:14px;
 .slide.active{display:block;}
 
 /* DISPONIBILITÀ */
-.slide::after{
-content: attr(data-status);
+.slide[data-color="green"]::after,
+.slide[data-color="yellow"]::after,
+.slide[data-color="red"]::after{
 position:absolute;
 top:12px;
 left:12px;
@@ -156,9 +166,21 @@ font-weight:bold;
 font-size:14px;
 }
 
-.slide[data-color="green"]::after{background:#28a745; content:"🟢 Disponibile";}
-.slide[data-color="yellow"]::after{background:#ffc107; color:#222; content:"🟡 In arrivo";}
-.slide[data-color="red"]::after{background:#dc3545; content:"🔴 Non disponibile";}
+.slide[data-color="green"]::after{
+content:"🟢 Disponibile";
+background:#28a745;
+}
+
+.slide[data-color="yellow"]::after{
+content:"🟡 In arrivo";
+background:#ffc107;
+color:#222;
+}
+
+.slide[data-color="red"]::after{
+content:"🔴 Non disponibile";
+background:#dc3545;
+}
 
 /* CATEGORIE */
 .cards{
@@ -199,7 +221,7 @@ padding:20px;
 <h1>🌿 Verde Istinto</h1>
 </header>
 
-<!-- 🔍 SEARCH ICON -->
+<!-- 🔍 SEARCH -->
 <div class="search-wrapper">
 
 <button class="search-btn" onclick="toggleSearch()">🔍</button>
@@ -221,6 +243,15 @@ padding:20px;
 <div class="hero">
 Qualità, selezione e crescita naturale
 </div>
+
+<!-- CHI SIAMO -->
+<section id="chi">
+<h2>👨‍🌾 Chi Siamo</h2>
+<p style="max-width:900px;margin:auto;line-height:1.7;font-size:17px;">
+Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti, con cura quotidiana e attenzione al benessere animale.
+Operiamo in Puglia garantendo qualità, esperienza e affidabilità.
+</p>
+</section>
 
 <!-- SLIDER -->
 <section id="slider">
@@ -245,6 +276,46 @@ Qualità, selezione e crescita naturale
 
 </section>
 
+<!-- CATEGORIE -->
+<section id="categorie">
+
+<h2>🐣 Categorie</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🥚 Ovaiole</h3>
+<a href="ovaiole.html"><button>Visualizza</button></a>
+</div>
+
+<div class="card">
+<h3>🌸 Ornamentali</h3>
+<a href="ornamentali.html"><button>Visualizza</button></a>
+</div>
+
+<div class="card">
+<h3>🐓 Rustici</h3>
+<a href="rustici.html"><button>Visualizza</button></a>
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTATTI -->
+<section id="contatti">
+
+<h2>📞 Contatti</h2>
+<p>📍 Puglia, Italia</p>
+<p>📱 327 813 1071</p>
+<p>✉️ info@verdeistinto.it</p>
+
+</section>
+
+<footer>
+© 2026 Verde Istinto
+</footer>
+
 <script>
 
 /* SLIDER */
@@ -258,7 +329,7 @@ if(current >= slides.length) current = 0;
 slides[current].classList.add("active");
 },3000);
 
-/* SEARCH DATA */
+/* RICERCA */
 const breeds = [
 { name:"Ancona", img:"foto/ancona.jpg" },
 { name:"Brahma", img:"foto/brahma.jpg" },
@@ -286,7 +357,7 @@ results.innerHTML = "";
 
 breeds
 .filter(b => b.name.toLowerCase().includes(val))
-.forEach(b => {
+.forEach(b=>{
 let div = document.createElement("div");
 div.className = "result";
 div.innerHTML = `<img src="${b.img}"><span>${b.name}</span>`;
