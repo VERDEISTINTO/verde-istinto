@@ -105,14 +105,12 @@ padding:12px 18px;
 text-decoration:none;
 font-weight:bold;
 background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.15);
 border-radius:30px;
 transition:0.25s;
 }
 
 nav a:hover{
 background:#25d366;
-transform:scale(1.05);
 }
 
 /* HERO */
@@ -152,110 +150,65 @@ border-radius:14px;
 
 .slide.active{display:block;}
 
-/* DISPONIBILITÀ */
-.slide[data-color="green"]::after,
-.slide[data-color="yellow"]::after,
-.slide[data-color="red"]::after{
-position:absolute;
-top:12px;
-left:12px;
-padding:6px 12px;
-border-radius:20px;
-color:white;
-font-weight:bold;
-font-size:14px;
-}
-
-.slide[data-color="green"]::after{
-content:"🟢 Disponibile";
-background:#28a745;
-}
-
-.slide[data-color="yellow"]::after{
-content:"🟡 In arrivo";
-background:#ffc107;
-color:#222;
-}
-
-.slide[data-color="red"]::after{
-content:"🔴 Non disponibile";
-background:#dc3545;
-}
-
-/* CATEGORIE MIGLIORATE */
+/* CATEGORIE */
 .cards{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
 gap:25px;
-margin-top:20px;
 }
 
 .card{
-background:linear-gradient(145deg,#ffffff,#f3f6f3);
+background:linear-gradient(145deg,#fff,#f3f6f3);
 width:270px;
 padding:25px;
 border-radius:18px;
 box-shadow:0 10px 25px rgba(0,0,0,0.12);
 transition:0.3s;
-position:relative;
-overflow:hidden;
 }
 
 .card:hover{
 transform:translateY(-8px);
-box-shadow:0 15px 35px rgba(0,0,0,0.18);
 }
 
 .card h3{
-font-size:22px;
-margin-bottom:10px;
 color:#145a14;
 }
 
-.card p{
-font-size:14px;
-color:#555;
-line-height:1.5;
-margin-bottom:15px;
-}
-
 .card button{
-background:linear-gradient(90deg,#145a14,#1f7a1f);
+background:#145a14;
 color:white;
 border:none;
-padding:12px 20px;
+padding:12px;
 border-radius:30px;
-cursor:pointer;
-font-weight:bold;
 width:100%;
-}
-
-.card button:hover{
-transform:scale(1.05);
-background:linear-gradient(90deg,#1f7a1f,#25d366);
+cursor:pointer;
 }
 
 /* CONTATTI */
 #contatti{
 background:#fff;
-padding:50px 20px;
 }
 
-/* FOOTER */
+/* SOCIAL */
+.social a{
+display:inline-block;
+margin:6px;
+padding:10px 18px;
+border-radius:25px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.ig{background:#E1306C;}
+.yt{background:#FF0000;}
+
 footer{
 background:#0f3d0f;
 color:white;
 text-align:center;
 padding:20px;
-}
-
-/* SEARCH EXTRA */
-.search-wrapper{
-position:fixed;
-top:15px;
-right:15px;
-z-index:9999;
 }
 
 </style>
@@ -279,6 +232,7 @@ z-index:9999;
 
 </div>
 
+<!-- NAV -->
 <nav>
 <a href="#chi">Chi Siamo</a>
 <a href="#slider">Razze</a>
@@ -293,9 +247,9 @@ Qualità, selezione e crescita naturale
 <!-- CHI SIAMO -->
 <section id="chi">
 <h2>👨‍🌾 Chi Siamo</h2>
-<p style="max-width:900px;margin:auto;line-height:1.7;font-size:17px;">
-Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti, con cura quotidiana e attenzione al benessere animale.
-Operiamo in Puglia garantendo qualità e affidabilità.
+<p style="max-width:900px;margin:auto;line-height:1.7;">
+Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti.
+Operiamo in Puglia con attenzione al benessere animale e qualità genetica.
 </p>
 </section>
 
@@ -306,17 +260,17 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 
 <div class="slider">
 
-<img class="slide active" data-color="green" src="foto/ancona.jpg" id="Ancona">
-<img class="slide" data-color="red" src="foto/brahma.jpg" id="Brahma">
-<img class="slide" data-color="yellow" src="foto/isa-brown.jpg" id="Isa Brown">
-<img class="slide" data-color="green" src="foto/lakenvelder.jpg" id="Lakenvelder">
-<img class="slide" data-color="green" src="foto/livorno.jpg" id="Livorno">
-<img class="slide" data-color="yellow" src="foto/livornocollooro.jpg" id="Livorno Collo Oro">
-<img class="slide" data-color="red" src="foto/marans.jpg" id="Marans">
-<img class="slide" data-color="green" src="foto/moroseta.jpg" id="Moroseta">
-<img class="slide" data-color="yellow" src="foto/padovana.jpg" id="Padovana">
-<img class="slide" data-color="green" src="foto/sebright.jpg" id="Sebright">
-<img class="slide" data-color="green" src="foto/sussex.jpg" id="Sussex">
+<img class="slide active" src="foto/ancona.jpg" id="Ancona">
+<img class="slide" src="foto/brahma.jpg" id="Brahma">
+<img class="slide" src="foto/isa-brown.jpg" id="Isa Brown">
+<img class="slide" src="foto/lakenvelder.jpg" id="Lakenvelder">
+<img class="slide" src="foto/livorno.jpg" id="Livorno">
+<img class="slide" src="foto/livornocollooro.jpg" id="Livorno Collo Oro">
+<img class="slide" src="foto/marans.jpg" id="Marans">
+<img class="slide" src="foto/moroseta.jpg" id="Moroseta">
+<img class="slide" src="foto/padovana.jpg" id="Padovana">
+<img class="slide" src="foto/sebright.jpg" id="Sebright">
+<img class="slide" src="foto/sussex.jpg" id="Sussex">
 
 </div>
 
@@ -343,7 +297,7 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 
 <div class="card">
 <h3>🐓 Rustici</h3>
-<p>Forti e resistenti all’aperto</p>
+<p>Forti e resistenti</p>
 <a href="rustici.html"><button>Visualizza</button></a>
 </div>
 
@@ -355,9 +309,17 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 <section id="contatti">
 
 <h2>📞 Contatti</h2>
+
 <p>📍 Puglia, Italia</p>
 <p>📱 327 813 1071</p>
 <p>✉️ info@verdeistinto.it</p>
+
+<div class="social">
+
+<a class="ig" href="https://instagram.com/verdeistinto" target="_blank">📸 Instagram</a>
+<a class="yt" href="https://youtube.com/@verdeistinto" target="_blank">▶️ YouTube</a>
+
+</div>
 
 </section>
 
@@ -367,7 +329,7 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 
 <script>
 
-/* SLIDER */
+/* SLIDER AUTO */
 let slides = document.getElementsByClassName("slide");
 let current = 0;
 
@@ -380,55 +342,54 @@ slides[current].classList.add("active");
 
 /* SEARCH */
 const breeds = [
-{ name:"Ancona", img:"foto/ancona.jpg" },
-{ name:"Brahma", img:"foto/brahma.jpg" },
-{ name:"Isa Brown", img:"foto/isa-brown.jpg" },
-{ name:"Lakenvelder", img:"foto/lakenvelder.jpg" },
-{ name:"Livorno", img:"foto/livorno.jpg" },
-{ name:"Livorno Collo Oro", img:"foto/livornocollooro.jpg" },
-{ name:"Marans", img:"foto/marans.jpg" },
-{ name:"Moroseta", img:"foto/moroseta.jpg" },
-{ name:"Padovana", img:"foto/padovana.jpg" },
-{ name:"Sebright", img:"foto/sebright.jpg" },
-{ name:"Sussex", img:"foto/sussex.jpg" }
+{name:"Ancona",img:"foto/ancona.jpg"},
+{name:"Brahma",img:"foto/brahma.jpg"},
+{name:"Isa Brown",img:"foto/isa-brown.jpg"},
+{name:"Lakenvelder",img:"foto/lakenvelder.jpg"},
+{name:"Livorno",img:"foto/livorno.jpg"},
+{name:"Livorno Collo Oro",img:"foto/livornocollooro.jpg"},
+{name:"Marans",img:"foto/marans.jpg"},
+{name:"Moroseta",img:"foto/moroseta.jpg"},
+{name:"Padovana",img:"foto/padovana.jpg"},
+{name:"Sebright",img:"foto/sebright.jpg"},
+{name:"Sussex",img:"foto/sussex.jpg"}
 ];
 
 function toggleSearch(){
-let box = document.getElementById("searchBox");
-box.style.display = box.style.display === "block" ? "none" : "block";
+let box=document.getElementById("searchBox");
+box.style.display=box.style.display==="block"?"none":"block";
 }
 
 function searchBreed(){
-let val = document.getElementById("searchInput").value.toLowerCase();
-let results = document.getElementById("results");
+let val=document.getElementById("searchInput").value.toLowerCase();
+let res=document.getElementById("results");
+res.innerHTML="";
 
-results.innerHTML = "";
-
-breeds
-.filter(b => b.name.toLowerCase().includes(val))
+breeds.filter(b=>b.name.toLowerCase().includes(val))
 .forEach(b=>{
-let div = document.createElement("div");
-div.className = "result";
-div.innerHTML = `<img src="${b.img}"><span>${b.name}</span>`;
-div.onclick = () => goToBreed(b.name);
-results.appendChild(div);
+let div=document.createElement("div");
+div.className="result";
+div.innerHTML=`<img src="${b.img}"><span>${b.name}</span>`;
+div.onclick=()=>goToBreed(b.name);
+res.appendChild(div);
 });
 }
 
 function goToBreed(name){
-let all = document.getElementsByClassName("slide");
+let all=document.getElementsByClassName("slide");
 
 for(let i=0;i<all.length;i++){
-if(all[i].id.toLowerCase() === name.toLowerCase()){
-for(let s of all) s.classList.remove("active");
+if(all[i].id.toLowerCase()===name.toLowerCase()){
+for(let s of all)s.classList.remove("active");
 all[i].classList.add("active");
-current = i;
+current=i;
+document.getElementById("slider").scrollIntoView({behavior:"smooth"});
 break;
 }
 }
 
-document.getElementById("searchBox").style.display = "none";
-document.getElementById("searchInput").value = "";
+document.getElementById("searchBox").style.display="none";
+document.getElementById("searchInput").value="";
 }
 
 </script>
