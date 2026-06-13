@@ -22,11 +22,61 @@ background:linear-gradient(90deg,#145a14,#2e7d32);
 color:white;
 text-align:center;
 padding:25px;
+position:relative;
 }
 
 header h1{
 margin:0;
 font-size:38px;
+}
+
+/* SEARCH */
+.search-container{
+position:absolute;
+top:20px;
+right:20px;
+width:260px;
+z-index:2000;
+}
+
+.search-container input{
+width:100%;
+padding:10px 15px;
+border:none;
+border-radius:25px;
+outline:none;
+font-size:14px;
+box-sizing:border-box;
+}
+
+.search-results{
+background:white;
+margin-top:5px;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 4px 15px rgba(0,0,0,0.15);
+display:none;
+}
+
+.search-item{
+display:flex;
+align-items:center;
+gap:10px;
+padding:10px;
+cursor:pointer;
+border-bottom:1px solid #eee;
+color:#222;
+}
+
+.search-item:hover{
+background:#f3f3f3;
+}
+
+.search-item img{
+width:50px;
+height:50px;
+object-fit:cover;
+border-radius:8px;
 }
 
 /* NAV */
@@ -136,7 +186,7 @@ button:hover{
 background:#1f6b1f;
 }
 
-/* CTA ORDINE */
+/* CTA */
 .cta{
 background:linear-gradient(135deg,#145a14,#1e7a1e);
 color:white;
@@ -180,11 +230,17 @@ padding:20px;
 <body>
 
 <header>
+
 <h1>🌿 Verde Istinto</h1>
 <p>Allevamento professionale di pulcini selezionati</p>
+
+<div class="search-container">
+<input type="text" id="searchInput" placeholder="🔍 Cerca una razza...">
+<div id="searchResults" class="search-results"></div>
+</div>
+
 </header>
 
-<!-- MENU -->
 <nav>
 <a href="#chi">Chi Siamo</a>
 <a href="#slider">Razze</a>
@@ -193,45 +249,21 @@ padding:20px;
 <a href="#contatti">Contatti</a>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
 Qualità, selezione e crescita naturale
 </div>
 
-<!-- CHI SIAMO -->
 <section id="chi">
 <h2>👨‍🌾 Chi Siamo</h2>
+
 <p style="max-width:900px;margin:auto;line-height:1.7;font-size:17px;">
-
-<strong>Verde Istinto</strong> è un allevamento specializzato nella selezione e crescita di pulcini di alta qualità,
-con particolare attenzione alla salute, alla robustezza e alle caratteristiche genetiche delle razze.
-
-<br><br>
-
-Operiamo in <strong>Puglia</strong> con un approccio basato su esperienza, passione e cura quotidiana degli animali,
-garantendo soggetti allevati in ambienti controllati e rispettosi del loro benessere naturale.
-
-<br><br>
-
-La nostra selezione include razze <strong>ovaiole ad alta produzione</strong>, linee <strong>ornamentali pregiate</strong>
-e varietà <strong>rustiche particolarmente resistenti</strong>, ideali sia per piccoli allevamenti familiari che per contesti più strutturati.
-
-<br><br>
-
-Ogni pulcino viene seguito dalla nascita fino alla vendita con protocolli di alimentazione e gestione studiati per garantire
-<strong>crescita sana, equilibrio e massima vitalità</strong>.
-
-<br><br>
-
-Il nostro obiettivo è offrire non solo animali, ma <strong>affidabilità, supporto e continuità</strong> a chi sceglie di allevare con noi.
-
+Verde Istinto è un allevamento specializzato nella selezione e crescita di pulcini di alta qualità.
+Operiamo in Puglia con cura, passione e attenzione al benessere animale.
+Offriamo razze ovaiole, ornamentali e rustiche selezionate.
 </p>
 
 </section>
-</p>
-</section>
 
-<!-- SLIDER -->
 <section id="slider">
 
 <h2>🐓 Le Nostre Razze</h2>
@@ -254,40 +286,37 @@ Il nostro obiettivo è offrire non solo animali, ma <strong>affidabilità, suppo
 
 </section>
 
-<!-- CATEGORIE -->
 <section id="categorie">
 
-<h2>🐣 Scegli la categoria</h2>
+<h2>🐣 Categorie</h2>
 
 <div class="cards">
 
 <div class="card">
 <h3>🥚 Ovaiole</h3>
-<p>Alta produzione di uova e razze selezionate</p>
-<a href="ovaiole.html"><button>Visualizza Razze</button></a>
+<p>Alta produzione di uova</p>
+<a href="ovaiole.html"><button>Apri</button></a>
 </div>
 
 <div class="card">
 <h3>🌸 Ornamentali</h3>
-<p>Razze rare e decorative</p>
-<a href="ornamentali.html"><button>Visualizza Razze</button></a>
+<p>Razze decorative rare</p>
+<a href="ornamentali.html"><button>Apri</button></a>
 </div>
 
 <div class="card">
 <h3>🐓 Rustici</h3>
-<p>Forti e resistenti per allevamento all’aperto</p>
-<a href="rustici.html"><button>Visualizza Razze</button></a>
+<p>Forti e resistenti</p>
+<a href="rustici.html"><button>Apri</button></a>
 </div>
 
 </div>
 
 </section>
 
-<!-- ORDINE -->
-<section id="ordine" class="cta">
+<section class="cta" id="ordine">
 
-<h2 style="color:white;">📩 Vuoi ordinare?</h2>
-
+<h2>📩 Vuoi ordinare?</h2>
 <p>Contattaci su WhatsApp per disponibilità e informazioni</p>
 
 <a href="https://wa.me/3278131071"
@@ -297,7 +326,6 @@ Ordina ora
 
 </section>
 
-<!-- CONTATTI -->
 <section id="contatti">
 
 <h2>📞 Contatti</h2>
@@ -321,6 +349,7 @@ Ordina ora
 
 <script>
 
+/* SLIDER */
 let slides = document.getElementsByClassName("slide");
 let i = 0;
 
@@ -330,6 +359,62 @@ i++;
 if(i >= slides.length) i = 0;
 slides[i].classList.add("active");
 },3000);
+
+/* SEARCH */
+const breeds = [
+{name:"Ancona",img:"foto/ancona.jpg",page:"ovaiole.html"},
+{name:"Brahma",img:"foto/brahma.jpg",page:"rustici.html"},
+{name:"Isa Brown",img:"foto/isa-brown.jpg",page:"ovaiole.html"},
+{name:"Lakenvelder",img:"foto/lakenvelder.jpg",page:"rustici.html"},
+{name:"Livorno",img:"foto/livorno.jpg",page:"ovaiole.html"},
+{name:"Livorno Collo Oro",img:"foto/livornocollooro.jpg",page:"rustici.html"},
+{name:"Marans",img:"foto/marans.jpg",page:"rustici.html"},
+{name:"Moroseta",img:"foto/moroseta.jpg",page:"ornamentali.html"},
+{name:"Padovana",img:"foto/padovana.jpg",page:"ornamentali.html"},
+{name:"Sebright",img:"foto/sebright.jpg",page:"ornamentali.html"},
+{name:"Sussex",img:"foto/sussex.jpg",page:"ovaiole.html"}
+];
+
+const input = document.getElementById("searchInput");
+const results = document.getElementById("searchResults");
+
+input.addEventListener("input",()=>{
+
+let val = input.value.toLowerCase();
+results.innerHTML="";
+
+if(val===""){
+results.style.display="none";
+return;
+}
+
+let filtered = breeds.filter(b=>b.name.toLowerCase().includes(val));
+
+filtered.forEach(b=>{
+
+let div = document.createElement("div");
+div.className="search-item";
+
+div.innerHTML = `
+<img src="${b.img}">
+<span>${b.name}</span>
+`;
+
+div.onclick=()=>window.location=b.page;
+
+results.appendChild(div);
+
+});
+
+results.style.display="block";
+
+});
+
+document.addEventListener("click",(e)=>{
+if(!document.querySelector(".search-container").contains(e.target)){
+results.style.display="none";
+}
+});
 
 </script>
 
