@@ -30,7 +30,7 @@ margin:0;
 font-size:38px;
 }
 
-/* SEARCH */
+/* 🔍 SEARCH ICON SOLO */
 .search-wrapper{
 position:fixed;
 top:15px;
@@ -49,6 +49,7 @@ font-size:20px;
 box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
+/* BOX */
 .search-box{
 display:none;
 position:absolute;
@@ -108,6 +109,10 @@ background:rgba(255,255,255,0.08);
 border-radius:30px;
 }
 
+nav a:hover{
+background:#25d366;
+}
+
 /* HERO */
 .hero{
 background:url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7') center/cover;
@@ -132,6 +137,7 @@ max-width:800px;
 margin:20px auto;
 overflow:hidden;
 border-radius:14px;
+position:relative;
 }
 
 .slide{
@@ -143,7 +149,20 @@ display:none;
 
 .slide.active{display:block;}
 
-/* CATEGORIE (COME PRIMA, SEMPLICI) */
+/* DISPONIBILITÀ */
+.slide::after{
+content:attr(data-status);
+position:absolute;
+top:10px;
+left:10px;
+padding:6px 12px;
+border-radius:20px;
+color:white;
+font-size:14px;
+font-weight:bold;
+}
+
+/* CATEGORIE (COME PRIMA) */
 .cards{
 display:flex;
 flex-wrap:wrap;
@@ -166,6 +185,7 @@ border:none;
 padding:12px 18px;
 border-radius:25px;
 cursor:pointer;
+width:100%;
 }
 
 /* CONTATTI */
@@ -173,14 +193,14 @@ cursor:pointer;
 background:#fff;
 }
 
-/* SOCIAL */
 .social a{
 display:inline-block;
-margin:6px;
+margin:8px;
 padding:10px 18px;
 border-radius:25px;
 color:white;
 text-decoration:none;
+font-weight:bold;
 }
 
 .ig{background:#E1306C;}
@@ -204,14 +224,12 @@ padding:20px;
 
 <!-- SEARCH -->
 <div class="search-wrapper">
-
 <button class="search-btn" onclick="toggleSearch()">🔍</button>
 
 <div class="search-box" id="searchBox">
 <input id="searchInput" oninput="searchBreed()" placeholder="Cerca razza...">
 <div id="results"></div>
 </div>
-
 </div>
 
 <!-- NAV -->
@@ -229,32 +247,30 @@ Qualità, selezione e crescita naturale
 <!-- CHI SIAMO -->
 <section id="chi">
 <h2>Chi Siamo</h2>
-<p>Allevamento professionale in Puglia.</p>
+<p>Allevamento professionale in Puglia con selezione pulcini di alta qualità.</p>
 </section>
 
 <!-- SLIDER -->
 <section id="slider">
-
 <h2>🐓 Razze</h2>
 
 <div class="slider">
 
-<img class="slide active" src="foto/ancona.jpg" id="Ancona">
-<img class="slide" src="foto/brahma.jpg" id="Brahma">
-<img class="slide" src="foto/isa-brown.jpg" id="Isa Brown">
-<img class="slide" src="foto/lakenvelder.jpg" id="Lakenvelder">
-<img class="slide" src="foto/livorno.jpg" id="Livorno">
-<img class="slide" src="foto/marans.jpg" id="Marans">
-<img class="slide" src="foto/moroseta.jpg" id="Moroseta">
-<img class="slide" src="foto/padovana.jpg" id="Padovana">
-<img class="slide" src="foto/sebright.jpg" id="Sebright">
-<img class="slide" src="foto/sussex.jpg" id="Sussex">
+<img class="slide active" id="ancona" data-status="🟢 Disponibile" src="foto/ancona.jpg">
+<img class="slide" id="brahma" data-status="🔴 Non disponibile" src="foto/brahma.jpg">
+<img class="slide" id="isa brown" data-status="🟡 In arrivo" src="foto/isa-brown.jpg">
+<img class="slide" id="lakenvelder" data-status="🟢 Disponibile" src="foto/lakenvelder.jpg">
+<img class="slide" id="livorno" data-status="🟢 Disponibile" src="foto/livorno.jpg">
+<img class="slide" id="marans" data-status="🟡 In arrivo" src="foto/marans.jpg">
+<img class="slide" id="moroseta" data-status="🟢 Disponibile" src="foto/moroseta.jpg">
+<img class="slide" id="padovana" data-status="🟡 In arrivo" src="foto/padovana.jpg">
+<img class="slide" id="sebright" data-status="🟢 Disponibile" src="foto/sebright.jpg">
+<img class="slide" id="sussex" data-status="🟢 Disponibile" src="foto/sussex.jpg">
 
 </div>
-
 </section>
 
-<!-- CATEGORIE (RESTANO UGUALI) -->
+<!-- CATEGORIE UGUALI -->
 <section id="categorie">
 
 <h2>Categorie</h2>
@@ -262,17 +278,17 @@ Qualità, selezione e crescita naturale
 <div class="cards">
 
 <div class="card">
-<h3>Ovaiole</h3>
+<h3>🥚 Ovaiole</h3>
 <a href="ovaiole.html"><button>Visualizza Razze</button></a>
 </div>
 
 <div class="card">
-<h3>Ornamentali</h3>
+<h3>🌸 Ornamentali</h3>
 <a href="ornamentali.html"><button>Visualizza Razze</button></a>
 </div>
 
 <div class="card">
-<h3>Rustici</h3>
+<h3>🐓 Rustici</h3>
 <a href="rustici.html"><button>Visualizza Razze</button></a>
 </div>
 
@@ -285,12 +301,12 @@ Qualità, selezione e crescita naturale
 
 <h2>Contatti</h2>
 
+<p>📍 Puglia</p>
 <p>📱 327 813 1071</p>
-<p>✉️ info@verdeistinto.it</p>
 
 <div class="social">
-<a class="ig" href="#">Instagram</a>
-<a class="yt" href="#">YouTube</a>
+<a class="ig" href="https://instagram.com/verdeistinto" target="_blank">Instagram</a>
+<a class="yt" href="https://youtube.com/@verdeistinto" target="_blank">YouTube</a>
 </div>
 
 </section>
@@ -301,55 +317,64 @@ Qualità, selezione e crescita naturale
 
 <script>
 
+let slides = document.getElementsByClassName("slide");
+let current = 0;
+
+function show(i){
+for(let s of slides) s.classList.remove("active");
+slides[i].classList.add("active");
+current = i;
+}
+
+setInterval(()=>{
+current++;
+if(current >= slides.length) current = 0;
+show(current);
+},3000);
+
 /* SEARCH */
 const breeds = [
-{name:"Ancona",img:"foto/ancona.jpg"},
-{name:"Brahma",img:"foto/brahma.jpg"},
-{name:"Isa Brown",img:"foto/isa-brown.jpg"},
-{name:"Lakenvelder",img:"foto/lakenvelder.jpg"},
-{name:"Livorno",img:"foto/livorno.jpg"},
-{name:"Marans",img:"foto/marans.jpg"},
-{name:"Moroseta",img:"foto/moroseta.jpg"},
-{name:"Padovana",img:"foto/padovana.jpg"},
-{name:"Sebright",img:"foto/sebright.jpg"},
-{name:"Sussex",img:"foto/sussex.jpg"}
+{n:"Ancona",id:"ancona",img:"foto/ancona.jpg"},
+{n:"Brahma",id:"brahma",img:"foto/brahma.jpg"},
+{n:"Isa Brown",id:"isa brown",img:"foto/isa-brown.jpg"},
+{n:"Lakenvelder",id:"lakenvelder",img:"foto/lakenvelder.jpg"},
+{n:"Livorno",id:"livorno",img:"foto/livorno.jpg"},
+{n:"Marans",id:"marans",img:"foto/marans.jpg"},
+{n:"Moroseta",id:"moroseta",img:"foto/moroseta.jpg"},
+{n:"Padovana",id:"padovana",img:"foto/padovana.jpg"},
+{n:"Sebright",id:"sebright",img:"foto/sebright.jpg"},
+{n:"Sussex",id:"sussex",img:"foto/sussex.jpg"}
 ];
 
 function toggleSearch(){
-let box=document.getElementById("searchBox");
-box.style.display=box.style.display==="block"?"none":"block";
+document.getElementById("searchBox").style.display =
+document.getElementById("searchBox").style.display === "block" ? "none" : "block";
 }
 
 function searchBreed(){
-let val=document.getElementById("searchInput").value.toLowerCase();
-let res=document.getElementById("results");
+let val = document.getElementById("searchInput").value.toLowerCase();
+let res = document.getElementById("results");
 res.innerHTML="";
 
-breeds.filter(b=>b.name.toLowerCase().includes(val))
+breeds.filter(b=>b.n.toLowerCase().includes(val))
 .forEach(b=>{
-let div=document.createElement("div");
-div.className="result";
-div.innerHTML=`<img src="${b.img}"><span>${b.name}</span>`;
-div.onclick=()=>goToBreed(b.name);
-res.appendChild(div);
+let d=document.createElement("div");
+d.className="result";
+d.innerHTML=`<img src="${b.img}"><span>${b.n}</span>`;
+d.onclick=()=>goTo(b.id);
+res.appendChild(d);
 });
 }
 
-/* 🔥 ORA VA A CATEGORIE */
-function goToBreed(name){
-
-document.getElementById("categorie").scrollIntoView({behavior:"smooth"});
-
-let all=document.getElementsByClassName("slide");
-
-for(let i=0;i<all.length;i++){
-if(all[i].id.toLowerCase()===name.toLowerCase()){
-for(let s of all)s.classList.remove("active");
-all[i].classList.add("active");
+/* 🔥 PORTA DIRETTAMENTE NELLO SLIDER */
+function goTo(id){
+for(let i=0;i<slides.length;i++){
+if(slides[i].id.toLowerCase()===id.toLowerCase()){
+show(i);
+document.getElementById("slider").scrollIntoView({behavior:"smooth"});
 break;
 }
 }
-
 document.getElementById("searchBox").style.display="none";
 document.getElementById("searchInput").value="";
 }
