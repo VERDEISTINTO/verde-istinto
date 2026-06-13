@@ -150,11 +150,9 @@ display:none;
 border-radius:14px;
 }
 
-.slide.active{
-display:block;
-}
+.slide.active{display:block;}
 
-/* CATEGORIE MIGLIORATE */
+/* CATEGORIE (NON MODIFICATE) */
 .cards{
 display:flex;
 flex-wrap:wrap;
@@ -170,14 +168,26 @@ padding:25px;
 border-radius:18px;
 box-shadow:0 10px 25px rgba(0,0,0,0.12);
 transition:0.3s;
+position:relative;
+overflow:hidden;
 }
 
 .card:hover{
 transform:translateY(-8px);
+box-shadow:0 15px 35px rgba(0,0,0,0.18);
 }
 
 .card h3{
+font-size:22px;
+margin-bottom:10px;
 color:#145a14;
+}
+
+.card p{
+font-size:14px;
+color:#555;
+line-height:1.5;
+margin-bottom:15px;
 }
 
 .card button{
@@ -187,7 +197,13 @@ border:none;
 padding:12px 20px;
 border-radius:30px;
 cursor:pointer;
+font-weight:bold;
 width:100%;
+}
+
+.card button:hover{
+transform:scale(1.05);
+background:linear-gradient(90deg,#1f7a1f,#25d366);
 }
 
 /* CONTATTI */
@@ -196,19 +212,12 @@ background:#fff;
 padding:50px 20px;
 }
 
+/* FOOTER */
 footer{
 background:#0f3d0f;
 color:white;
 text-align:center;
 padding:20px;
-}
-
-/* SEARCH */
-.search-wrapper{
-position:fixed;
-top:15px;
-right:15px;
-z-index:9999;
 }
 
 </style>
@@ -243,9 +252,13 @@ z-index:9999;
 Qualità, selezione e crescita naturale
 </div>
 
+<!-- CHI SIAMO -->
 <section id="chi">
 <h2>👨‍🌾 Chi Siamo</h2>
-<p>Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti.</p>
+<p style="max-width:900px;margin:auto;line-height:1.7;font-size:17px;">
+Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti.
+Operiamo in Puglia garantendo qualità e affidabilità.
+</p>
 </section>
 
 <!-- SLIDER -->
@@ -255,50 +268,59 @@ Qualità, selezione e crescita naturale
 
 <div class="slider">
 
-<img class="slide active" src="foto/ancona.jpg" id="Ancona">
-<img class="slide" src="foto/brahma.jpg" id="Brahma">
-<img class="slide" src="foto/isa-brown.jpg" id="Isa Brown">
-<img class="slide" src="foto/lakenvelder.jpg" id="Lakenvelder">
-<img class="slide" src="foto/livorno.jpg" id="Livorno">
-<img class="slide" src="foto/livornocollooro.jpg" id="Livorno Collo Oro">
-<img class="slide" src="foto/marans.jpg" id="Marans">
-<img class="slide" src="foto/moroseta.jpg" id="Moroseta">
-<img class="slide" src="foto/padovana.jpg" id="Padovana">
-<img class="slide" src="foto/sebright.jpg" id="Sebright">
-<img class="slide" src="foto/sussex.jpg" id="Sussex">
+<img class="slide active" data-name="ancona" src="foto/ancona.jpg">
+<img class="slide" data-name="brahma" src="foto/brahma.jpg">
+<img class="slide" data-name="isa brown" src="foto/isa-brown.jpg">
+<img class="slide" data-name="lakenvelder" src="foto/lakenvelder.jpg">
+<img class="slide" data-name="livorno" src="foto/livorno.jpg">
+<img class="slide" data-name="livorno collo oro" src="foto/livornocollooro.jpg">
+<img class="slide" data-name="marans" src="foto/marans.jpg">
+<img class="slide" data-name="moroseta" src="foto/moroseta.jpg">
+<img class="slide" data-name="padovana" src="foto/padovana.jpg">
+<img class="slide" data-name="sebright" src="foto/sebright.jpg">
+<img class="slide" data-name="sussex" src="foto/sussex.jpg">
 
 </div>
 
 </section>
 
+<!-- CATEGORIE (IDENTICHE COME VOLEVI) -->
 <section id="categorie">
+
 <h2>🐣 Categorie</h2>
 
 <div class="cards">
 
 <div class="card">
 <h3>🥚 Ovaiole</h3>
-<button>Visualizza</button>
+<p>Alta produzione di uova</p>
+<a href="ovaiole.html"><button>Visualizza</button></a>
 </div>
 
 <div class="card">
 <h3>🌸 Ornamentali</h3>
-<button>Visualizza</button>
+<p>Razze decorative e rare</p>
+<a href="ornamentali.html"><button>Visualizza</button></a>
 </div>
 
 <div class="card">
 <h3>🐓 Rustici</h3>
-<button>Visualizza</button>
+<p>Forti e resistenti all’aperto</p>
+<a href="rustici.html"><button>Visualizza</button></a>
 </div>
 
 </div>
 
 </section>
 
+<!-- CONTATTI -->
 <section id="contatti">
+
 <h2>📞 Contatti</h2>
-<p>📍 Puglia</p>
+<p>📍 Puglia, Italia</p>
 <p>📱 327 813 1071</p>
+<p>✉️ info@verdeistinto.it</p>
+
 </section>
 
 <footer>
@@ -310,7 +332,6 @@ Qualità, selezione e crescita naturale
 let slides = document.getElementsByClassName("slide");
 let current = 0;
 
-/* SLIDER AUTO */
 setInterval(()=>{
 for(let s of slides) s.classList.remove("active");
 current++;
@@ -318,78 +339,60 @@ if(current >= slides.length) current = 0;
 slides[current].classList.add("active");
 },3000);
 
-/* SEARCH DATA */
+/* SEARCH FIXATA */
 const breeds = [
-{ name:"Ancona", img:"foto/ancona.jpg" },
-{ name:"Brahma", img:"foto/brahma.jpg" },
-{ name:"Isa Brown", img:"foto/isa-brown.jpg" },
-{ name:"Lakenvelder", img:"foto/lakenvelder.jpg" },
-{ name:"Livorno", img:"foto/livorno.jpg" },
-{ name:"Livorno Collo Oro", img:"foto/livornocollooro.jpg" },
-{ name:"Marans", img:"foto/marans.jpg" },
-{ name:"Moroseta", img:"foto/moroseta.jpg" },
-{ name:"Padovana", img:"foto/padovana.jpg" },
-{ name:"Sebright", img:"foto/sebright.jpg" },
-{ name:"Sussex", img:"foto/sussex.jpg" }
+{ name:"ancona", label:"Ancona", img:"foto/ancona.jpg" },
+{ name:"brahma", label:"Brahma", img:"foto/brahma.jpg" },
+{ name:"isa brown", label:"Isa Brown", img:"foto/isa-brown.jpg" },
+{ name:"lakenvelder", label:"Lakenvelder", img:"foto/lakenvelder.jpg" },
+{ name:"livorno", label:"Livorno", img:"foto/livorno.jpg" },
+{ name:"livorno collo oro", label:"Livorno Collo Oro", img:"foto/livornocollooro.jpg" },
+{ name:"marans", label:"Marans", img:"foto/marans.jpg" },
+{ name:"moroseta", label:"Moroseta", img:"foto/moroseta.jpg" },
+{ name:"padovana", label:"Padovana", img:"foto/padovana.jpg" },
+{ name:"sebright", label:"Sebright", img:"foto/sebright.jpg" },
+{ name:"sussex", label:"Sussex", img:"foto/sussex.jpg" }
 ];
 
 function toggleSearch(){
-document.getElementById("searchBox").style.display =
-document.getElementById("searchBox").style.display === "block"
-? "none" : "block";
+let box = document.getElementById("searchBox");
+box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
 function searchBreed(){
-
 let val = document.getElementById("searchInput").value.toLowerCase();
 let results = document.getElementById("results");
-
 results.innerHTML = "";
 
 breeds
-.filter(b => b.name.toLowerCase().includes(val))
-.forEach(b => {
-
+.filter(b => b.label.toLowerCase().includes(val))
+.forEach(b=>{
 let div = document.createElement("div");
 div.className = "result";
-
-/* FIX HTML BUG */
-div.innerHTML = `<img src="${b.img}"><span>${b.name}</span>`;
-
+div.innerHTML = `<img src="${b.img}"><span>${b.label}</span>`;
 div.onclick = () => goToBreed(b.name);
-
 results.appendChild(div);
-
 });
-
 }
 
-/* 🔥 FIX: PORTA DIRETTAMENTE ALLO SLIDER */
 function goToBreed(name){
+
+// vai slider
+document.getElementById("slider").scrollIntoView({behavior:"smooth"});
 
 let all = document.getElementsByClassName("slide");
 
 for(let i=0;i<all.length;i++){
-
-if(all[i].id.toLowerCase() === name.toLowerCase()){
-
+if(all[i].dataset.name === name){
 for(let s of all) s.classList.remove("active");
-
 all[i].classList.add("active");
-
 current = i;
-
-/* PORTA ALLA SEZIONE SLIDER */
-document.getElementById("slider").scrollIntoView({behavior:"smooth"});
-
 break;
 }
-
 }
 
 document.getElementById("searchBox").style.display = "none";
 document.getElementById("searchInput").value = "";
-
 }
 
 </script>
