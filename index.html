@@ -6,208 +6,145 @@
 
 <title>Verde Istinto | Allevamento Pulcini</title>
 
-<meta name="description" content="Verde Istinto: allevamento professionale di pulcini ovaiole, ornamentali e rustici. Vendita diretta in Puglia.">
-
 <style>
 
-/* ===== SLIDER ===== */
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f7f5;
+color:#222;
+}
+
+/* HEADER */
+header{
+background:linear-gradient(90deg,#145a14,#2e7d32);
+color:white;
+text-align:center;
+padding:30px 20px;
+}
+
+header h1{
+margin:0;
+font-size:38px;
+}
+
+/* HERO */
+.hero{
+background:url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7') center/cover;
+height:320px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:28px;
+text-shadow:2px 2px 8px black;
+text-align:center;
+padding:20px;
+}
+
+/* SECTION */
+section{
+padding:50px 20px;
+text-align:center;
+}
+
+h2{
+color:#145a14;
+margin-bottom:25px;
+}
+
+/* CATEGORIE PULITE */
+.cards{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+}
+
+.card{
+background:white;
+width:260px;
+padding:25px;
+border-radius:14px;
+box-shadow:0 6px 18px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card h3{
+margin-top:10px;
+}
+
+/* BOTTONI */
+button{
+background:#145a14;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:25px;
+cursor:pointer;
+font-weight:bold;
+margin-top:12px;
+}
+
+button:hover{
+background:#1f6b1f;
+}
+
+/* SLIDER SEMPLIFICATO */
 .slider{
-    position:relative;
-    max-width:700px;
-    margin:30px auto;
-    overflow:hidden;
-    border-radius:15px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.2);
+max-width:750px;
+margin:40px auto;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 6px 18px rgba(0,0,0,0.2);
 }
 
 .slide{
-    width:100%;
-    height:400px;
-    object-fit:cover;
-    display:none;
+width:100%;
+display:none;
+height:380px;
+object-fit:cover;
 }
 
 .slide.active{
-    display:block;
+display:block;
 }
 
-/* PULSANTI SLIDER */
-.prev, .next{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    background:rgba(0,0,0,0.35);
-    color:white;
-    border:none;
-    padding:12px 14px;
-    cursor:pointer;
-    font-size:20px;
-    border-radius:50%;
-    z-index:10;
-    transition:0.3s;
+/* CTA ORDINE */
+.cta{
+background:linear-gradient(135deg,#145a14,#1e7a1e);
+color:white;
+padding:40px 20px;
+margin:40px 20px;
+border-radius:16px;
+text-align:center;
 }
 
-.prev{ left:-18px; }
-.next{ right:-18px; }
-
-.prev:hover, .next:hover{
-    background:rgba(0,0,0,0.7);
-    transform:translateY(-50%) scale(1.1);
+.cta a{
+display:inline-block;
+margin-top:15px;
+padding:12px 20px;
+background:white;
+color:#145a14;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
 }
 
-/* VIDEO */
-.video-slider{
-    position:relative;
-    max-width:750px;
-    margin:30px auto;
-    overflow:hidden;
-    border-radius:15px;
-    background:black;
-}
-
-.video-slide{
-    width:100%;
-    height:420px;
-    object-fit:cover;
-    display:none;
-}
-
-.video-slide.active{
-    display:block;
-}
-
-/* BASE */
-body {
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#f4f7f4;
-    color:#222;
-}
-
-header {
-    background: linear-gradient(90deg,#145a14,#2e7d32);
-    color:white;
-    text-align:center;
-    padding:30px;
-}
-
-header h1 {
-    margin:0;
-    font-size:40px;
-}
-
-nav {
-    background:#0f3d0f;
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-}
-
-nav a {
-    color:white;
-    padding:14px 18px;
-    text-decoration:none;
-}
-
-nav a:hover {
-    background:#1f6b1f;
-}
-
-.hero {
-    background:url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7') center/cover;
-    height:380px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:32px;
-    text-shadow:2px 2px 8px black;
-    text-align:center;
-    padding:20px;
-}
-
-section {
-    padding:50px 20px;
-    text-align:center;
-}
-
-h2 { color:#145a14; }
-
-.cards {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:20px;
-}
-
-.card {
-    background:white;
-    width:280px;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* BUTTON */
-button {
-    background:#25D366;
-    color:white;
-    border:none;
-    padding:10px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-button:hover {
-    background:#1da851;
-}
-
-/* WHATSAPP */
-.whatsapp {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25D366;
-    color:white;
-    padding:15px;
-    border-radius:50%;
-    text-decoration:none;
-    font-size:22px;
-}
-
-/* FOOTER */
-footer {
-    background:#0f3d0f;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
-
-/* SOCIAL */
-.social-links{
-    margin-top:20px;
-}
-
-.social-btn{
-    display:inline-block;
-    margin:8px;
-    padding:10px 20px;
-    border-radius:25px;
-    text-decoration:none;
-    color:white;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.instagram{ background:#E1306C; }
-.youtube{ background:#FF0000; }
-
-.social-btn:hover{
-    transform:scale(1.05);
+/* CONTATTI */
+footer{
+background:#0f3d0f;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:40px;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -217,153 +154,69 @@ footer {
 <p>Allevamento professionale di pulcini selezionati</p>
 </header>
 
-<nav>
-<a href="#chi">Chi Siamo</a>
-<a href="#pulcini">Pulcini</a>
-<a href="#contatti">Contatti</a>
-</nav>
-
 <div class="hero">
 Qualità, selezione e crescita naturale
 </div>
 
-<!-- SLIDER -->
-<div class="slider">
-
-  <img class="slide active" src="foto/livorno.jpg">
-  <img class="slide" src="foto/sebright.jpg">
-  <img class="slide" src="foto/isa-brown.jpg">
-  <img class="slide" src="foto/sussex.jpg">
-
-  <button class="prev" onclick="changeSlide(-1)">❮</button>
-  <button class="next" onclick="changeSlide(1)">❯</button>
-
-</div>
-
-<!-- VIDEO -->
-<div class="video-slider">
-
-  <video class="video-slide active" autoplay muted loop>
-    <source src="video/pulcini1.mp4">
-  </video>
-
-  <video class="video-slide" autoplay muted loop>
-    <source src="video/pulcini2.mp4">
-  </video>
-
-  <video class="video-slide" autoplay muted loop>
-    <source src="video/pulcini3.mp4">
-  </video>
-
-</div>
-
-<section id="chi">
-<h2>Chi Siamo</h2>
-<p>Verde Istinto è un allevamento professionale in Puglia.</p>
-</section>
-
-<section id="pulcini">
-<h2>I Nostri Pulcini</h2>
+<section>
+<h2>🐣 Scegli la categoria</h2>
 
 <div class="cards">
 
 <div class="card">
-    <h3>🐔 Ovaiole Premium</h3>
-    <p>🥚 Alta produzione di uova fresche ogni giorno</p>
-    <p>💪 Razze selezionate per robustezza e resa</p>
-
-    <a href="ovaiole.html">
-        <button>🔎 Scopri le Razze</button>
-    </a>
+<h3>🥚 Ovaiole</h3>
+<p>Alta produzione di uova</p>
+<a href="ovaiole.html"><button>Scopri</button></a>
 </div>
 
 <div class="card">
-    <h3>🌸 Ornamentali Rare</h3>
-    <p>🎨 Razze eleganti e decorative da esposizione</p>
-    <p>🐓 Colorazioni uniche e pregiate</p>
-
-    <a href="ornamentali.html">
-        <button>✨ Scopri le Razze</button>
-    </a>
+<h3>🌸 Ornamentali</h3>
+<p>Razze rare e decorative</p>
+<a href="ornamentali.html"><button>Scopri</button></a>
 </div>
 
 <div class="card">
-    <h3>🐥 Rustici Forti</h3>
-    <p>🌿 Perfetti per allevamento naturale all’aperto</p>
-    <p>🛡️ Massima resistenza e adattabilità</p>
-
-    <a href="rustici.html">
-        <button>🚀 Scopri le Razze</button>
-    </a>
+<h3>🐓 Rustici</h3>
+<p>Forti e resistenti</p>
+<a href="rustici.html"><button>Scopri</button></a>
 </div>
 
 </div>
 </section>
 
-<section id="contatti">
-<h2>Contatti</h2>
+<!-- SLIDER (secondario, non protagonista) -->
+<div class="slider">
 
-<p>📞 WhatsApp: 3278131071</p>
-<p>📧 Email: info@verdeistinto.it</p>
-
-<div class="social-links">
-
-<a href="https://www.instagram.com/verdeistinto"
-target="_blank"
-class="social-btn instagram">
-📸 Instagram
-</a>
-
-<a href="https://www.youtube.com/@verdeistinto"
-target="_blank"
-class="social-btn youtube">
-▶️ YouTube
-</a>
+<img class="slide active" src="foto/livorno.jpg">
+<img class="slide" src="foto/sebright.jpg">
+<img class="slide" src="foto/isa-brown.jpg">
 
 </div>
+
+<section class="cta">
+<h2>📩 Vuoi ordinare?</h2>
+<p>Contattaci direttamente su WhatsApp per disponibilità e prenotazioni</p>
+<a href="https://wa.me/3278131071">Scrivici ora</a>
 </section>
 
 <footer>
 © 2026 Verde Istinto
 </footer>
 
-<a class="whatsapp" href="https://wa.me/3278131071">💬</a>
-
 <script>
-
-/* SLIDER */
-let current = 0;
+let i = 0;
 let slides = document.getElementsByClassName("slide");
 
-function showSlide(index){
-    for(let i=0;i<slides.length;i++){
-        slides[i].classList.remove("active");
-    }
-    slides[index].classList.add("active");
+function show(){
+for(let s of slides) s.classList.remove("active");
+slides[i].classList.add("active");
 }
-
-function changeSlide(step){
-    current += step;
-    if(current >= slides.length) current = 0;
-    if(current < 0) current = slides.length - 1;
-    showSlide(current);
-}
-
-setInterval(()=>changeSlide(1),4000);
-
-/* VIDEO */
-let v = 0;
-let vids = document.getElementsByClassName("video-slide");
 
 setInterval(()=>{
-    for(let i=0;i<vids.length;i++){
-        vids[i].classList.remove("active");
-    }
-    v++;
-    if(v >= vids.length) v = 0;
-    vids[v].classList.add("active");
-},6000);
-
+i++;
+if(i>=slides.length) i=0;
+show();
+},4000);
 </script>
 
 </body>
