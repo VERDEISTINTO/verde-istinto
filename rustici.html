@@ -6,18 +6,7 @@
 <title>Rustici - Verde Istinto</title>
 
 <style>
-    .badge{
-    display:inline-block;
-    padding:6px 12px;
-    border-radius:20px;
-    color:white;
-    font-weight:bold;
-    margin-top:8px;
-}
 
-.green{ background:green; }
-.orange{ background:orange; }
-.red{ background:#d60000; }
 body{
 font-family:Arial,sans-serif;
 background:#f5f5f5;
@@ -57,26 +46,34 @@ font-weight:bold;
 margin-top:10px;
 }
 
-.status{
+/* BADGE DISPONIBILITÀ */
+.badge{
 display:inline-block;
-padding:8px 15px;
+padding:6px 12px;
 border-radius:20px;
 color:white;
 font-weight:bold;
 margin-top:10px;
 }
 
-.disponibile{
-background:green;
+.green{ background:green; }
+.orange{ background:orange; }
+.red{ background:#d60000; }
+
+/* BACK BUTTON */
+.back{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#145a14;
+color:white;
+padding:12px 18px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
 }
 
-.arrivo{
-background:orange;
-}
-
-.non{
-background:red;
-}
 </style>
 </head>
 
@@ -92,250 +89,41 @@ background:red;
 <img src="foto/lakenvelder.jpg">
 <h2>Lakenvelder</h2>
 <p>Razza molto resistente e ideale per allevamenti all'aperto.</p>
+
 <div class="prezzo">€8</div>
 <div class="badge green">🟢 Disponibile</div>
-   <button onclick="addToCart('Lakenvelder', 8)" 
-style="
-background:#145a14;
-color:white;
-border:none;
-padding:8px 12px;
-border-radius:8px;
-cursor:pointer;
-margin-top:8px;
-">
-➕ Aggiungi
-</button>
 </div>
 
 <div class="card">
 <img src="foto/marans.jpg">
 <h2>Marans</h2>
-<p>Razza riconosciuta dalle uova cioccolato, robusta e adatta alla vita in cortile.</p>
+<p>Uova color cioccolato, razza robusta.</p>
+
 <div class="prezzo">€9</div>
 <div class="badge orange">🟡 In Arrivo</div>
-    <button onclick="addToCart('Marans', 9)" 
-style="
-background:#145a14;
-color:white;
-border:none;
-padding:8px 12px;
-border-radius:8px;
-cursor:pointer;
-margin-top:8px;
-">
-➕ Aggiungi
-</button>
 </div>
 
 <div class="card">
 <img src="foto/livornocollooro.jpg">
 <h2>Livorno collo oro</h2>
-<p>Gallina snella, vivace ed eccellente produttrice di uova dal guscio rigorosamente bianco.</p>
+<p>Gallina vivace e ottima ovaiola.</p>
+
 <div class="prezzo">€10</div>
 <div class="badge orange">🟡 In Arrivo</div>
-    <button onclick="addToCart('Livorno collo oro', 10)" 
-style="
-background:#145a14;
-color:white;
-border:none;
-padding:8px 12px;
-border-radius:8px;
-cursor:pointer;
-margin-top:8px;
-">
-➕ Aggiungi
-</button>
 </div>
 
 <div class="card">
 <img src="foto/brahma.jpg">
 <h2>Brahma</h2>
-<p>Razza avicola gigante di origine asiatica, famosa per la sua stazza imponente e il carattere docile.</p>
+<p>Razza gigante molto docile.</p>
+
 <div class="prezzo">€10</div>
-<div class="status non">🔴 Non Disponibile</div>
-    <button onclick="addToCart('Brahma', 10)" 
-style="
-background:#145a14;
-color:white;
-border:none;
-padding:8px 12px;
-border-radius:8px;
-cursor:pointer;
-margin-top:8px;
-">
-➕ Aggiungi
-</button>
+<div class="badge red">🔴 Non Disponibile</div>
 </div>
 
 </div>
-<div style="
-position:fixed;
-bottom:20px;
-right:20px;
-z-index:9999;
-">
-    <a href="index.html"
-       style="
-       background:#145a14;
-       color:white;
-       padding:12px 18px;
-       border-radius:30px;
-       text-decoration:none;
-       font-weight:bold;
-       box-shadow:0 4px 10px rgba(0,0,0,0.3);
-       ">
-       ⬅ Torna alla Home
-    </a>
-</div>
-    <div id="cart" style="
-position:fixed;
-bottom:80px;
-right:20px;
-background:white;
-padding:15px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-width:250px;
-z-index:9999;
-">
 
-<div id="cart" style="
-position:fixed;
-bottom:80px;
-right:20px;
-background:white;
-padding:15px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-width:270px;
-z-index:9999;
-">
+<a class="back" href="index.html">⬅ Torna alla Home</a>
 
-<h4>🛒 Carrello</h4>
-
-<ul id="cart-items" style="padding-left:15px;"></ul>
-
-<div id="cart-total" style="margin:10px 0;"></div>
-
-<button onclick="sendOrder()" style="
-background:#25D366;
-color:white;
-border:none;
-padding:10px;
-width:100%;
-border-radius:8px;
-font-weight:bold;
-cursor:pointer;
-">
-Ordina su WhatsApp
-</button>
-
-</div>
-</div>
-<script>
-
-let cart = JSON.parse(localStorage.getItem("cart")) || {};
-
-function saveCart(){
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-// aggiungi prodotto con prezzo
-function addToCart(name, price){
-
-    if(cart[name]){
-        cart[name].qty++;
-    } else {
-        cart[name] = {
-            qty: 1,
-            price: price
-        };
-    }
-
-    saveCart();
-    updateCart();
-}
-
-// rimuovi unità
-function removeFromCart(name){
-
-    if(cart[name]){
-        cart[name].qty--;
-
-        if(cart[name].qty <= 0){
-            delete cart[name];
-        }
-    }
-
-    saveCart();
-    updateCart();
-}
-
-// aggiorna UI
-function updateCart(){
-
-    let list = document.getElementById("cart-items");
-    if(!list) return;
-
-    list.innerHTML = "";
-
-    let total = 0;
-
-    for(let name in cart){
-
-        let item = cart[name];
-        let subtotal = item.qty * item.price;
-        total += subtotal;
-
-        let li = document.createElement("li");
-
-        li.innerHTML = `
-            ${name} x${item.qty} - €${subtotal.toFixed(2)}
-            <button onclick="removeFromCart('${name}')">➖</button>
-        `;
-
-        list.appendChild(li);
-    }
-
-    let totalBox = document.getElementById("cart-total");
-    if(totalBox){
-        totalBox.innerHTML = "<b>Totale: €" + total.toFixed(2) + "</b>";
-    }
-}
-
-// invia ordine WhatsApp
-function sendOrder(){
-
-    let keys = Object.keys(cart);
-
-    if(keys.length === 0){
-        alert("Carrello vuoto");
-        return;
-    }
-
-    let message = "🛒 ORDINE VERDE ISTINTO:%0A%0A";
-    let total = 0;
-
-    keys.forEach(name => {
-
-        let item = cart[name];
-        let subtotal = item.qty * item.price;
-
-        total += subtotal;
-
-        message += "- " + name + " x" + item.qty + " = €" + subtotal.toFixed(2) + "%0A";
-    });
-
-    message += "%0A💰 TOTALE: €" + total.toFixed(2);
-
-    let phone = "3278131071";
-
-    window.open("https://wa.me/" + phone + "?text=" + message, "_blank");
-}
-
-window.onload = updateCart;
-
-</script>
 </body>
 </html>
