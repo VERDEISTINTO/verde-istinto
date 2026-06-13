@@ -16,14 +16,20 @@ color:#222;
 scroll-behavior:smooth;
 }
 
-/* HEADER + MENU */
+/* HEADER */
 header{
 background:linear-gradient(90deg,#145a14,#2e7d32);
 color:white;
 text-align:center;
-padding:20px;
+padding:25px;
 }
 
+header h1{
+margin:0;
+font-size:38px;
+}
+
+/* NAV */
 nav{
 background:#0f3d0f;
 display:flex;
@@ -71,7 +77,7 @@ color:#145a14;
 
 /* CHI SIAMO */
 #chi{
-background:#ffffff;
+background:white;
 }
 
 /* SLIDER */
@@ -108,6 +114,26 @@ width:260px;
 padding:25px;
 border-radius:14px;
 box-shadow:0 6px 18px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+button{
+background:#145a14;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:25px;
+cursor:pointer;
+font-weight:bold;
+margin-top:10px;
+}
+
+button:hover{
+background:#1f6b1f;
 }
 
 /* CTA ORDINE */
@@ -155,7 +181,7 @@ padding:20px;
 
 <header>
 <h1>🌿 Verde Istinto</h1>
-<p>Allevamento professionale pulcini</p>
+<p>Allevamento professionale di pulcini selezionati</p>
 </header>
 
 <!-- MENU -->
@@ -177,11 +203,11 @@ Qualità, selezione e crescita naturale
 <h2>👨‍🌾 Chi Siamo</h2>
 <p>
 Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti.
-Operiamo con passione in Puglia, offrendo vendita diretta e assistenza.
+Operiamo in Puglia con vendita diretta e assistenza clienti.
 </p>
 </section>
 
-<!-- SLIDER FOTO -->
+<!-- SLIDER -->
 <section id="slider">
 
 <h2>🐓 Le Nostre Razze</h2>
@@ -213,17 +239,20 @@ Operiamo con passione in Puglia, offrendo vendita diretta e assistenza.
 
 <div class="card">
 <h3>🥚 Ovaiole</h3>
-<a href="ovaiole.html"><button>Scopri</button></a>
+<p>Alta produzione di uova e razze selezionate</p>
+<a href="ovaiole.html"><button>Visualizza Razze</button></a>
 </div>
 
 <div class="card">
 <h3>🌸 Ornamentali</h3>
-<a href="ornamentali.html"><button>Scopri</button></a>
+<p>Razze rare e decorative</p>
+<a href="ornamentali.html"><button>Visualizza Razze</button></a>
 </div>
 
 <div class="card">
 <h3>🐓 Rustici</h3>
-<a href="rustici.html"><button>Scopri</button></a>
+<p>Forti e resistenti per allevamento all’aperto</p>
+<a href="rustici.html"><button>Visualizza Razze</button></a>
 </div>
 
 </div>
@@ -238,7 +267,7 @@ Operiamo con passione in Puglia, offrendo vendita diretta e assistenza.
 <p>Contattaci su WhatsApp per disponibilità e informazioni</p>
 
 <a href="https://wa.me/3278131071"
-style="background:white;color:#145a14;padding:12px 20px;border-radius:30px;text-decoration:none;font-weight:bold;">
+style="background:white;color:#145a14;padding:12px 22px;border-radius:30px;text-decoration:none;font-weight:bold;">
 Ordina ora
 </a>
 
@@ -253,9 +282,11 @@ Ordina ora
 <p>📱 327 813 1071</p>
 <p>✉️ info@verdeistinto.it</p>
 
-<div>
+<div class="social">
+
 <a class="ig" href="https://instagram.com/verdeistinto" target="_blank">Instagram</a>
 <a class="yt" href="https://youtube.com/@verdeistinto" target="_blank">YouTube</a>
+
 </div>
 
 </section>
