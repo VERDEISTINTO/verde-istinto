@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Verde Istinto | Allevamento Pulcini</title>
 
 <style>
@@ -13,7 +12,6 @@ margin:0;
 font-family:Arial,sans-serif;
 background:#f5f7f5;
 scroll-behavior:smooth;
-color:#222;
 }
 
 /* HEADER */
@@ -22,68 +20,6 @@ background:linear-gradient(90deg,#145a14,#2e7d32);
 color:white;
 text-align:center;
 padding:25px;
-position:relative;
-}
-
-header h1{
-margin:0;
-font-size:38px;
-}
-
-/* 🔍 SEARCH */
-.search-wrapper{
-position:fixed;
-top:15px;
-right:15px;
-z-index:9999;
-}
-
-.search-btn{
-background:white;
-border:none;
-border-radius:50%;
-width:45px;
-height:45px;
-cursor:pointer;
-font-size:20px;
-box-shadow:0 4px 10px rgba(0,0,0,0.2);
-}
-
-.search-box{
-display:none;
-position:absolute;
-right:0;
-top:55px;
-width:260px;
-background:white;
-border-radius:12px;
-box-shadow:0 6px 20px rgba(0,0,0,0.2);
-overflow:hidden;
-}
-
-.search-box input{
-width:100%;
-padding:10px;
-border:none;
-outline:none;
-border-bottom:1px solid #eee;
-}
-
-.result{
-display:flex;
-align-items:center;
-gap:10px;
-padding:8px;
-cursor:pointer;
-}
-
-.result:hover{background:#f0f0f0;}
-
-.result img{
-width:40px;
-height:40px;
-object-fit:cover;
-border-radius:6px;
 }
 
 /* NAV */
@@ -92,8 +28,6 @@ background:#0f3d0f;
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
-gap:10px;
-padding:10px;
 position:sticky;
 top:0;
 z-index:1000;
@@ -101,18 +35,69 @@ z-index:1000;
 
 nav a{
 color:white;
-padding:12px 18px;
+padding:12px 16px;
 text-decoration:none;
 font-weight:bold;
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.15);
-border-radius:30px;
-transition:0.25s;
 }
 
 nav a:hover{
-background:#25d366;
-transform:scale(1.05);
+background:#1f6b1f;
+}
+
+/* SEARCH ICON */
+.search-box{
+position:fixed;
+top:15px;
+right:15px;
+z-index:2000;
+}
+
+.search-icon{
+background:white;
+border:none;
+width:40px;
+height:40px;
+border-radius:50%;
+cursor:pointer;
+font-size:18px;
+}
+
+/* SEARCH PANEL */
+.search-panel{
+position:fixed;
+top:60px;
+right:15px;
+width:260px;
+background:white;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+display:none;
+overflow:hidden;
+z-index:2000;
+}
+
+.search-panel input{
+width:100%;
+padding:10px;
+border:none;
+border-bottom:1px solid #ddd;
+outline:none;
+}
+
+.result{
+display:flex;
+align-items:center;
+gap:10px;
+padding:8px;
+cursor:pointer;
+border-bottom:1px solid #eee;
+}
+
+.result img{
+width:35px;
+height:35px;
+object-fit:cover;
+border-radius:8px;
 }
 
 /* HERO */
@@ -139,7 +124,6 @@ max-width:800px;
 margin:20px auto;
 overflow:hidden;
 border-radius:14px;
-position:relative;
 }
 
 .slide{
@@ -147,93 +131,40 @@ width:100%;
 height:400px;
 object-fit:cover;
 display:none;
-border-radius:14px;
 }
 
-.slide.active{display:block;}
-
-/* DISPONIBILITÀ */
-.slide[data-color="green"]::after,
-.slide[data-color="yellow"]::after,
-.slide[data-color="red"]::after{
-position:absolute;
-top:12px;
-left:12px;
-padding:6px 12px;
-border-radius:20px;
-color:white;
-font-weight:bold;
-font-size:14px;
+.slide.active{
+display:block;
 }
 
-.slide[data-color="green"]::after{
-content:"🟢 Disponibile";
-background:#28a745;
-}
-
-.slide[data-color="yellow"]::after{
-content:"🟡 In arrivo";
-background:#ffc107;
-color:#222;
-}
-
-.slide[data-color="red"]::after{
-content:"🔴 Non disponibile";
-background:#dc3545;
-}
-
-/* CATEGORIE MIGLIORATE */
+/* CATEGORIE */
 .cards{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:25px;
-margin-top:20px;
+gap:20px;
 }
 
 .card{
-background:linear-gradient(145deg,#ffffff,#f3f6f3);
-width:270px;
+background:white;
+width:260px;
 padding:25px;
-border-radius:18px;
-box-shadow:0 10px 25px rgba(0,0,0,0.12);
+border-radius:14px;
+box-shadow:0 6px 18px rgba(0,0,0,0.1);
 transition:0.3s;
-position:relative;
-overflow:hidden;
 }
 
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 15px 35px rgba(0,0,0,0.18);
-}
-
-.card h3{
-font-size:22px;
-margin-bottom:10px;
-color:#145a14;
-}
-
-.card p{
-font-size:14px;
-color:#555;
-line-height:1.5;
-margin-bottom:15px;
+transform:translateY(-6px);
 }
 
 .card button{
-background:linear-gradient(90deg,#145a14,#1f7a1f);
+background:#145a14;
 color:white;
 border:none;
-padding:12px 20px;
-border-radius:30px;
+padding:12px 18px;
+border-radius:25px;
 cursor:pointer;
-font-weight:bold;
-width:100%;
-}
-
-.card button:hover{
-transform:scale(1.05);
-background:linear-gradient(90deg,#1f7a1f,#25d366);
 }
 
 /* CONTATTI */
@@ -242,20 +173,24 @@ background:#fff;
 padding:50px 20px;
 }
 
-/* FOOTER */
+.social a{
+display:inline-block;
+margin:8px;
+padding:10px 18px;
+border-radius:25px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.ig{background:#E1306C;}
+.yt{background:#FF0000;}
+
 footer{
 background:#0f3d0f;
 color:white;
 text-align:center;
 padding:20px;
-}
-
-/* SEARCH EXTRA */
-.search-wrapper{
-position:fixed;
-top:15px;
-right:15px;
-z-index:9999;
 }
 
 </style>
@@ -265,20 +200,10 @@ z-index:9999;
 
 <header>
 <h1>🌿 Verde Istinto</h1>
+<p>Allevamento professionale di pulcini selezionati</p>
 </header>
 
-<!-- 🔍 SEARCH -->
-<div class="search-wrapper">
-
-<button class="search-btn" onclick="toggleSearch()">🔍</button>
-
-<div class="search-box" id="searchBox">
-<input id="searchInput" oninput="searchBreed()" placeholder="Cerca razza...">
-<div id="results"></div>
-</div>
-
-</div>
-
+<!-- MENU -->
 <nav>
 <a href="#chi">Chi Siamo</a>
 <a href="#slider">Razze</a>
@@ -286,6 +211,17 @@ z-index:9999;
 <a href="#contatti">Contatti</a>
 </nav>
 
+<!-- SEARCH -->
+<div class="search-box">
+<button class="search-icon" onclick="toggleSearch()">🔍</button>
+</div>
+
+<div class="search-panel" id="searchPanel">
+<input type="text" id="searchInput" oninput="searchBreed()" placeholder="Cerca razza...">
+<div id="results"></div>
+</div>
+
+<!-- HERO -->
 <div class="hero">
 Qualità, selezione e crescita naturale
 </div>
@@ -293,30 +229,27 @@ Qualità, selezione e crescita naturale
 <!-- CHI SIAMO -->
 <section id="chi">
 <h2>👨‍🌾 Chi Siamo</h2>
-<p style="max-width:900px;margin:auto;line-height:1.7;font-size:17px;">
-Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti, con cura quotidiana e attenzione al benessere animale.
-Operiamo in Puglia garantendo qualità e affidabilità.
-</p>
+<p>Allevamento professionale di pulcini selezionati in Puglia.</p>
 </section>
 
 <!-- SLIDER -->
 <section id="slider">
 
-<h2>🐓 Le Nostre Razze</h2>
+<h2>🐓 Razze</h2>
 
 <div class="slider">
 
-<img class="slide active" data-color="green" src="foto/ancona.jpg" id="Ancona">
-<img class="slide" data-color="red" src="foto/brahma.jpg" id="Brahma">
-<img class="slide" data-color="yellow" src="foto/isa-brown.jpg" id="Isa Brown">
-<img class="slide" data-color="green" src="foto/lakenvelder.jpg" id="Lakenvelder">
-<img class="slide" data-color="green" src="foto/livorno.jpg" id="Livorno">
-<img class="slide" data-color="yellow" src="foto/livornocollooro.jpg" id="Livorno Collo Oro">
-<img class="slide" data-color="red" src="foto/marans.jpg" id="Marans">
-<img class="slide" data-color="green" src="foto/moroseta.jpg" id="Moroseta">
-<img class="slide" data-color="yellow" src="foto/padovana.jpg" id="Padovana">
-<img class="slide" data-color="green" src="foto/sebright.jpg" id="Sebright">
-<img class="slide" data-color="green" src="foto/sussex.jpg" id="Sussex">
+<img class="slide active" id="ancona" src="foto/ancona.jpg">
+<img class="slide" id="brahma" src="foto/brahma.jpg">
+<img class="slide" id="isa brown" src="foto/isa-brown.jpg">
+<img class="slide" id="lakenvelder" src="foto/lakenvelder.jpg">
+<img class="slide" id="livorno" src="foto/livorno.jpg">
+<img class="slide" id="livorno oro" src="foto/livornocollooro.jpg">
+<img class="slide" id="marans" src="foto/marans.jpg">
+<img class="slide" id="moroseta" src="foto/moroseta.jpg">
+<img class="slide" id="padovana" src="foto/padovana.jpg">
+<img class="slide" id="sebright" src="foto/sebright.jpg">
+<img class="slide" id="sussex" src="foto/sussex.jpg">
 
 </div>
 
@@ -331,20 +264,17 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 
 <div class="card">
 <h3>🥚 Ovaiole</h3>
-<p>Alta produzione di uova</p>
-<a href="ovaiole.html"><button>Visualizza</button></a>
+<p>Produzione alta di uova</p>
 </div>
 
 <div class="card">
 <h3>🌸 Ornamentali</h3>
-<p>Razze decorative e rare</p>
-<a href="ornamentali.html"><button>Visualizza</button></a>
+<p>Razze decorative rare</p>
 </div>
 
 <div class="card">
 <h3>🐓 Rustici</h3>
-<p>Forti e resistenti all’aperto</p>
-<a href="rustici.html"><button>Visualizza</button></a>
+<p>Resistenti e robusti</p>
 </div>
 
 </div>
@@ -355,9 +285,14 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 <section id="contatti">
 
 <h2>📞 Contatti</h2>
-<p>📍 Puglia, Italia</p>
+
 <p>📱 327 813 1071</p>
 <p>✉️ info@verdeistinto.it</p>
+
+<div class="social">
+<a class="ig" href="https://instagram.com/verdeistinto">Instagram</a>
+<a class="yt" href="https://youtube.com/@verdeistinto">YouTube</a>
+</div>
 
 </section>
 
@@ -367,35 +302,39 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 
 <script>
 
-/* SLIDER */
 let slides = document.getElementsByClassName("slide");
 let current = 0;
 
-setInterval(()=>{
+function show(i){
 for(let s of slides) s.classList.remove("active");
+slides[i].classList.add("active");
+}
+
+setInterval(()=>{
 current++;
 if(current >= slides.length) current = 0;
-slides[current].classList.add("active");
+show(current);
 },3000);
 
 /* SEARCH */
+
 const breeds = [
-{ name:"Ancona", img:"foto/ancona.jpg" },
-{ name:"Brahma", img:"foto/brahma.jpg" },
-{ name:"Isa Brown", img:"foto/isa-brown.jpg" },
-{ name:"Lakenvelder", img:"foto/lakenvelder.jpg" },
-{ name:"Livorno", img:"foto/livorno.jpg" },
-{ name:"Livorno Collo Oro", img:"foto/livornocollooro.jpg" },
-{ name:"Marans", img:"foto/marans.jpg" },
-{ name:"Moroseta", img:"foto/moroseta.jpg" },
-{ name:"Padovana", img:"foto/padovana.jpg" },
-{ name:"Sebright", img:"foto/sebright.jpg" },
-{ name:"Sussex", img:"foto/sussex.jpg" }
+{name:"ancona", img:"foto/ancona.jpg"},
+{name:"brahma", img:"foto/brahma.jpg"},
+{name:"isa brown", img:"foto/isa-brown.jpg"},
+{name:"lakenvelder", img:"foto/lakenvelder.jpg"},
+{name:"livorno", img:"foto/livorno.jpg"},
+{name:"livorno oro", img:"foto/livornocollooro.jpg"},
+{name:"marans", img:"foto/marans.jpg"},
+{name:"moroseta", img:"foto/moroseta.jpg"},
+{name:"padovana", img:"foto/padovana.jpg"},
+{name:"sebright", img:"foto/sebright.jpg"},
+{name:"sussex", img:"foto/sussex.jpg"},
 ];
 
 function toggleSearch(){
-let box = document.getElementById("searchBox");
-box.style.display = box.style.display === "block" ? "none" : "block";
+let panel = document.getElementById("searchPanel");
+panel.style.display = panel.style.display === "block" ? "none" : "block";
 }
 
 function searchBreed(){
@@ -404,31 +343,27 @@ let results = document.getElementById("results");
 
 results.innerHTML = "";
 
-breeds
-.filter(b => b.name.toLowerCase().includes(val))
-.forEach(b=>{
+breeds.forEach(b => {
+if(b.name.includes(val)){
 let div = document.createElement("div");
 div.className = "result";
 div.innerHTML = `<img src="${b.img}"><span>${b.name}</span>`;
 div.onclick = () => goToBreed(b.name);
 results.appendChild(div);
+}
 });
 }
 
 function goToBreed(name){
-let all = document.getElementsByClassName("slide");
-
-for(let i=0;i<all.length;i++){
-if(all[i].id.toLowerCase() === name.toLowerCase()){
-for(let s of all) s.classList.remove("active");
-all[i].classList.add("active");
+let slides = document.getElementsByClassName("slide");
+for(let i=0;i<slides.length;i++){
+if(slides[i].id === name){
 current = i;
+show(i);
+document.getElementById("searchPanel").style.display="none";
 break;
 }
 }
-
-document.getElementById("searchBox").style.display = "none";
-document.getElementById("searchInput").value = "";
 }
 
 </script>
