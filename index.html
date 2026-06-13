@@ -133,26 +133,7 @@ padding:50px 20px;
 text-align:center;
 }
 
-/* SLIDER */
-.slider{
-max-width:800px;
-margin:20px auto;
-overflow:hidden;
-border-radius:14px;
-position:relative;
-}
-
-.slide{
-width:100%;
-height:400px;
-object-fit:cover;
-display:none;
-border-radius:14px;
-}
-
-.slide.active{display:block;}
-
-/* CATEGORIE (NON MODIFICATE) */
+/* CATEGORIE */
 .cards{
 display:flex;
 flex-wrap:wrap;
@@ -201,9 +182,11 @@ font-weight:bold;
 width:100%;
 }
 
-.card button:hover{
-transform:scale(1.05);
-background:linear-gradient(90deg,#1f7a1f,#25d366);
+/* HIGHLIGHT RAZZA */
+.highlight{
+outline:4px solid #25d366;
+transform:scale(1.02);
+transition:0.3s;
 }
 
 /* CONTATTI */
@@ -212,7 +195,6 @@ background:#fff;
 padding:50px 20px;
 }
 
-/* FOOTER */
 footer{
 background:#0f3d0f;
 color:white;
@@ -243,7 +225,6 @@ padding:20px;
 
 <nav>
 <a href="#chi">Chi Siamo</a>
-<a href="#slider">Razze</a>
 <a href="#categorie">Categorie</a>
 <a href="#contatti">Contatti</a>
 </nav>
@@ -261,52 +242,61 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 </p>
 </section>
 
-<!-- SLIDER -->
-<section id="slider">
-
-<h2>🐓 Le Nostre Razze</h2>
-
-<div class="slider">
-
-<img class="slide active" data-name="ancona" src="foto/ancona.jpg">
-<img class="slide" data-name="brahma" src="foto/brahma.jpg">
-<img class="slide" data-name="isa brown" src="foto/isa-brown.jpg">
-<img class="slide" data-name="lakenvelder" src="foto/lakenvelder.jpg">
-<img class="slide" data-name="livorno" src="foto/livorno.jpg">
-<img class="slide" data-name="livorno collo oro" src="foto/livornocollooro.jpg">
-<img class="slide" data-name="marans" src="foto/marans.jpg">
-<img class="slide" data-name="moroseta" src="foto/moroseta.jpg">
-<img class="slide" data-name="padovana" src="foto/padovana.jpg">
-<img class="slide" data-name="sebright" src="foto/sebright.jpg">
-<img class="slide" data-name="sussex" src="foto/sussex.jpg">
-
-</div>
-
-</section>
-
-<!-- CATEGORIE (IDENTICHE COME VOLEVI) -->
+<!-- CATEGORIE (UGUALI COME VOLEVI) -->
 <section id="categorie">
 
 <h2>🐣 Categorie</h2>
 
-<div class="cards">
-
-<div class="card">
+<!-- OVAIOLE -->
 <h3>🥚 Ovaiole</h3>
+<div class="cards" id="ovaiole">
+
+<div class="card" id="isa brown">
+<h3>Isa Brown</h3>
 <p>Alta produzione di uova</p>
-<a href="ovaiole.html"><button>Visualizza</button></a>
+<button>Visualizza</button>
 </div>
 
-<div class="card">
+<div class="card" id="livorno">
+<h3>Livorno</h3>
+<p>Razza ovaiola italiana</p>
+<button>Visualizza</button>
+</div>
+
+</div>
+
+<!-- ORNAMENTALI -->
 <h3>🌸 Ornamentali</h3>
-<p>Razze decorative e rare</p>
-<a href="ornamentali.html"><button>Visualizza</button></a>
+<div class="cards" id="ornamentali">
+
+<div class="card" id="moroseta">
+<h3>Moroseta</h3>
+<p>Razza soffice ornamentale</p>
+<button>Visualizza</button>
 </div>
 
-<div class="card">
+<div class="card" id="padovana">
+<h3>Padovana</h3>
+<p>Ciuffo caratteristico</p>
+<button>Visualizza</button>
+</div>
+
+</div>
+
+<!-- RUSTICI -->
 <h3>🐓 Rustici</h3>
-<p>Forti e resistenti all’aperto</p>
-<a href="rustici.html"><button>Visualizza</button></a>
+<div class="cards" id="rustici">
+
+<div class="card" id="sussex">
+<h3>Sussex</h3>
+<p>Molto resistente</p>
+<button>Visualizza</button>
+</div>
+
+<div class="card" id="marans">
+<h3>Marans</h3>
+<p>Uova scure</p>
+<button>Visualizza</button>
 </div>
 
 </div>
@@ -315,12 +305,10 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 
 <!-- CONTATTI -->
 <section id="contatti">
-
 <h2>📞 Contatti</h2>
 <p>📍 Puglia, Italia</p>
 <p>📱 327 813 1071</p>
 <p>✉️ info@verdeistinto.it</p>
-
 </section>
 
 <footer>
@@ -329,66 +317,50 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 
 <script>
 
-let slides = document.getElementsByClassName("slide");
-let current = 0;
-
-setInterval(()=>{
-for(let s of slides) s.classList.remove("active");
-current++;
-if(current >= slides.length) current = 0;
-slides[current].classList.add("active");
-},3000);
-
-/* SEARCH FIXATA */
-const breeds = [
-{ name:"ancona", label:"Ancona", img:"foto/ancona.jpg" },
-{ name:"brahma", label:"Brahma", img:"foto/brahma.jpg" },
-{ name:"isa brown", label:"Isa Brown", img:"foto/isa-brown.jpg" },
-{ name:"lakenvelder", label:"Lakenvelder", img:"foto/lakenvelder.jpg" },
-{ name:"livorno", label:"Livorno", img:"foto/livorno.jpg" },
-{ name:"livorno collo oro", label:"Livorno Collo Oro", img:"foto/livornocollooro.jpg" },
-{ name:"marans", label:"Marans", img:"foto/marans.jpg" },
-{ name:"moroseta", label:"Moroseta", img:"foto/moroseta.jpg" },
-{ name:"padovana", label:"Padovana", img:"foto/padovana.jpg" },
-{ name:"sebright", label:"Sebright", img:"foto/sebright.jpg" },
-{ name:"sussex", label:"Sussex", img:"foto/sussex.jpg" }
-];
-
 function toggleSearch(){
 let box = document.getElementById("searchBox");
 box.style.display = box.style.display === "block" ? "none" : "block";
 }
+
+/* RICERCA INTELLIGENTE */
+const breeds = [
+{ name:"isa brown", label:"Isa Brown", category:"ovaiole", img:"foto/isa-brown.jpg" },
+{ name:"livorno", label:"Livorno", category:"ovaiole", img:"foto/livorno.jpg" },
+
+{ name:"moroseta", label:"Moroseta", category:"ornamentali", img:"foto/moroseta.jpg" },
+{ name:"padovana", label:"Padovana", category:"ornamentali", img:"foto/padovana.jpg" },
+
+{ name:"sussex", label:"Sussex", category:"rustici", img:"foto/sussex.jpg" },
+{ name:"marans", label:"Marans", category:"rustici", img:"foto/marans.jpg" }
+];
 
 function searchBreed(){
 let val = document.getElementById("searchInput").value.toLowerCase();
 let results = document.getElementById("results");
 results.innerHTML = "";
 
-breeds
-.filter(b => b.label.toLowerCase().includes(val))
+breeds.filter(b => b.label.toLowerCase().includes(val))
 .forEach(b=>{
 let div = document.createElement("div");
 div.className = "result";
 div.innerHTML = `<img src="${b.img}"><span>${b.label}</span>`;
-div.onclick = () => goToBreed(b.name);
+div.onclick = () => goToBreed(b);
 results.appendChild(div);
 });
 }
 
-function goToBreed(name){
+function goToBreed(b){
 
-// vai slider
-document.getElementById("slider").scrollIntoView({behavior:"smooth"});
+// vai categoria
+document.getElementById(b.category).scrollIntoView({behavior:"smooth"});
 
-let all = document.getElementsByClassName("slide");
-
-for(let i=0;i<all.length;i++){
-if(all[i].dataset.name === name){
-for(let s of all) s.classList.remove("active");
-all[i].classList.add("active");
-current = i;
-break;
-}
+// evidenzia card
+let el = document.getElementById(b.name);
+if(el){
+setTimeout(()=>{
+el.classList.add("highlight");
+el.scrollIntoView({behavior:"smooth", block:"center"});
+},500);
 }
 
 document.getElementById("searchBox").style.display = "none";
