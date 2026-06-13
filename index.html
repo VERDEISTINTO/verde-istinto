@@ -30,7 +30,7 @@ margin:0;
 font-size:38px;
 }
 
-/* 🔍 SEARCH */
+/* SEARCH */
 .search-wrapper{
 position:fixed;
 top:15px;
@@ -106,11 +106,6 @@ text-decoration:none;
 font-weight:bold;
 background:rgba(255,255,255,0.08);
 border-radius:30px;
-transition:0.25s;
-}
-
-nav a:hover{
-background:#25d366;
 }
 
 /* HERO */
@@ -137,7 +132,6 @@ max-width:800px;
 margin:20px auto;
 overflow:hidden;
 border-radius:14px;
-position:relative;
 }
 
 .slide{
@@ -145,43 +139,32 @@ width:100%;
 height:400px;
 object-fit:cover;
 display:none;
-border-radius:14px;
 }
 
 .slide.active{display:block;}
 
-/* CATEGORIE */
+/* CATEGORIE (COME PRIMA, SEMPLICI) */
 .cards{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:25px;
+gap:20px;
 }
 
 .card{
-background:linear-gradient(145deg,#fff,#f3f6f3);
-width:270px;
+background:white;
+width:260px;
 padding:25px;
-border-radius:18px;
-box-shadow:0 10px 25px rgba(0,0,0,0.12);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-8px);
-}
-
-.card h3{
-color:#145a14;
+border-radius:14px;
+box-shadow:0 6px 18px rgba(0,0,0,0.1);
 }
 
 .card button{
 background:#145a14;
 color:white;
 border:none;
-padding:12px;
-border-radius:30px;
-width:100%;
+padding:12px 18px;
+border-radius:25px;
 cursor:pointer;
 }
 
@@ -198,7 +181,6 @@ padding:10px 18px;
 border-radius:25px;
 color:white;
 text-decoration:none;
-font-weight:bold;
 }
 
 .ig{background:#E1306C;}
@@ -220,7 +202,7 @@ padding:20px;
 <h1>🌿 Verde Istinto</h1>
 </header>
 
-<!-- 🔍 SEARCH -->
+<!-- SEARCH -->
 <div class="search-wrapper">
 
 <button class="search-btn" onclick="toggleSearch()">🔍</button>
@@ -246,17 +228,14 @@ Qualità, selezione e crescita naturale
 
 <!-- CHI SIAMO -->
 <section id="chi">
-<h2>👨‍🌾 Chi Siamo</h2>
-<p style="max-width:900px;margin:auto;line-height:1.7;">
-Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti.
-Operiamo in Puglia con attenzione al benessere animale e qualità genetica.
-</p>
+<h2>Chi Siamo</h2>
+<p>Allevamento professionale in Puglia.</p>
 </section>
 
 <!-- SLIDER -->
 <section id="slider">
 
-<h2>🐓 Le Nostre Razze</h2>
+<h2>🐓 Razze</h2>
 
 <div class="slider">
 
@@ -265,7 +244,6 @@ Operiamo in Puglia con attenzione al benessere animale e qualità genetica.
 <img class="slide" src="foto/isa-brown.jpg" id="Isa Brown">
 <img class="slide" src="foto/lakenvelder.jpg" id="Lakenvelder">
 <img class="slide" src="foto/livorno.jpg" id="Livorno">
-<img class="slide" src="foto/livornocollooro.jpg" id="Livorno Collo Oro">
 <img class="slide" src="foto/marans.jpg" id="Marans">
 <img class="slide" src="foto/moroseta.jpg" id="Moroseta">
 <img class="slide" src="foto/padovana.jpg" id="Padovana">
@@ -276,29 +254,26 @@ Operiamo in Puglia con attenzione al benessere animale e qualità genetica.
 
 </section>
 
-<!-- CATEGORIE -->
+<!-- CATEGORIE (RESTANO UGUALI) -->
 <section id="categorie">
 
-<h2>🐣 Categorie</h2>
+<h2>Categorie</h2>
 
 <div class="cards">
 
 <div class="card">
-<h3>🥚 Ovaiole</h3>
-<p>Alta produzione di uova</p>
-<a href="ovaiole.html"><button>Visualizza</button></a>
+<h3>Ovaiole</h3>
+<a href="ovaiole.html"><button>Visualizza Razze</button></a>
 </div>
 
 <div class="card">
-<h3>🌸 Ornamentali</h3>
-<p>Razze decorative e rare</p>
-<a href="ornamentali.html"><button>Visualizza</button></a>
+<h3>Ornamentali</h3>
+<a href="ornamentali.html"><button>Visualizza Razze</button></a>
 </div>
 
 <div class="card">
-<h3>🐓 Rustici</h3>
-<p>Forti e resistenti</p>
-<a href="rustici.html"><button>Visualizza</button></a>
+<h3>Rustici</h3>
+<a href="rustici.html"><button>Visualizza Razze</button></a>
 </div>
 
 </div>
@@ -308,17 +283,14 @@ Operiamo in Puglia con attenzione al benessere animale e qualità genetica.
 <!-- CONTATTI -->
 <section id="contatti">
 
-<h2>📞 Contatti</h2>
+<h2>Contatti</h2>
 
-<p>📍 Puglia, Italia</p>
 <p>📱 327 813 1071</p>
 <p>✉️ info@verdeistinto.it</p>
 
 <div class="social">
-
-<a class="ig" href="https://instagram.com/verdeistinto" target="_blank">📸 Instagram</a>
-<a class="yt" href="https://youtube.com/@verdeistinto" target="_blank">▶️ YouTube</a>
-
+<a class="ig" href="#">Instagram</a>
+<a class="yt" href="#">YouTube</a>
 </div>
 
 </section>
@@ -329,17 +301,6 @@ Operiamo in Puglia con attenzione al benessere animale e qualità genetica.
 
 <script>
 
-/* SLIDER AUTO */
-let slides = document.getElementsByClassName("slide");
-let current = 0;
-
-setInterval(()=>{
-for(let s of slides) s.classList.remove("active");
-current++;
-if(current >= slides.length) current = 0;
-slides[current].classList.add("active");
-},3000);
-
 /* SEARCH */
 const breeds = [
 {name:"Ancona",img:"foto/ancona.jpg"},
@@ -347,7 +308,6 @@ const breeds = [
 {name:"Isa Brown",img:"foto/isa-brown.jpg"},
 {name:"Lakenvelder",img:"foto/lakenvelder.jpg"},
 {name:"Livorno",img:"foto/livorno.jpg"},
-{name:"Livorno Collo Oro",img:"foto/livornocollooro.jpg"},
 {name:"Marans",img:"foto/marans.jpg"},
 {name:"Moroseta",img:"foto/moroseta.jpg"},
 {name:"Padovana",img:"foto/padovana.jpg"},
@@ -375,15 +335,17 @@ res.appendChild(div);
 });
 }
 
+/* 🔥 ORA VA A CATEGORIE */
 function goToBreed(name){
+
+document.getElementById("categorie").scrollIntoView({behavior:"smooth"});
+
 let all=document.getElementsByClassName("slide");
 
 for(let i=0;i<all.length;i++){
 if(all[i].id.toLowerCase()===name.toLowerCase()){
 for(let s of all)s.classList.remove("active");
 all[i].classList.add("active");
-current=i;
-document.getElementById("slider").scrollIntoView({behavior:"smooth"});
 break;
 }
 }
