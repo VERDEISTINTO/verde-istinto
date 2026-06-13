@@ -22,75 +22,11 @@ background:linear-gradient(90deg,#145a14,#2e7d32);
 color:white;
 text-align:center;
 padding:25px;
-position:relative;
 }
 
 header h1{
 margin:0;
 font-size:38px;
-}
-
-/* SEARCH MOBILE + DESKTOP */
-.search-container{
-position:absolute;
-top:20px;
-right:20px;
-width:260px;
-z-index:2000;
-display:flex;
-flex-direction:column;
-align-items:flex-end;
-}
-
-.search-icon{
-display:none;
-background:white;
-border:none;
-border-radius:50%;
-width:40px;
-height:40px;
-cursor:pointer;
-font-size:18px;
-}
-
-.search-container input{
-width:100%;
-padding:10px 15px;
-border:none;
-border-radius:25px;
-outline:none;
-font-size:14px;
-box-sizing:border-box;
-}
-
-.search-results{
-background:white;
-margin-top:5px;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 4px 15px rgba(0,0,0,0.15);
-display:none;
-width:100%;
-}
-
-.search-item{
-display:flex;
-align-items:center;
-gap:10px;
-padding:10px;
-cursor:pointer;
-border-bottom:1px solid #eee;
-}
-
-.search-item:hover{
-background:#f3f3f3;
-}
-
-.search-item img{
-width:45px;
-height:45px;
-object-fit:cover;
-border-radius:8px;
 }
 
 /* NAV */
@@ -200,7 +136,7 @@ button:hover{
 background:#1f6b1f;
 }
 
-/* CTA */
+/* ORDINE */
 .cta{
 background:linear-gradient(135deg,#145a14,#1e7a1e);
 color:white;
@@ -231,6 +167,7 @@ font-weight:bold;
 .ig{background:#E1306C;}
 .yt{background:#FF0000;}
 
+/* FOOTER */
 footer{
 background:#0f3d0f;
 color:white;
@@ -238,29 +175,67 @@ text-align:center;
 padding:20px;
 }
 
-/* MOBILE SEARCH */
-@media(max-width:768px){
-
-.search-container{
-width:auto;
+/* 🔎 SEARCH ICON FIXED */
+.search-box{
+position:fixed;
 top:15px;
 right:15px;
-}
-
-.search-container input{
-display:none;
-width:200px;
-margin-top:10px;
+z-index:2000;
 }
 
 .search-icon{
-display:block;
+background:white;
+border-radius:50%;
+width:42px;
+height:42px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+font-size:20px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
-.search-container.active input{
-display:block;
+/* SEARCH PANEL */
+.search-panel{
+display:none;
+position:fixed;
+top:65px;
+right:15px;
+width:250px;
+background:white;
+border-radius:12px;
+box-shadow:0 6px 20px rgba(0,0,0,0.2);
+padding:10px;
+z-index:2000;
 }
 
+.search-panel input{
+width:100%;
+padding:8px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+/* RESULTS */
+.result-item{
+display:flex;
+align-items:center;
+gap:10px;
+padding:6px;
+cursor:pointer;
+border-bottom:1px solid #eee;
+}
+
+.result-item img{
+width:40px;
+height:40px;
+object-fit:cover;
+border-radius:6px;
+}
+
+.result-item:hover{
+background:#f0f0f0;
 }
 
 </style>
@@ -269,22 +244,21 @@ display:block;
 <body>
 
 <header>
-
 <h1>🌿 Verde Istinto</h1>
 <p>Allevamento professionale di pulcini selezionati</p>
-
-<div class="search-container" id="searchBox">
-
-<button class="search-icon" onclick="toggleSearch()">🔍</button>
-
-<input type="text" id="searchInput" placeholder="Cerca una razza...">
-
-<div id="searchResults" class="search-results"></div>
-
-</div>
-
 </header>
 
+<!-- 🔎 SEARCH -->
+<div class="search-box">
+<div class="search-icon" onclick="toggleSearch()">🔎</div>
+
+<div class="search-panel" id="searchPanel">
+<input type="text" id="searchInput" placeholder="Cerca razza..." oninput="searchBreed()">
+<div id="results"></div>
+</div>
+</div>
+
+<!-- NAV -->
 <nav>
 <a href="#chi">Chi Siamo</a>
 <a href="#slider">Razze</a>
@@ -293,10 +267,12 @@ display:block;
 <a href="#contatti">Contatti</a>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
 Qualità, selezione e crescita naturale
 </div>
 
+<!-- CHI SIAMO -->
 <section id="chi">
 <h2>👨‍🌾 Chi Siamo</h2>
 <p style="max-width:900px;margin:auto;line-height:1.7;font-size:17px;">
@@ -304,6 +280,7 @@ Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e 
 </p>
 </section>
 
+<!-- SLIDER -->
 <section id="slider">
 
 <h2>🐓 Le Nostre Razze</h2>
@@ -326,34 +303,37 @@ Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e 
 
 </section>
 
+<!-- CATEGORIE -->
 <section id="categorie">
 
-<h2>🐣 Categorie</h2>
+<h2>🐣 Scegli la categoria</h2>
 
 <div class="cards">
 
 <div class="card">
 <h3>🥚 Ovaiole</h3>
-<a href="ovaiole.html"><button>Apri</button></a>
+<a href="ovaiole.html"><button>Visualizza Razze</button></a>
 </div>
 
 <div class="card">
 <h3>🌸 Ornamentali</h3>
-<a href="ornamentali.html"><button>Apri</button></a>
+<a href="ornamentali.html"><button>Visualizza</button></a>
 </div>
 
 <div class="card">
 <h3>🐓 Rustici</h3>
-<a href="rustici.html"><button>Apri</button></a>
+<a href="rustici.html"><button>Visualizza</button></a>
 </div>
 
 </div>
 
 </section>
 
-<section class="cta" id="ordine">
+<!-- ORDINE -->
+<section id="ordine" class="cta">
 
 <h2>📩 Vuoi ordinare?</h2>
+<p>Scrivici su WhatsApp</p>
 
 <a href="https://wa.me/3278131071"
 style="background:white;color:#145a14;padding:12px 22px;border-radius:30px;text-decoration:none;font-weight:bold;">
@@ -362,19 +342,17 @@ Ordina ora
 
 </section>
 
+<!-- CONTATTI -->
 <section id="contatti">
 
 <h2>📞 Contatti</h2>
 
-<p>📍 Puglia</p>
 <p>📱 327 813 1071</p>
 <p>✉️ info@verdeistinto.it</p>
 
 <div class="social">
-
-<a class="ig" href="https://instagram.com/verdeistinto" target="_blank">Instagram</a>
-<a class="yt" href="https://youtube.com/@verdeistinto" target="_blank">YouTube</a>
-
+<a class="ig" href="#">Instagram</a>
+<a class="yt" href="#">YouTube</a>
 </div>
 
 </section>
@@ -396,65 +374,42 @@ if(i >= slides.length) i = 0;
 slides[i].classList.add("active");
 },3000);
 
-/* SEARCH + AUTOCOMPLETE */
+/* SEARCH TOGGLE */
+function toggleSearch(){
+let panel = document.getElementById("searchPanel");
+panel.style.display = panel.style.display === "block" ? "none" : "block";
+}
+
+/* DATABASE RAZZE */
 const breeds = [
-{name:"Ancona",img:"foto/ancona.jpg",page:"ovaiole.html"},
-{name:"Brahma",img:"foto/brahma.jpg",page:"rustici.html"},
-{name:"Isa Brown",img:"foto/isa-brown.jpg",page:"ovaiole.html"},
-{name:"Lakenvelder",img:"foto/lakenvelder.jpg",page:"rustici.html"},
-{name:"Livorno",img:"foto/livorno.jpg",page:"ovaiole.html"},
-{name:"Livorno Collo Oro",img:"foto/livornocollooro.jpg",page:"rustici.html"},
-{name:"Marans",img:"foto/marans.jpg",page:"rustici.html"},
-{name:"Moroseta",img:"foto/moroseta.jpg",page:"ornamentali.html"},
-{name:"Padovana",img:"foto/padovana.jpg",page:"ornamentali.html"},
-{name:"Sebright",img:"foto/sebright.jpg",page:"ornamentali.html"},
-{name:"Sussex",img:"foto/sussex.jpg",page:"ovaiole.html"}
+{name:"Ancona", img:"foto/ancona.jpg"},
+{name:"Brahma", img:"foto/brahma.jpg"},
+{name:"Isa Brown", img:"foto/isa-brown.jpg"},
+{name:"Lakenvelder", img:"foto/lakenvelder.jpg"},
+{name:"Livorno", img:"foto/livorno.jpg"},
+{name:"Marans", img:"foto/marans.jpg"},
+{name:"Moroseta", img:"foto/moroseta.jpg"},
+{name:"Padovana", img:"foto/padovana.jpg"},
+{name:"Sebright", img:"foto/sebright.jpg"},
+{name:"Sussex", img:"foto/sussex.jpg"}
 ];
 
-const input = document.getElementById("searchInput");
-const results = document.getElementById("searchResults");
+function searchBreed(){
+let input = document.getElementById("searchInput").value.toLowerCase();
+let results = document.getElementById("results");
+results.innerHTML = "";
 
-function toggleSearch(){
-document.getElementById("searchBox").classList.toggle("active");
-}
-
-input.addEventListener("input",()=>{
-
-let val = input.value.toLowerCase();
-results.innerHTML="";
-
-if(val===""){
-results.style.display="none";
-return;
-}
-
-let filtered = breeds.filter(b=>b.name.toLowerCase().includes(val));
-
-filtered.forEach(b=>{
-
-let div = document.createElement("div");
-div.className="search-item";
-
-div.innerHTML=`
+breeds
+.filter(b => b.name.toLowerCase().includes(input))
+.forEach(b => {
+results.innerHTML += `
+<div class="result-item">
 <img src="${b.img}">
 <span>${b.name}</span>
+</div>
 `;
-
-div.onclick=()=>window.location=b.page;
-
-results.appendChild(div);
-
 });
-
-results.style.display="block";
-
-});
-
-document.addEventListener("click",(e)=>{
-if(!document.querySelector(".search-container").contains(e.target)){
-results.style.display="none";
 }
-});
 
 </script>
 
