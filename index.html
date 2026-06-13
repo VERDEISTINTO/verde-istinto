@@ -25,7 +25,7 @@ padding:30px 20px;
 
 header h1{
 margin:0;
-font-size:38px;
+font-size:40px;
 }
 
 /* HERO */
@@ -42,7 +42,7 @@ text-align:center;
 padding:20px;
 }
 
-/* SECTION */
+/* SEZIONI */
 section{
 padding:50px 20px;
 text-align:center;
@@ -50,15 +50,14 @@ text-align:center;
 
 h2{
 color:#145a14;
-margin-bottom:25px;
 }
 
-/* CATEGORIE PULITE */
+/* CARD CATEGORIE */
 .cards{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:25px;
+gap:20px;
 }
 
 .card{
@@ -74,11 +73,6 @@ transition:0.3s;
 transform:translateY(-6px);
 }
 
-.card h3{
-margin-top:10px;
-}
-
-/* BOTTONI */
 button{
 background:#145a14;
 color:white;
@@ -94,26 +88,6 @@ button:hover{
 background:#1f6b1f;
 }
 
-/* SLIDER SEMPLIFICATO */
-.slider{
-max-width:750px;
-margin:40px auto;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 6px 18px rgba(0,0,0,0.2);
-}
-
-.slide{
-width:100%;
-display:none;
-height:380px;
-object-fit:cover;
-}
-
-.slide.active{
-display:block;
-}
-
 /* CTA ORDINE */
 .cta{
 background:linear-gradient(135deg,#145a14,#1e7a1e);
@@ -127,7 +101,7 @@ text-align:center;
 .cta a{
 display:inline-block;
 margin-top:15px;
-padding:12px 20px;
+padding:12px 22px;
 background:white;
 color:#145a14;
 border-radius:30px;
@@ -136,43 +110,39 @@ font-weight:bold;
 }
 
 /* CONTATTI */
-footer{
-background:#0f3d0f;
-color:white;
-text-align:center;
-padding:25px;
-margin-top:40px;
+#contatti{
+background:#ffffff;
+padding:50px 20px;
 }
 
-</style>
-  .social{
+.social{
 margin-top:15px;
 display:flex;
 justify-content:center;
-gap:10px;
+gap:12px;
 flex-wrap:wrap;
 }
 
-.social-btn{
+.social a{
 padding:10px 18px;
 border-radius:25px;
 text-decoration:none;
 color:white;
 font-weight:bold;
-transition:0.3s;
 }
 
-.ig{
-background:#E1306C;
+.ig{background:#E1306C;}
+.yt{background:#FF0000;}
+
+/* FOOTER */
+footer{
+background:#0f3d0f;
+color:white;
+text-align:center;
+padding:20px;
 }
 
-.yt{
-background:#FF0000;
-}
-
-.social-btn:hover{
-transform:scale(1.05);
-}
+</style>
 </head>
 
 <body>
@@ -186,6 +156,7 @@ transform:scale(1.05);
 Qualità, selezione e crescita naturale
 </div>
 
+<!-- CATEGORIE -->
 <section>
 <h2>🐣 Scegli la categoria</h2>
 
@@ -212,33 +183,29 @@ Qualità, selezione e crescita naturale
 </div>
 </section>
 
-<!-- SLIDER (secondario, non protagonista) -->
-<div class="slider">
+<!-- CTA ORDINE -->
+<section class="cta">
+<h2>📩 Vuoi ordinare?</h2>
+<p>Contattaci su WhatsApp per disponibilità e informazioni</p>
+<a href="https://wa.me/3278131071">Ordina ora</a>
+</section>
 
-<img class="slide active" src="foto/livorno.jpg">
-<img class="slide" src="foto/sebright.jpg">
-<img class="slide" src="foto/isa-brown.jpg">
-
-</div>
-  <section id="contatti">
+<!-- CONTATTI -->
+<section id="contatti">
 
 <h2>📞 Contatti</h2>
 
 <p>📍 Puglia, Italia</p>
 <p>📱 WhatsApp: 327 813 1071</p>
-<p>✉️ Email: info@verdeistinto.it</p>
+<p>✉️ info@verdeistinto.it</p>
 
 <div class="social">
 
-<a href="https://instagram.com/verdeistinto"
-target="_blank"
-class="social-btn ig">
+<a class="ig" href="https://instagram.com/verdeistinto" target="_blank">
 📸 Instagram
 </a>
 
-<a href="https://youtube.com/@verdeistinto"
-target="_blank"
-class="social-btn yt">
+<a class="yt" href="https://youtube.com/@verdeistinto" target="_blank">
 ▶️ YouTube
 </a>
 
@@ -246,31 +213,9 @@ class="social-btn yt">
 
 </section>
 
-<section class="cta">
-<h2>📩 Vuoi ordinare?</h2>
-<p>Contattaci direttamente su WhatsApp per disponibilità e prenotazioni</p>
-<a href="https://wa.me/3278131071">Scrivici ora</a>
-</section>
-
 <footer>
 © 2026 Verde Istinto
 </footer>
-
-<script>
-let i = 0;
-let slides = document.getElementsByClassName("slide");
-
-function show(){
-for(let s of slides) s.classList.remove("active");
-slides[i].classList.add("active");
-}
-
-setInterval(()=>{
-i++;
-if(i>=slides.length) i=0;
-show();
-},4000);
-</script>
 
 </body>
 </html>
