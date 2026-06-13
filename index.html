@@ -31,7 +31,7 @@
     display:block;
 }
 
-/* ✅ PULSANTI SISTEMATI (NON IN MEZZO) */
+/* PULSANTI SLIDER */
 .prev, .next{
     position:absolute;
     top:50%;
@@ -47,14 +47,8 @@
     transition:0.3s;
 }
 
-/* fuori dal contenuto */
-.prev{
-    left:-18px;
-}
-
-.next{
-    right:-18px;
-}
+.prev{ left:-18px; }
+.next{ right:-18px; }
 
 .prev:hover, .next:hover{
     background:rgba(0,0,0,0.7);
@@ -154,6 +148,7 @@ h2 { color:#145a14; }
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
+/* BUTTON */
 button {
     background:#25D366;
     color:white;
@@ -180,11 +175,35 @@ button:hover {
     font-size:22px;
 }
 
+/* FOOTER */
 footer {
     background:#0f3d0f;
     color:white;
     text-align:center;
     padding:20px;
+}
+
+/* SOCIAL */
+.social-links{
+    margin-top:20px;
+}
+
+.social-btn{
+    display:inline-block;
+    margin:8px;
+    padding:10px 20px;
+    border-radius:25px;
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.instagram{ background:#E1306C; }
+.youtube{ background:#FF0000; }
+
+.social-btn:hover{
+    transform:scale(1.05);
 }
 
 </style>
@@ -201,7 +220,6 @@ footer {
 <nav>
 <a href="#chi">Chi Siamo</a>
 <a href="#pulcini">Pulcini</a>
-<a href="#ordini">Ordina</a>
 <a href="#contatti">Contatti</a>
 </nav>
 
@@ -265,55 +283,31 @@ Qualità, selezione e crescita naturale
 </div>
 
 </div>
-
 </section>
 
 <section id="contatti">
-    <h2>Contatti</h2>
+<h2>Contatti</h2>
 
-    <p>📞 WhatsApp: 3278131071</p>
-    <p>📧 Email: info@verdeistinto.it</p>
+<p>📞 WhatsApp: 3278131071</p>
+<p>📧 Email: info@verdeistinto.it</p>
 
-    <div class="social-links">
-        <a href="https://www.instagram.com/verdeistinto"
-           target="_blank"
-           class="social-btn instagram">
-           📸 Instagram
-        </a>
+<div class="social-links">
 
-        <a href="https://www.youtube.com/@verdeistinto"
-           target="_blank"
-           class="social-btn youtube">
-           ▶️ YouTube
-        </a>
-    </div>
+<a href="https://www.instagram.com/verdeistinto"
+target="_blank"
+class="social-btn instagram">
+📸 Instagram
+</a>
+
+<a href="https://www.youtube.com/@verdeistinto"
+target="_blank"
+class="social-btn youtube">
+▶️ YouTube
+</a>
+
+</div>
 </section>
-.social-links{
-    margin-top:20px;
-}
 
-.social-btn{
-    display:inline-block;
-    margin:8px;
-    padding:10px 20px;
-    border-radius:25px;
-    text-decoration:none;
-    color:white;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.instagram{
-    background:#E1306C;
-}
-
-.youtube{
-    background:#FF0000;
-}
-
-.social-btn:hover{
-    transform:scale(1.05);
-}
 <footer>
 © 2026 Verde Istinto
 </footer>
@@ -356,5 +350,6 @@ setInterval(()=>{
 },6000);
 
 </script>
+
 </body>
 </html>
