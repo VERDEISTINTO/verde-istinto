@@ -30,13 +30,27 @@ margin:0;
 font-size:38px;
 }
 
-/* SEARCH */
+/* SEARCH MOBILE + DESKTOP */
 .search-container{
 position:absolute;
 top:20px;
 right:20px;
 width:260px;
 z-index:2000;
+display:flex;
+flex-direction:column;
+align-items:flex-end;
+}
+
+.search-icon{
+display:none;
+background:white;
+border:none;
+border-radius:50%;
+width:40px;
+height:40px;
+cursor:pointer;
+font-size:18px;
 }
 
 .search-container input{
@@ -56,6 +70,7 @@ border-radius:12px;
 overflow:hidden;
 box-shadow:0 4px 15px rgba(0,0,0,0.15);
 display:none;
+width:100%;
 }
 
 .search-item{
@@ -65,7 +80,6 @@ gap:10px;
 padding:10px;
 cursor:pointer;
 border-bottom:1px solid #eee;
-color:#222;
 }
 
 .search-item:hover{
@@ -73,8 +87,8 @@ background:#f3f3f3;
 }
 
 .search-item img{
-width:50px;
-height:50px;
+width:45px;
+height:45px;
 object-fit:cover;
 border-radius:8px;
 }
@@ -224,6 +238,31 @@ text-align:center;
 padding:20px;
 }
 
+/* MOBILE SEARCH */
+@media(max-width:768px){
+
+.search-container{
+width:auto;
+top:15px;
+right:15px;
+}
+
+.search-container input{
+display:none;
+width:200px;
+margin-top:10px;
+}
+
+.search-icon{
+display:block;
+}
+
+.search-container.active input{
+display:block;
+}
+
+}
+
 </style>
 </head>
 
@@ -234,9 +273,14 @@ padding:20px;
 <h1>🌿 Verde Istinto</h1>
 <p>Allevamento professionale di pulcini selezionati</p>
 
-<div class="search-container">
-<input type="text" id="searchInput" placeholder="🔍 Cerca una razza...">
+<div class="search-container" id="searchBox">
+
+<button class="search-icon" onclick="toggleSearch()">🔍</button>
+
+<input type="text" id="searchInput" placeholder="Cerca una razza...">
+
 <div id="searchResults" class="search-results"></div>
+
 </div>
 
 </header>
@@ -255,13 +299,9 @@ Qualità, selezione e crescita naturale
 
 <section id="chi">
 <h2>👨‍🌾 Chi Siamo</h2>
-
 <p style="max-width:900px;margin:auto;line-height:1.7;font-size:17px;">
-Verde Istinto è un allevamento specializzato nella selezione e crescita di pulcini di alta qualità.
-Operiamo in Puglia con cura, passione e attenzione al benessere animale.
-Offriamo razze ovaiole, ornamentali e rustiche selezionate.
+Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti in Puglia.
 </p>
-
 </section>
 
 <section id="slider">
@@ -294,19 +334,16 @@ Offriamo razze ovaiole, ornamentali e rustiche selezionate.
 
 <div class="card">
 <h3>🥚 Ovaiole</h3>
-<p>Alta produzione di uova</p>
 <a href="ovaiole.html"><button>Apri</button></a>
 </div>
 
 <div class="card">
 <h3>🌸 Ornamentali</h3>
-<p>Razze decorative rare</p>
 <a href="ornamentali.html"><button>Apri</button></a>
 </div>
 
 <div class="card">
 <h3>🐓 Rustici</h3>
-<p>Forti e resistenti</p>
 <a href="rustici.html"><button>Apri</button></a>
 </div>
 
@@ -317,7 +354,6 @@ Offriamo razze ovaiole, ornamentali e rustiche selezionate.
 <section class="cta" id="ordine">
 
 <h2>📩 Vuoi ordinare?</h2>
-<p>Contattaci su WhatsApp per disponibilità e informazioni</p>
 
 <a href="https://wa.me/3278131071"
 style="background:white;color:#145a14;padding:12px 22px;border-radius:30px;text-decoration:none;font-weight:bold;">
@@ -330,7 +366,7 @@ Ordina ora
 
 <h2>📞 Contatti</h2>
 
-<p>📍 Puglia, Italia</p>
+<p>📍 Puglia</p>
 <p>📱 327 813 1071</p>
 <p>✉️ info@verdeistinto.it</p>
 
@@ -360,7 +396,7 @@ if(i >= slides.length) i = 0;
 slides[i].classList.add("active");
 },3000);
 
-/* SEARCH */
+/* SEARCH + AUTOCOMPLETE */
 const breeds = [
 {name:"Ancona",img:"foto/ancona.jpg",page:"ovaiole.html"},
 {name:"Brahma",img:"foto/brahma.jpg",page:"rustici.html"},
@@ -377,6 +413,10 @@ const breeds = [
 
 const input = document.getElementById("searchInput");
 const results = document.getElementById("searchResults");
+
+function toggleSearch(){
+document.getElementById("searchBox").classList.toggle("active");
+}
 
 input.addEventListener("input",()=>{
 
@@ -395,7 +435,7 @@ filtered.forEach(b=>{
 let div = document.createElement("div");
 div.className="search-item";
 
-div.innerHTML = `
+div.innerHTML=`
 <img src="${b.img}">
 <span>${b.name}</span>
 `;
