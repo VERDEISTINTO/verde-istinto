@@ -152,7 +152,7 @@ border-radius:14px;
 
 .slide.active{display:block;}
 
-/* CATEGORIE (NON MODIFICATE) */
+/* CATEGORIE */
 .cards{
 display:flex;
 flex-wrap:wrap;
@@ -168,26 +168,14 @@ padding:25px;
 border-radius:18px;
 box-shadow:0 10px 25px rgba(0,0,0,0.12);
 transition:0.3s;
-position:relative;
-overflow:hidden;
 }
 
 .card:hover{
 transform:translateY(-8px);
-box-shadow:0 15px 35px rgba(0,0,0,0.18);
 }
 
 .card h3{
-font-size:22px;
-margin-bottom:10px;
 color:#145a14;
-}
-
-.card p{
-font-size:14px;
-color:#555;
-line-height:1.5;
-margin-bottom:15px;
 }
 
 .card button{
@@ -197,13 +185,7 @@ border:none;
 padding:12px 20px;
 border-radius:30px;
 cursor:pointer;
-font-weight:bold;
 width:100%;
-}
-
-.card button:hover{
-transform:scale(1.05);
-background:linear-gradient(90deg,#1f7a1f,#25d366);
 }
 
 /* CONTATTI */
@@ -212,12 +194,27 @@ background:#fff;
 padding:50px 20px;
 }
 
-/* FOOTER */
 footer{
 background:#0f3d0f;
 color:white;
 text-align:center;
 padding:20px;
+}
+
+/* 🔥 SCHEDA RAZZA */
+#schedaRazza{
+display:none;
+padding:40px 20px;
+text-align:center;
+background:#fff;
+margin-top:20px;
+border-top:4px solid #145a14;
+}
+
+#schedaRazza img{
+width:280px;
+border-radius:12px;
+margin-top:10px;
 }
 
 </style>
@@ -255,10 +252,7 @@ Qualità, selezione e crescita naturale
 <!-- CHI SIAMO -->
 <section id="chi">
 <h2>👨‍🌾 Chi Siamo</h2>
-<p style="max-width:900px;margin:auto;line-height:1.7;font-size:17px;">
-Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti.
-Operiamo in Puglia garantendo qualità e affidabilità.
-</p>
+<p>Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti.</p>
 </section>
 
 <!-- SLIDER -->
@@ -268,23 +262,30 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 
 <div class="slider">
 
-<img class="slide active" data-name="ancona" src="foto/ancona.jpg">
-<img class="slide" data-name="brahma" src="foto/brahma.jpg">
-<img class="slide" data-name="isa brown" src="foto/isa-brown.jpg">
-<img class="slide" data-name="lakenvelder" src="foto/lakenvelder.jpg">
-<img class="slide" data-name="livorno" src="foto/livorno.jpg">
-<img class="slide" data-name="livorno collo oro" src="foto/livornocollooro.jpg">
-<img class="slide" data-name="marans" src="foto/marans.jpg">
-<img class="slide" data-name="moroseta" src="foto/moroseta.jpg">
-<img class="slide" data-name="padovana" src="foto/padovana.jpg">
-<img class="slide" data-name="sebright" src="foto/sebright.jpg">
-<img class="slide" data-name="sussex" src="foto/sussex.jpg">
+<img class="slide active" data-name="ancona" data-color="green" src="foto/ancona.jpg">
+<img class="slide" data-name="brahma" data-color="red" src="foto/brahma.jpg">
+<img class="slide" data-name="isa brown" data-color="yellow" src="foto/isa-brown.jpg">
+<img class="slide" data-name="lakenvelder" data-color="green" src="foto/lakenvelder.jpg">
+<img class="slide" data-name="livorno" data-color="green" src="foto/livorno.jpg">
+<img class="slide" data-name="livorno collo oro" data-color="yellow" src="foto/livornocollooro.jpg">
+<img class="slide" data-name="marans" data-color="red" src="foto/marans.jpg">
+<img class="slide" data-name="moroseta" data-color="green" src="foto/moroseta.jpg">
+<img class="slide" data-name="padovana" data-color="yellow" src="foto/padovana.jpg">
+<img class="slide" data-name="sebright" data-color="green" src="foto/sebright.jpg">
+<img class="slide" data-name="sussex" data-color="green" src="foto/sussex.jpg">
 
 </div>
 
 </section>
 
-<!-- CATEGORIE (IDENTICHE COME VOLEVI) -->
+<!-- 🔥 SCHEDA RAZZA -->
+<section id="schedaRazza">
+<h2 id="razzaTitolo"></h2>
+<img id="razzaImg">
+<p id="razzaStato"></p>
+</section>
+
+<!-- CATEGORIE -->
 <section id="categorie">
 
 <h2>🐣 Categorie</h2>
@@ -293,20 +294,17 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 
 <div class="card">
 <h3>🥚 Ovaiole</h3>
-<p>Alta produzione di uova</p>
-<a href="ovaiole.html"><button>Visualizza</button></a>
+<button>Visualizza</button>
 </div>
 
 <div class="card">
 <h3>🌸 Ornamentali</h3>
-<p>Razze decorative e rare</p>
-<a href="ornamentali.html"><button>Visualizza</button></a>
+<button>Visualizza</button>
 </div>
 
 <div class="card">
 <h3>🐓 Rustici</h3>
-<p>Forti e resistenti all’aperto</p>
-<a href="rustici.html"><button>Visualizza</button></a>
+<button>Visualizza</button>
 </div>
 
 </div>
@@ -339,7 +337,7 @@ if(current >= slides.length) current = 0;
 slides[current].classList.add("active");
 },3000);
 
-/* SEARCH FIXATA */
+/* SEARCH */
 const breeds = [
 { name:"ancona", label:"Ancona", img:"foto/ancona.jpg" },
 { name:"brahma", label:"Brahma", img:"foto/brahma.jpg" },
@@ -355,40 +353,72 @@ const breeds = [
 ];
 
 function toggleSearch(){
-let box = document.getElementById("searchBox");
-box.style.display = box.style.display === "block" ? "none" : "block";
+document.getElementById("searchBox").style.display =
+document.getElementById("searchBox").style.display === "block"
+? "none" : "block";
 }
 
 function searchBreed(){
+
 let val = document.getElementById("searchInput").value.toLowerCase();
 let results = document.getElementById("results");
+
 results.innerHTML = "";
 
-breeds
-.filter(b => b.label.toLowerCase().includes(val))
-.forEach(b=>{
+breeds.filter(b => b.label.toLowerCase().includes(val))
+.forEach(b => {
+
 let div = document.createElement("div");
 div.className = "result";
 div.innerHTML = `<img src="${b.img}"><span>${b.label}</span>`;
+
 div.onclick = () => goToBreed(b.name);
+
 results.appendChild(div);
+
 });
+
 }
 
+/* 🔥 CLICK → APRE SCHEDA RAZZA */
 function goToBreed(name){
 
-// vai slider
-document.getElementById("slider").scrollIntoView({behavior:"smooth"});
-
 let all = document.getElementsByClassName("slide");
+let found = null;
 
 for(let i=0;i<all.length;i++){
+
 if(all[i].dataset.name === name){
+
 for(let s of all) s.classList.remove("active");
 all[i].classList.add("active");
 current = i;
+
+found = all[i];
 break;
 }
+
+}
+
+document.getElementById("slider").scrollIntoView({behavior:"smooth"});
+
+if(found){
+
+document.getElementById("schedaRazza").style.display = "block";
+
+document.getElementById("razzaTitolo").innerText =
+found.dataset.name.toUpperCase();
+
+document.getElementById("razzaImg").src = found.src;
+
+let stato = found.dataset.color;
+
+let text = "";
+if(stato === "green") text = "🟢 Disponibile";
+if(stato === "yellow") text = "🟡 In arrivo";
+if(stato === "red") text = "🔴 Non disponibile";
+
+document.getElementById("razzaStato").innerText = text;
 }
 
 document.getElementById("searchBox").style.display = "none";
