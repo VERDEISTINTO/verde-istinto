@@ -152,7 +152,7 @@ border-radius:14px;
 
 .slide.active{display:block;}
 
-/* CATEGORIE MIGLIORATE */
+/* CATEGORIE */
 .cards{
 display:flex;
 flex-wrap:wrap;
@@ -220,14 +220,6 @@ text-align:center;
 padding:20px;
 }
 
-/* SEARCH EXTRA */
-.search-wrapper{
-position:fixed;
-top:15px;
-right:15px;
-z-index:9999;
-}
-
 </style>
 </head>
 
@@ -260,41 +252,36 @@ z-index:9999;
 Qualità, selezione e crescita naturale
 </div>
 
-<!-- CHI SIAMO -->
 <section id="chi">
 <h2>👨‍🌾 Chi Siamo</h2>
 <p style="max-width:900px;margin:auto;line-height:1.7;font-size:17px;">
-Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti, con cura quotidiana e attenzione al benessere animale.
-Operiamo in Puglia garantendo qualità e affidabilità.
+Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti.
 </p>
 </section>
 
-<!-- SLIDER -->
 <section id="slider">
 
 <h2>🐓 Le Nostre Razze</h2>
 
 <div class="slider">
 
-<img class="slide active" data-color="green" src="foto/ancona.jpg" id="Ancona">
-<img class="slide" data-color="red" src="foto/brahma.jpg" id="Brahma">
-<img class="slide" data-color="yellow" src="foto/isa-brown.jpg" id="Isa Brown">
-<img class="slide" data-color="green" src="foto/lakenvelder.jpg" id="Lakenvelder">
-<img class="slide" data-color="green" src="foto/livorno.jpg" id="Livorno">
-<img class="slide" data-color="yellow" src="foto/livornocollooro.jpg" id="Livorno Collo Oro">
-<img class="slide" data-color="red" src="foto/marans.jpg" id="Marans">
-<img class="slide" data-color="green" src="foto/moroseta.jpg" id="Moroseta">
-<img class="slide" data-color="yellow" src="foto/padovana.jpg" id="Padovana">
-<img class="slide" data-color="green" src="foto/sebright.jpg" id="Sebright">
-<img class="slide" data-color="green" src="foto/sussex.jpg" id="Sussex">
+<img class="slide active" src="foto/ancona.jpg" id="Ancona">
+<img class="slide" src="foto/brahma.jpg" id="Brahma">
+<img class="slide" src="foto/isa-brown.jpg" id="Isa Brown">
+<img class="slide" src="foto/lakenvelder.jpg" id="Lakenvelder">
+<img class="slide" src="foto/livorno.jpg" id="Livorno">
+<img class="slide" src="foto/livornocollooro.jpg" id="Livorno Collo Oro">
+<img class="slide" src="foto/marans.jpg" id="Marans">
+<img class="slide" src="foto/moroseta.jpg" id="Moroseta">
+<img class="slide" src="foto/padovana.jpg" id="Padovana">
+<img class="slide" src="foto/sebright.jpg" id="Sebright">
+<img class="slide" src="foto/sussex.jpg" id="Sussex">
 
 </div>
 
 </section>
 
-<!-- CATEGORIE -->
 <section id="categorie">
-
 <h2>🐣 Categorie</h2>
 
 <div class="cards">
@@ -318,17 +305,13 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 </div>
 
 </div>
-
 </section>
 
-<!-- CONTATTI -->
 <section id="contatti">
-
 <h2>📞 Contatti</h2>
 <p>📍 Puglia, Italia</p>
 <p>📱 327 813 1071</p>
 <p>✉️ info@verdeistinto.it</p>
-
 </section>
 
 <footer>
@@ -337,7 +320,6 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 
 <script>
 
-/* SLIDER */
 let slides = document.getElementsByClassName("slide");
 let current = 0;
 
@@ -348,26 +330,6 @@ if(current >= slides.length) current = 0;
 slides[current].classList.add("active");
 },3000);
 
-
-/* 🔥 RICERCA MODIFICATA */
-const breedPages = {
-"ancona": "rustici.html",
-"brahma": "rustici.html",
-"marans": "rustici.html",
-
-"moroseta": "ornamentali.html",
-"padovana": "ornamentali.html",
-"sebright": "ornamentali.html",
-"lakenvelder": "ornamentali.html",
-
-"isa brown": "ovaiole.html",
-"livorno": "ovaiole.html",
-"livorno collo oro": "ovaiole.html",
-"sussex": "ovaiole.html"
-};
-
-
-/* SEARCH */
 const breeds = [
 { name:"Ancona", img:"foto/ancona.jpg" },
 { name:"Brahma", img:"foto/brahma.jpg" },
@@ -390,7 +352,6 @@ box.style.display = box.style.display === "block" ? "none" : "block";
 function searchBreed(){
 let val = document.getElementById("searchInput").value.toLowerCase();
 let results = document.getElementById("results");
-
 results.innerHTML = "";
 
 breeds
@@ -399,23 +360,34 @@ breeds
 let div = document.createElement("div");
 div.className = "result";
 div.innerHTML = `<img src="${b.img}"><span>${b.name}</span>`;
-
 div.onclick = () => goToBreed(b.name);
-
 results.appendChild(div);
 });
 }
 
+/* ✅ MODIFICA FINALE */
 function goToBreed(name){
 
-let key = name.toLowerCase();
+let pages = {
+"Ancona":"ovaiole.html#Ancona",
+"Brahma":"rustici.html#Brahma",
+"Isa Brown":"ovaiole.html#IsaBrown",
+"Lakenvelder":"ornamentali.html#Lakenvelder",
+"Livorno":"ovaiole.html#Livorno",
+"Livorno Collo Oro":"ovaiole.html#LivornoColloOro",
+"Marans":"rustici.html#Marans",
+"Moroseta":"ornamentali.html#Moroseta",
+"Padovana":"ornamentali.html#Padovana",
+"Sebright":"ornamentali.html#Sebright",
+"Sussex":"rustici.html#Sussex"
+};
 
-if(breedPages[key]){
-window.location.href = breedPages[key];
-return;
+if(pages[name]){
+window.location.href = pages[name];
 }
 
-alert("Razza non trovata");
+document.getElementById("searchBox").style.display = "none";
+document.getElementById("searchInput").value = "";
 }
 
 </script>
