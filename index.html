@@ -76,6 +76,23 @@ outline:none;
 border-bottom:1px solid #eee;
 }
 
+.result{
+display:flex;
+align-items:center;
+gap:10px;
+padding:8px;
+cursor:pointer;
+}
+
+.result:hover{background:#f0f0f0;}
+
+.result img{
+width:40px;
+height:40px;
+object-fit:cover;
+border-radius:6px;
+}
+
 /* NAV */
 nav{
 background:#0f3d0f;
@@ -240,6 +257,7 @@ position:relative;
 overflow:hidden;
 }
 
+/* social */
 .footer-social{
 margin:20px 0;
 display:flex;
@@ -257,6 +275,8 @@ border-radius:50px;
 color:white;
 text-decoration:none;
 font-weight:bold;
+position:relative;
+overflow:hidden;
 transition:0.3s;
 }
 
@@ -270,23 +290,24 @@ background:linear-gradient(45deg,#ff0000,#c4302b);
 
 .social-btn:hover{
 transform:scale(1.08);
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
 }
 
-/* FOOTER ANIMAZIONE LUCE */
-footer::before{
+/* shine effect */
+.social-btn::before{
 content:"";
 position:absolute;
-top:-50%;
-left:-50%;
-width:200%;
-height:200%;
-background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
-animation: moveLight 6s infinite linear;
+top:0;
+left:-75%;
+width:50%;
+height:100%;
+background:rgba(255,255,255,0.25);
+transform:skewX(-25deg);
+transition:0.5s;
 }
 
-@keyframes moveLight{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
+.social-btn:hover::before{
+left:130%;
 }
 
 /* COPYRIGHT */
@@ -306,11 +327,11 @@ opacity:0.7;
 <p>Allevamento pulcini selezionati</p>
 </header>
 
-<!-- SEARCH -->
 <div class="search-wrapper">
 <button class="search-btn" onclick="toggleSearch()">🔍</button>
 <div class="search-box" id="searchBox">
 <input id="searchInput" oninput="searchBreed()" placeholder="Cerca razza...">
+<div id="results"></div>
 </div>
 </div>
 
@@ -398,15 +419,15 @@ Qualità, selezione e crescita naturale
 <div class="footer-social">
 
 <a class="social-btn instagram"
-href="https://www.instagram.com/verde_istinto/"
-target="_blank">
+   href="https://www.instagram.com/verde_istinto/"
+   target="_blank" rel="noopener noreferrer">
 📸 Instagram
 </a>
 
 <a class="social-btn youtube"
-href="https://www.youtube.com/@verdeistinto"
-target="_blank">
-▶ YouTube
+   href="https://www.youtube.com/@verdeistinto"
+   target="_blank" rel="noopener noreferrer">
+▶️ YouTube
 </a>
 
 </div>
