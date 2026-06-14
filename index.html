@@ -152,7 +152,7 @@ border-radius:14px;
 
 .slide.active{display:block;}
 
-/* CATEGORIE */
+/* CATEGORIE MIGLIORATE */
 .cards{
 display:flex;
 flex-wrap:wrap;
@@ -220,6 +220,14 @@ text-align:center;
 padding:20px;
 }
 
+/* SEARCH EXTRA */
+.search-wrapper{
+position:fixed;
+top:15px;
+right:15px;
+z-index:9999;
+}
+
 </style>
 </head>
 
@@ -256,7 +264,7 @@ Qualità, selezione e crescita naturale
 <section id="chi">
 <h2>👨‍🌾 Chi Siamo</h2>
 <p style="max-width:900px;margin:auto;line-height:1.7;font-size:17px;">
-Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti.
+Verde Istinto è un allevamento specializzato nella selezione di pulcini sani e robusti, con cura quotidiana e attenzione al benessere animale.
 Operiamo in Puglia garantendo qualità e affidabilità.
 </p>
 </section>
@@ -268,42 +276,42 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 
 <div class="slider">
 
-<img class="slide active" data-name="ancona" src="foto/ancona.jpg">
-<img class="slide" data-name="brahma" src="foto/brahma.jpg">
-<img class="slide" data-name="isa brown" src="foto/isa-brown.jpg">
-<img class="slide" data-name="lakenvelder" src="foto/lakenvelder.jpg">
-<img class="slide" data-name="livorno" src="foto/livorno.jpg">
-<img class="slide" data-name="livorno collo oro" src="foto/livornocollooro.jpg">
-<img class="slide" data-name="marans" src="foto/marans.jpg">
-<img class="slide" data-name="moroseta" src="foto/moroseta.jpg">
-<img class="slide" data-name="padovana" src="foto/padovana.jpg">
-<img class="slide" data-name="sebright" src="foto/sebright.jpg">
-<img class="slide" data-name="sussex" src="foto/sussex.jpg">
+<img class="slide active" data-color="green" src="foto/ancona.jpg" id="Ancona">
+<img class="slide" data-color="red" src="foto/brahma.jpg" id="Brahma">
+<img class="slide" data-color="yellow" src="foto/isa-brown.jpg" id="Isa Brown">
+<img class="slide" data-color="green" src="foto/lakenvelder.jpg" id="Lakenvelder">
+<img class="slide" data-color="green" src="foto/livorno.jpg" id="Livorno">
+<img class="slide" data-color="yellow" src="foto/livornocollooro.jpg" id="Livorno Collo Oro">
+<img class="slide" data-color="red" src="foto/marans.jpg" id="Marans">
+<img class="slide" data-color="green" src="foto/moroseta.jpg" id="Moroseta">
+<img class="slide" data-color="yellow" src="foto/padovana.jpg" id="Padovana">
+<img class="slide" data-color="green" src="foto/sebright.jpg" id="Sebright">
+<img class="slide" data-color="green" src="foto/sussex.jpg" id="Sussex">
 
 </div>
 
 </section>
 
-<!-- CATEGORIE (UGUALI) -->
+<!-- CATEGORIE -->
 <section id="categorie">
 
 <h2>🐣 Categorie</h2>
 
 <div class="cards">
 
-<div class="card" id="ovaiole">
+<div class="card">
 <h3>🥚 Ovaiole</h3>
 <p>Alta produzione di uova</p>
 <a href="ovaiole.html"><button>Visualizza</button></a>
 </div>
 
-<div class="card" id="ornamentali">
+<div class="card">
 <h3>🌸 Ornamentali</h3>
 <p>Razze decorative e rare</p>
 <a href="ornamentali.html"><button>Visualizza</button></a>
 </div>
 
-<div class="card" id="rustici">
+<div class="card">
 <h3>🐓 Rustici</h3>
 <p>Forti e resistenti all’aperto</p>
 <a href="rustici.html"><button>Visualizza</button></a>
@@ -329,6 +337,7 @@ Operiamo in Puglia garantendo qualità e affidabilità.
 
 <script>
 
+/* SLIDER */
 let slides = document.getElementsByClassName("slide");
 let current = 0;
 
@@ -339,36 +348,38 @@ if(current >= slides.length) current = 0;
 slides[current].classList.add("active");
 },3000);
 
-/* MAPPING RAZZE → CATEGORIE */
-const breedCategory = {
-"ancona":"ovaiole",
-"isa brown":"ovaiole",
-"livorno":"ovaiole",
-"livorno collo oro":"ovaiole",
-"sussex":"ovaiole",
 
-"brahma":"rustici",
-"marans":"rustici",
-"lakenvelder":"rustici",
+/* 🔥 RICERCA MODIFICATA */
+const breedPages = {
+"ancona": "rustici.html",
+"brahma": "rustici.html",
+"marans": "rustici.html",
 
-"moroseta":"ornamentali",
-"padovana":"ornamentali",
-"sebright":"ornamentali"
+"moroseta": "ornamentali.html",
+"padovana": "ornamentali.html",
+"sebright": "ornamentali.html",
+"lakenvelder": "ornamentali.html",
+
+"isa brown": "ovaiole.html",
+"livorno": "ovaiole.html",
+"livorno collo oro": "ovaiole.html",
+"sussex": "ovaiole.html"
 };
+
 
 /* SEARCH */
 const breeds = [
-{ name:"ancona", label:"Ancona", img:"foto/ancona.jpg" },
-{ name:"brahma", label:"Brahma", img:"foto/brahma.jpg" },
-{ name:"isa brown", label:"Isa Brown", img:"foto/isa-brown.jpg" },
-{ name:"lakenvelder", label:"Lakenvelder", img:"foto/lakenvelder.jpg" },
-{ name:"livorno", label:"Livorno", img:"foto/livorno.jpg" },
-{ name:"livorno collo oro", label:"Livorno Collo Oro", img:"foto/livornocollooro.jpg" },
-{ name:"marans", label:"Marans", img:"foto/marans.jpg" },
-{ name:"moroseta", label:"Moroseta", img:"foto/moroseta.jpg" },
-{ name:"padovana", label:"Padovana", img:"foto/padovana.jpg" },
-{ name:"sebright", label:"Sebright", img:"foto/sebright.jpg" },
-{ name:"sussex", label:"Sussex", img:"foto/sussex.jpg" }
+{ name:"Ancona", img:"foto/ancona.jpg" },
+{ name:"Brahma", img:"foto/brahma.jpg" },
+{ name:"Isa Brown", img:"foto/isa-brown.jpg" },
+{ name:"Lakenvelder", img:"foto/lakenvelder.jpg" },
+{ name:"Livorno", img:"foto/livorno.jpg" },
+{ name:"Livorno Collo Oro", img:"foto/livornocollooro.jpg" },
+{ name:"Marans", img:"foto/marans.jpg" },
+{ name:"Moroseta", img:"foto/moroseta.jpg" },
+{ name:"Padovana", img:"foto/padovana.jpg" },
+{ name:"Sebright", img:"foto/sebright.jpg" },
+{ name:"Sussex", img:"foto/sussex.jpg" }
 ];
 
 function toggleSearch(){
@@ -383,42 +394,28 @@ let results = document.getElementById("results");
 results.innerHTML = "";
 
 breeds
-.filter(b => b.label.toLowerCase().includes(val))
+.filter(b => b.name.toLowerCase().includes(val))
 .forEach(b=>{
 let div = document.createElement("div");
 div.className = "result";
-div.innerHTML = `<img src="${b.img}"><span>${b.label}</span>`;
+div.innerHTML = `<img src="${b.img}"><span>${b.name}</span>`;
+
 div.onclick = () => goToBreed(b.name);
+
 results.appendChild(div);
 });
 }
 
-/* 👉 ORA VA ALLA CATEGORIA GIUSTA */
 function goToBreed(name){
 
-let cat = breedCategory[name];
+let key = name.toLowerCase();
 
-if(!cat) return;
-
-// vai alla sezione categorie
-document.getElementById("categorie").scrollIntoView({behavior:"smooth"});
-
-// poi evidenzia la card giusta
-setTimeout(()=>{
-let target = document.getElementById(cat);
-if(target){
-target.style.transform = "scale(1.05)";
-target.style.boxShadow = "0 0 20px #25d366";
-
-setTimeout(()=>{
-target.style.transform = "";
-target.style.boxShadow = "";
-},1500);
+if(breedPages[key]){
+window.location.href = breedPages[key];
+return;
 }
-},500);
 
-document.getElementById("searchBox").style.display = "none";
-document.getElementById("searchInput").value = "";
+alert("Razza non trovata");
 }
 
 </script>
