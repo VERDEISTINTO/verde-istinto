@@ -12,6 +12,7 @@ body{
 font-family:Arial,sans-serif;
 background:#f5f5f5;
 margin:0;
+scroll-behavior:smooth;
 }
 
 header{
@@ -33,6 +34,13 @@ padding:20px;
 margin-bottom:20px;
 border-radius:12px;
 box-shadow:0 2px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+/* 🔥 evidenza scheda selezionata */
+.card.active{
+border:3px solid #145a14;
+transform:scale(1.02);
 }
 
 .card img{
@@ -47,7 +55,6 @@ font-weight:bold;
 margin-top:10px;
 }
 
-/* STATUS */
 .badge{
 display:inline-block;
 padding:6px 12px;
@@ -61,7 +68,6 @@ margin-top:10px;
 .orange{ background:orange; }
 .red{ background:#d60000; }
 
-/* BACK BUTTON */
 .back{
 position:fixed;
 bottom:20px;
@@ -86,49 +92,65 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
 
 <div class="container">
 
-<div class="card">
+<!-- 🟢 LIVORNO -->
+<div class="card" id="Livorno">
 <img src="foto/livorno.jpg">
 <h3>Livorno Bianca</h3>
 <p>Ottima ovaiola italiana, alta produzione di uova bianche.</p>
-
 <div class="prezzo">€6</div>
 <div class="badge red">🔴 Non disponibile</div>
-
 </div>
 
-<div class="card">
+<!-- 🟡 ISA BROWN -->
+<div class="card" id="IsaBrown">
 <img src="foto/isa-brown.jpg">
 <h3>Isa Brown</h3>
 <p>Gallina ovaiola altamente produttiva.</p>
-
 <div class="prezzo">€5</div>
 <div class="badge red">🔴 Non disponibile</div>
-
 </div>
 
-<div class="card">
+<!-- 🟡 SUSSEX -->
+<div class="card" id="Sussex">
 <img src="foto/sussex.jpg">
 <h3>Sussex</h3>
 <p>Razza tranquilla e resistente.</p>
-
 <div class="prezzo">€7</div>
 <div class="badge red">🔴 Non disponibile</div>
-
 </div>
 
-<div class="card">
+<!-- 🟡 ANCONA -->
+<div class="card" id="Ancona">
 <img src="foto/ancona.jpg">
 <h3>Ancona</h3>
 <p>Razza rustica italiana molto produttiva.</p>
-
 <div class="prezzo">€7</div>
 <div class="badge red">🔴 Non disponibile</div>
-
 </div>
 
 </div>
 
 <a class="back" href="index.html">⬅ Torna alla Home</a>
+
+<script>
+
+// scroll automatico + highlight scheda
+window.addEventListener("load", () => {
+
+let hash = window.location.hash.replace("#","");
+
+if(hash){
+let el = document.getElementById(hash);
+
+if(el){
+el.scrollIntoView({behavior:"smooth", block:"center"});
+el.classList.add("active");
+}
+}
+
+});
+
+</script>
 
 </body>
 </html>
