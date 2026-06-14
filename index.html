@@ -25,6 +25,14 @@ padding:25px;
 position:relative;
 }
 
+/* 🔥 LOGO SVG */
+.logo{
+width:110px;
+height:110px;
+margin:0 auto 10px;
+display:block;
+}
+
 header h1{
 margin:0;
 font-size:38px;
@@ -280,6 +288,12 @@ overflow:hidden;
 transition:0.3s;
 }
 
+.social-btn svg{
+width:22px;
+height:22px;
+fill:white;
+}
+
 .social-btn.instagram{
 background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
 }
@@ -310,6 +324,23 @@ transition:0.5s;
 left:130%;
 }
 
+/* FOOTER ANIMAZIONE LUCE */
+footer::before{
+content:"";
+position:absolute;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+animation: moveLight 6s infinite linear;
+}
+
+@keyframes moveLight{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
 /* COPYRIGHT */
 .footer-copy{
 margin-top:15px;
@@ -323,6 +354,20 @@ opacity:0.7;
 <body>
 
 <header>
+
+<svg class="logo" viewBox="0 0 200 200">
+<defs>
+<linearGradient id="gold" x1="0" x2="1">
+<stop offset="0%" stop-color="#fff3b0"/>
+<stop offset="50%" stop-color="#d4af37"/>
+<stop offset="100%" stop-color="#fff8dc"/>
+</linearGradient>
+</defs>
+
+<path d="M100 20 C60 40, 40 90, 70 130 C90 160, 120 160, 140 130 C170 90, 140 40, 100 20 Z"/>
+<path d="M100 130 L100 180" stroke="url(#gold)" stroke-width="6" stroke-linecap="round"/>
+</svg>
+
 <h1>🌿 Verde Istinto</h1>
 <p>Allevamento pulcini selezionati</p>
 </header>
@@ -421,13 +466,25 @@ Qualità, selezione e crescita naturale
 <a class="social-btn instagram"
    href="https://www.instagram.com/verde_istinto/"
    target="_blank" rel="noopener noreferrer">
-📸 Instagram
+
+<!-- Instagram SVG -->
+<svg viewBox="0 0 24 24">
+<path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A4.5 4.5 0 1 1 7.5 13 4.5 4.5 0 0 1 12 8.5zm0 2A2.5 2.5 0 1 0 14.5 13 2.5 2.5 0 0 0 12 10.5zM17.8 6.2a1 1 0 1 1-1-1 1 1 0 0 1 1 1z"/>
+</svg>
+
+Instagram
 </a>
 
 <a class="social-btn youtube"
    href="https://www.youtube.com/@verdeistinto"
    target="_blank" rel="noopener noreferrer">
-▶️ YouTube
+
+<!-- YouTube SVG -->
+<svg viewBox="0 0 24 24">
+<path d="M23 12s0-4.4-.6-6.4A3 3 0 0 0 20.4 3.6C18.4 3 12 3 12 3s-6.4 0-8.4.6A3 3 0 0 0 1.6 5.6C1 7.6 1 12 1 12s0 4.4.6 6.4A3 3 0 0 0 3.6 20.4C5.6 21 12 21 12 21s6.4 0 8.4-.6a3 3 0 0 0 1.8-1.8C23 16.4 23 12 23 12zM10 15V9l6 3-6 3z"/>
+</svg>
+
+YouTube
 </a>
 
 </div>
