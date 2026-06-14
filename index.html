@@ -45,7 +45,7 @@ opacity:0.9;
 letter-spacing:1px;
 }
 
-/* SEARCH (MIGLIORATA) */
+/* SEARCH */
 .search-wrapper{
 position:fixed;
 top:15px;
@@ -54,35 +54,22 @@ z-index:9999;
 }
 
 .search-btn{
-background:linear-gradient(135deg,#ffffff,#e8f5e9);
+background:white;
 border:none;
 border-radius:50%;
-width:52px;
-height:52px;
+width:45px;
+height:45px;
 cursor:pointer;
-display:flex;
-align-items:center;
-justify-content:center;
-box-shadow:0 6px 18px rgba(0,0,0,0.25);
-transition:0.3s;
-}
-
-.search-btn svg{
-width:24px;
-height:24px;
-fill:#145a14;
-}
-
-.search-btn:hover{
-transform:scale(1.1) rotate(10deg);
+font-size:20px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
 .search-box{
 display:none;
 position:absolute;
 right:0;
-top:65px;
-width:280px;
+top:55px;
+width:260px;
 background:white;
 border-radius:12px;
 box-shadow:0 6px 20px rgba(0,0,0,0.2);
@@ -101,25 +88,20 @@ border-bottom:1px solid #eee;
 display:flex;
 align-items:center;
 gap:10px;
-padding:10px;
+padding:8px;
 cursor:pointer;
-border-bottom:1px solid #eee;
-transition:0.2s;
 }
 
-.result:hover{
-background:#f0f0f0;
-transform:scale(1.02);
-}
+.result:hover{background:#f0f0f0;}
 
 .result img{
-width:45px;
-height:45px;
+width:40px;
+height:40px;
 object-fit:cover;
-border-radius:8px;
+border-radius:6px;
 }
 
-/* RESTO IDENTICO */
+/* NAV */
 nav{
 background:#0f3d0f;
 display:flex;
@@ -148,6 +130,7 @@ background:#25d366;
 transform:scale(1.05);
 }
 
+/* HERO */
 .hero{
 background:url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7') center/cover;
 height:320px;
@@ -164,6 +147,7 @@ padding:50px 20px;
 text-align:center;
 }
 
+/* SLIDER */
 .slider{
 max-width:800px;
 margin:20px auto;
@@ -185,8 +169,11 @@ transition:opacity 1.2s ease-in-out;
 border-radius:14px;
 }
 
-.slide.active{opacity:1;}
+.slide.active{
+opacity:1;
+}
 
+/* CATEGORIE */
 .cards{
 display:flex;
 flex-wrap:wrap;
@@ -233,8 +220,11 @@ cursor:pointer;
 width:100%;
 }
 
-.card button:hover{transform:scale(1.05);}
+.card button:hover{
+transform:scale(1.05);
+}
 
+/* CONTATTI */
 #contatti{
 background:linear-gradient(135deg,#0f3d0f,#145a14);
 color:white;
@@ -256,8 +246,16 @@ padding:14px;
 border-radius:16px;
 width:220px;
 backdrop-filter:blur(10px);
+transition:0.3s;
+font-size:14px;
 }
 
+.contact-card:hover{
+transform:translateY(-8px);
+background:rgba(255,255,255,0.15);
+}
+
+/* FOOTER */
 footer{
 background:#081b08;
 color:white;
@@ -267,6 +265,7 @@ position:relative;
 overflow:hidden;
 }
 
+/* social */
 .footer-social{
 margin:20px 0;
 display:flex;
@@ -308,6 +307,24 @@ transform:scale(1.08);
 box-shadow:0 10px 25px rgba(0,0,0,0.25);
 }
 
+/* shine effect */
+.social-btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-75%;
+width:50%;
+height:100%;
+background:rgba(255,255,255,0.25);
+transform:skewX(-25deg);
+transition:0.5s;
+}
+
+.social-btn:hover::before{
+left:130%;
+}
+
+/* FOOTER ANIMAZIONE LUCE */
 footer::before{
 content:"";
 position:absolute;
@@ -324,6 +341,7 @@ animation: moveLight 6s infinite linear;
 100%{transform:rotate(360deg);}
 }
 
+/* COPYRIGHT */
 .footer-copy{
 margin-top:15px;
 font-size:12px;
@@ -336,6 +354,7 @@ opacity:0.7;
 <body>
 
 <header>
+
 <svg class="logo" viewBox="0 0 200 200">
 <defs>
 <linearGradient id="gold" x1="0" x2="1">
@@ -344,8 +363,9 @@ opacity:0.7;
 <stop offset="100%" stop-color="#fff8dc"/>
 </linearGradient>
 </defs>
+
 <path d="M100 20 C60 40, 40 90, 70 130 C90 160, 120 160, 140 130 C170 90, 140 40, 100 20 Z"/>
-<path d="M100 130 L100 180" stroke="url(#gold)" stroke-width="6"/>
+<path d="M100 130 L100 180" stroke="url(#gold)" stroke-width="6" stroke-linecap="round"/>
 </svg>
 
 <h1>🌿 Verde Istinto</h1>
@@ -353,11 +373,7 @@ opacity:0.7;
 </header>
 
 <div class="search-wrapper">
-<button class="search-btn" onclick="toggleSearch()">
-<svg viewBox="0 0 24 24">
-<path d="M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
-</svg>
-</button>
+<button class="search-btn" onclick="toggleSearch()">🔍</button>
 
 <div class="search-box" id="searchBox">
 <input id="searchInput" oninput="searchBreed()" placeholder="Cerca razza...">
@@ -372,7 +388,9 @@ opacity:0.7;
 <a href="#contatti">Contatti</a>
 </nav>
 
-<div class="hero">Qualità, selezione e crescita naturale</div>
+<div class="hero">
+Qualità, selezione e crescita naturale
+</div>
 
 <section id="chi">
 <h2>Chi Siamo</h2>
@@ -418,43 +436,56 @@ opacity:0.7;
 </section>
 
 <footer>
+
 <div class="footer-social">
 
-<a class="social-btn instagram" href="https://www.instagram.com/verde_istinto/" target="_blank">Instagram</a>
+<a class="social-btn instagram" href="https://www.instagram.com/verde_istinto/" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z"/></svg>
+Instagram
+</a>
 
-<a class="social-btn youtube" href="https://www.youtube.com/@verdeistinto" target="_blank">YouTube</a>
+<a class="social-btn youtube" href="https://www.youtube.com/@verdeistinto" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M23 12s0-4.4-.6-6.4A3 3 0 0 0 20 3H4A3 3 0 0 0 1 5.6C1 7.6 1 12 1 12s0 4.4.6 6.4A3 3 0 0 0 4 21h16a3 3 0 0 0 3-2.6C23 16.4 23 12 23 12z"/></svg>
+YouTube
+</a>
 
 </div>
 
-<div class="footer-copy">© 2026 Verde Istinto</div>
+<div class="footer-copy">
+© 2026 Verde Istinto
+</div>
+
 </footer>
 
 <script>
 
+/* TOGGLE SEARCH */
 function toggleSearch(){
 let box=document.getElementById("searchBox");
 box.style.display=box.style.display==="block"?"none":"block";
 }
 
+/* DATABASE RAZZE */
 const breeds=[
-{ name:"ancona", img:"foto/ancona.jpg" },
-{ name:"isa brown", img:"foto/isa-brown.jpg" },
-{ name:"sussex", img:"foto/sussex.jpg" },
-{ name:"livorno", img:"foto/livorno.jpg" },
-{ name:"moroseta", img:"foto/moroseta.jpg" },
-{ name:"padovana", img:"foto/padovana.jpg" },
-{ name:"sebright", img:"foto/sebright.jpg" },
-{ name:"lakenvelder", img:"foto/lakenvelder.jpg" },
-{ name:"marans", img:"foto/marans.jpg" },
-{ name:"livorno collo oro", img:"foto/livornocollooro.jpg" },
-{ name:"brahma", img:"foto/brahma.jpg" }
+{ name:"ancona", img:"foto/ancona.jpg", page:"ovaiole.html", id:"ancona" },
+{ name:"isa brown", img:"foto/isa-brown.jpg", page:"ovaiole.html", id:"isa-brown" },
+{ name:"sussex", img:"foto/sussex.jpg", page:"ovaiole.html", id:"sussex" },
+{ name:"livorno", img:"foto/livorno.jpg", page:"ovaiole.html", id:"livorno" },
+{ name:"moroseta", img:"foto/moroseta.jpg", page:"ornamentali.html", id:"moroseta" },
+{ name:"padovana", img:"foto/padovana.jpg", page:"ornamentali.html", id:"padovana" },
+{ name:"sebright", img:"foto/sebright.jpg", page:"ornamentali.html", id:"sebright" },
+{ name:"lakenvelder", img:"foto/lakenvelder.jpg", page:"rustici.html", id:"lakenvelder" },
+{ name:"marans", img:"foto/marans.jpg", page:"rustici.html", id:"marans" },
+{ name:"livorno collo oro", img:"foto/livornocollooro.jpg", page:"rustici.html", id:"livorno-collo-oro" },
+{ name:"brahma", img:"foto/brahma.jpg", page:"rustici.html", id:"brahma" }
 ];
 
+/* SEARCH FUNCTION */
 function searchBreed(){
 let input=document.getElementById("searchInput").value.toLowerCase();
 let results=document.getElementById("results");
 results.innerHTML="";
-if(input.length<1)return;
+if(input.length<1) return;
 
 breeds.filter(b=>b.name.includes(input)).forEach(b=>{
 results.innerHTML+=`
@@ -465,8 +496,8 @@ results.innerHTML+=`
 });
 }
 
+/* NAVIGAZIONE */
 function goToBreed(name){
-
 const map={
 "ancona":{page:"ovaiole.html",id:"ancona"},
 "isa brown":{page:"ovaiole.html",id:"isa-brown"},
@@ -486,6 +517,16 @@ if(map[key]){
 window.location.href=`${map[key].page}#${map[key].id}`;
 }
 }
+
+/* SLIDER */
+let slides=document.querySelectorAll(".slide");
+let index=0;
+
+setInterval(()=>{
+slides.forEach(s=>s.classList.remove("active"));
+index=(index+1)%slides.length;
+slides[index].classList.add("active");
+},4000);
 
 </script>
 
