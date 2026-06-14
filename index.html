@@ -139,24 +139,31 @@ padding:50px 20px;
 text-align:center;
 }
 
-/* SLIDER */
+/* SLIDER FADE */
 .slider{
 max-width:800px;
 margin:20px auto;
+position:relative;
+height:400px;
 overflow:hidden;
 border-radius:14px;
-position:relative;
 }
 
 .slide{
 width:100%;
 height:400px;
 object-fit:cover;
-display:none;
+position:absolute;
+top:0;
+left:0;
+opacity:0;
+transition:opacity 1s ease-in-out;
 border-radius:14px;
 }
 
-.slide.active{display:block;}
+.slide.active{
+opacity:1;
+}
 
 /* CATEGORIE */
 .cards{
@@ -177,7 +184,7 @@ transition:0.3s;
 position:relative;
 }
 
-/* ✨ GLOW EFFETTO CATEGORIE */
+/* GLOW */
 .card:hover{
 transform:translateY(-10px) scale(1.03);
 box-shadow:0 0 25px rgba(46,125,50,0.6),
@@ -208,6 +215,70 @@ width:100%;
 
 .card button:hover{
 transform:scale(1.05);
+}
+
+/* FOOTER */
+.footer{
+background:linear-gradient(90deg,#0f3d0f,#145a14);
+color:white;
+text-align:center;
+padding:40px 20px;
+margin-top:40px;
+position:relative;
+overflow:hidden;
+animation:fadeUp 1s ease-in-out;
+}
+
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.footer-social{
+margin:20px 0;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.footer-social a{
+color:white;
+text-decoration:none;
+padding:10px 16px;
+border-radius:25px;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.2);
+transition:0.3s;
+font-weight:bold;
+}
+
+.footer-social a:hover{
+background:#25d366;
+transform:scale(1.1);
+box-shadow:0 0 15px rgba(37,211,102,0.6);
+}
+
+.footer-copy{
+margin-top:15px;
+font-size:12px;
+opacity:0.7;
+}
+
+.footer::before{
+content:"";
+position:absolute;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+animation:moveLight 6s infinite linear;
+}
+
+@keyframes moveLight{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
 }
 
 </style>
@@ -249,11 +320,9 @@ Qualità, selezione e crescita naturale
 </section>
 
 <section id="slider">
-
 <h2>Le Nostre Razze</h2>
 
 <div class="slider">
-
 <img class="slide active" src="foto/ancona.jpg">
 <img class="slide" src="foto/brahma.jpg">
 <img class="slide" src="foto/isa-brown.jpg">
@@ -265,9 +334,7 @@ Qualità, selezione e crescita naturale
 <img class="slide" src="foto/padovana.jpg">
 <img class="slide" src="foto/sebright.jpg">
 <img class="slide" src="foto/sussex.jpg">
-
 </div>
-
 </section>
 
 <section id="categorie">
@@ -298,77 +365,26 @@ Qualità, selezione e crescita naturale
 
 </section>
 
-<!-- CONTATTI -->
 <section id="contatti">
-
 <h2>📞 Contatti</h2>
 <p>📍 Puglia, Italia</p>
 <p>📱 327 813 1071</p>
 <p>✉️ info@verdeistinto.it</p>
-
 </section>
 
-.footer-brand h2{
-  margin:0;
-  font-size:28px;
-}
+<footer class="footer">
 
-.footer-brand p{
-  font-size:14px;
-  opacity:0.85;
-  margin-top:8px;
-}
+<div class="footer-social">
+<a href="https://instagram.com">📸 Instagram</a>
+<a href="https://wa.me/393278131071">💬 WhatsApp</a>
+<a href="mailto:info@verdeistinto.it">✉️ Email</a>
+</div>
 
-/* SOCIAL */
-.footer-social{
-  margin:20px 0;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:15px;
-}
+<div class="footer-copy">
+© 2026 Verde Istinto — Tutti i diritti riservati
+</div>
 
-.footer-social a{
-  color:white;
-  text-decoration:none;
-  padding:10px 16px;
-  border-radius:25px;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.2);
-  transition:0.3s;
-  font-weight:bold;
-}
-
-.footer-social a:hover{
-  background:#25d366;
-  transform:scale(1.1);
-  box-shadow:0 0 15px rgba(37,211,102,0.6);
-}
-
-/* COPY */
-.footer-copy{
-  margin-top:15px;
-  font-size:12px;
-  opacity:0.7;
-}
-
-/* piccolo effetto luce sotto */
-.footer::before{
-  content:"";
-  position:absolute;
-  top:-50%;
-  left:-50%;
-  width:200%;
-  height:200%;
-  background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
-  animation: moveLight 6s infinite linear;
-}
-
-@keyframes moveLight{
-  0%{transform:rotate(0deg);}
-  100%{transform:rotate(360deg);}
-}
-</style>
+</footer>
 
 <script>
 
@@ -376,6 +392,22 @@ function toggleSearch(){
 let box = document.getElementById("searchBox");
 box.style.display = box.style.display === "block" ? "none" : "block";
 }
+
+/* SLIDER FADE */
+let slides = document.getElementsByClassName("slide");
+let current = 0;
+
+for(let i=0;i<slides.length;i++){
+slides[i].classList.remove("active");
+}
+slides[0].classList.add("active");
+
+setInterval(()=>{
+slides[current].classList.remove("active");
+current++;
+if(current >= slides.length) current = 0;
+slides[current].classList.add("active");
+},4000);
 
 const breeds = [
 { name:"Ancona", page:"ovaiole.html#Ancona", img:"foto/ancona.jpg" },
@@ -392,26 +424,17 @@ const breeds = [
 ];
 
 function searchBreed(){
-
 let val = document.getElementById("searchInput").value.toLowerCase();
 let results = document.getElementById("results");
-
 results.innerHTML = "";
 
-breeds
-.filter(b => b.name.toLowerCase().includes(val))
+breeds.filter(b => b.name.toLowerCase().includes(val))
 .forEach(b=>{
-
 let div = document.createElement("div");
 div.className = "result";
 div.innerHTML = `<img src="${b.img}"><span>${b.name}</span>`;
-
-div.onclick = () => {
-window.location.href = b.page;
-};
-
+div.onclick = () => window.location.href = b.page;
 results.appendChild(div);
-
 });
 }
 
