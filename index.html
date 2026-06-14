@@ -373,11 +373,7 @@ opacity:0.7;
 </header>
 
 <div class="search-wrapper">
-<button class="search-btn" onclick="toggleSearch()">
-<svg viewBox="0 0 24 24">
-<path d="M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
-</svg>
-</button>
+<button class="search-btn" onclick="toggleSearch()">🔍</button>
 <div class="search-box" id="searchBox">
 <input id="searchInput" oninput="searchBreed()" placeholder="Cerca razza...">
 <div id="results"></div>
@@ -385,18 +381,67 @@ opacity:0.7;
 </div>
 
 <nav>
-<a href="#chi">Chi Siamo</a>
-<a href="#slider">Razze</a>
-<a href="#categorie">Categorie</a>
-<a href="#contatti">Contatti</a>
+
+<a href="#chi">
+<svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle; margin-right:6px; fill:white;">
+<path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+</svg>
+Chi Siamo
+</a>
+
+<a href="#slider">
+<svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle; margin-right:6px; fill:white;">
+<path d="M4 6h16v12H4zM2 4v16h20V4H2zm6 4l6 4-6 4V8z"/>
+</svg>
+Razze
+</a>
+
+<a href="#categorie">
+<svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle; margin-right:6px; fill:white;">
+<path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+</svg>
+Categorie
+</a>
+
+<a href="#contatti">
+<svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle; margin-right:6px; fill:white;">
+<path d="M6.6 10.8c1.5 2.9 3.9 5.3 6.8 6.8l2.3-2.3c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C10.3 22 2 13.7 2 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"/>
+</svg>
+Contatti
+</a>
+
 </nav>
 
 <div class="hero">
 Qualità, selezione e crescita naturale
 </div>
 
+<section id="chi">
+<h2>
+<svg width="18" height="18" viewBox="0 0 24 24" style="vertical-align:middle; margin-right:6px; fill:#145a14;">
+<path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+</svg>
+Chi Siamo
+</h2>
+
+<p style="max-width:800px;margin:0 auto;font-size:18px;line-height:1.8;color:#333;">
+🌿 <strong>Verde Istinto</strong> nasce dalla passione per l’allevamento naturale e selezionato dei pulcini.  
+Ci occupiamo di crescita controllata, benessere animale e selezione accurata delle razze,  
+per offrire soggetti sani, robusti e di alta qualità.
+<br><br>
+Ogni pulcino viene allevato con cura, in un ambiente equilibrato e rispettoso dei suoi ritmi naturali,  
+garantendo così una crescita forte e genuina.
+</p>
+
+</section>
+
 <section id="slider">
-<h2>Le Nostre Razze</h2>
+<h2>
+<svg width="18" height="18" viewBox="0 0 24 24" style="vertical-align:middle; margin-right:6px; fill:#145a14;">
+<path d="M4 6h16v12H4zM2 4v16h20V4H2zm6 4l6 4-6 4V8z"/>
+</svg>
+Le Nostre Razze
+</h2>
 
 <div class="slider">
 <img class="slide active" src="foto/ancona.jpg">
@@ -413,43 +458,102 @@ Qualità, selezione e crescita naturale
 </div>
 </section>
 
+<section id="categorie">
+<h2>
+<svg width="18" height="18" viewBox="0 0 24 24" style="vertical-align:middle; margin-right:6px; fill:#145a14;">
+<path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+</svg>
+Categorie
+</h2>
+
+<div class="cards">
+<div class="card">
+<h3>🥚 Ovaiole</h3>
+<p>Alta produzione di uova</p>
+<a href="ovaiole.html"><button>Visualizza</button></a>
+</div>
+
+<div class="card">
+<h3>🌸 Ornamentali</h3>
+<p>Razze decorative e rare</p>
+<a href="ornamentali.html"><button>Visualizza</button></a>
+</div>
+
+<div class="card">
+<h3>🐓 Rustici</h3>
+<p>Forti e resistenti</p>
+<a href="rustici.html"><button>Visualizza</button></a>
+</div>
+</div>
+</section>
+
+<section id="contatti">
+<h2>📞 Contatti</h2>
+
+<div class="contact-grid">
+<div class="contact-card">
+<h3>📍 Dove siamo</h3>
+<p>Puglia, Italia</p>
+</div>
+
+<div class="contact-card">
+<h3>
+<svg width="18" height="18" viewBox="0 0 24 24" style="vertical-align:middle; margin-right:6px; fill:white;">
+<path d="M6.6 10.8c1.5 2.9 3.9 5.3 6.8 6.8l2.3-2.3c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C10.3 22 2 13.7 2 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"/>
+</svg>
+Telefono
+</h3>
+<p>+39 327 813 1071</p>
+</div>
+
+<div class="contact-card">
+<h3>✉️ Email</h3>
+<p>info@verdeistinto.it</p>
+</div>
+</div>
+</section>
+
+<footer>
+
+<div class="footer-social">
+
+<a class="social-btn instagram"
+   href="https://www.instagram.com/verde_istinto/"
+   target="_blank" rel="noopener noreferrer">
+
+<!-- Instagram SVG -->
+<svg viewBox="0 0 24 24">
+<path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A4.5 4.5 0 1 1 7.5 13 4.5 4.5 0 0 1 12 8.5zm0 2A2.5 2.5 0 1 0 14.5 13 2.5 2.5 0 0 0 12 10.5zM17.8 6.2a1 1 0 1 1-1-1 1 1 0 0 1 1 1z"/>
+</svg>
+
+Instagram
+</a>
+
+<a class="social-btn youtube"
+   href="https://www.youtube.com/@verdeistinto"
+   target="_blank" rel="noopener noreferrer">
+
+<!-- YouTube SVG -->
+<svg viewBox="0 0 24 24">
+<path d="M23 12s0-4.4-.6-6.4A3 3 0 0 0 20.4 3.6C18.4 3 12 3 12 3s-6.4 0-8.4.6A3 3 0 0 0 1.6 5.6C1 7.6 1 12 1 12s0 4.4.6 6.4A3 3 0 0 0 3.6 20.4C5.6 21 12 21 12 21s6.4 0 8.4-.6a3 3 0 0 0 1.8-1.8C23 16.4 23 12 23 12zM10 15V9l6 3-6 3z"/>
+</svg>
+
+YouTube
+</a>
+
+</div>
+
+<div class="footer-copy">
+© 2026 Verde Istinto - Tutti i diritti riservati
+</div>
+
+</footer>
+
 <script>
 
-/* SEARCH */
 function toggleSearch(){
-const box = document.getElementById("searchBox");
-box.style.display = (box.style.display === "block") ? "none" : "block";
-}
-
-const breeds = [
-{ name:"ancona", img:"foto/ancona.jpg" },
-{ name:"isa brown", img:"foto/isa-brown.jpg" },
-{ name:"sussex", img:"foto/sussex.jpg" },
-{ name:"livorno", img:"foto/livorno.jpg" },
-{ name:"moroseta", img:"foto/moroseta.jpg" },
-{ name:"padovana", img:"foto/padovana.jpg" },
-{ name:"sebright", img:"foto/sebright.jpg" },
-{ name:"lakenvelder", img:"foto/lakenvelder.jpg" },
-{ name:"marans", img:"foto/marans.jpg" },
-{ name:"livorno collo oro", img:"foto/livornocollooro.jpg" },
-{ name:"brahma", img:"foto/brahma.jpg" }
-];
-
-function searchBreed(){
-const input = document.getElementById("searchInput").value.toLowerCase();
-const results = document.getElementById("results");
-
-results.innerHTML = "";
-if(input.length < 1) return;
-
-breeds.filter(b => b.name.includes(input))
-.forEach(b => {
-results.innerHTML += `
-<div class="result">
-<img src="${b.img}">
-<span>${b.name}</span>
-</div>`;
-});
+let box = document.getElementById("searchBox");
+box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
 /* SLIDER */
