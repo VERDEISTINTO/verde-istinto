@@ -632,6 +632,52 @@ slides[index].classList.add("active");
 }, 4000);
 
 </script>
+<script>
+// APERTURA / CHIUSURA LENTE
+function toggleSearch(){
+  const box = document.getElementById("searchBox");
+  box.style.display = (box.style.display === "block") ? "none" : "block";
+}
 
+/* DATABASE RAZZE */
+const breeds = [
+  { name:"ancona", img:"foto/ancona.jpg", page:"ovaiole.html#ancona" },
+  { name:"isa brown", img:"foto/isa-brown.jpg", page:"ovaiole.html#isa-brown" },
+  { name:"sussex", img:"foto/sussex.jpg", page:"ovaiole.html#sussex" },
+  { name:"livorno", img:"foto/livorno.jpg", page:"ovaiole.html#livorno" },
+  { name:"moroseta", img:"foto/moroseta.jpg", page:"ornamentali.html#moroseta" },
+  { name:"padovana", img:"foto/padovana.jpg", page:"ornamentali.html#padovana" },
+  { name:"sebright", img:"foto/sebright.jpg", page:"ornamentali.html#sebright" },
+  { name:"lakenvelder", img:"foto/lakenvelder.jpg", page:"rustici.html#lakenvelder" },
+  { name:"marans", img:"foto/marans.jpg", page:"rustici.html#marans" },
+  { name:"livorno collo oro", img:"foto/livornocollooro.jpg", page:"rustici.html#livorno-collo-oro" },
+  { name:"brahma", img:"foto/brahma.jpg", page:"rustici.html#brahma" }
+];
+
+/* RICERCA "INTELLIGENTE" */
+function searchBreed(){
+  const input = document.getElementById("searchInput").value.toLowerCase().trim();
+  const results = document.getElementById("results");
+
+  results.innerHTML = "";
+
+  if(input.length < 1) return;
+
+  // fuzzy match (ricerca intelligente)
+  const filtered = breeds.filter(b => {
+    const name = b.name.toLowerCase();
+    return name.includes(input) || input.includes(name.split(" ")[0]);
+  });
+
+  filtered.forEach(b => {
+    results.innerHTML += `
+      <div class="result" onclick="window.location.href='${b.page}'">
+        <img src="${b.img}">
+        <span>${b.name}</span>
+      </div>
+    `;
+  });
+}
+</script>
 </body>
 </html>
