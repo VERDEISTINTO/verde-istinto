@@ -8,8 +8,6 @@
 
 <style>
 
-/* ====== TUO CSS ORIGINALE (INVARIATO) ====== */
-
 body{
 margin:0;
 font-family:Arial,sans-serif;
@@ -18,6 +16,7 @@ scroll-behavior:smooth;
 color:#222;
 }
 
+/* HEADER */
 header{
 background:linear-gradient(90deg,#145a14,#2e7d32);
 color:white;
@@ -26,6 +25,7 @@ padding:25px;
 position:relative;
 }
 
+/* 🔥 LOGO SVG */
 .logo{
 width:110px;
 height:110px;
@@ -33,9 +33,19 @@ margin:0 auto 10px;
 display:block;
 }
 
-header h1{margin:0;font-size:38px;}
-header p{margin:5px 0 0;font-size:14px;opacity:0.9;letter-spacing:1px;}
+header h1{
+margin:0;
+font-size:38px;
+}
 
+header p{
+margin:5px 0 0;
+font-size:14px;
+opacity:0.9;
+letter-spacing:1px;
+}
+
+/* SEARCH */
 .search-wrapper{
 position:fixed;
 top:15px;
@@ -91,6 +101,7 @@ object-fit:cover;
 border-radius:6px;
 }
 
+/* NAV */
 nav{
 background:#0f3d0f;
 display:flex;
@@ -119,6 +130,7 @@ background:#25d366;
 transform:scale(1.05);
 }
 
+/* HERO */
 .hero{
 background:url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7') center/cover;
 height:320px;
@@ -135,6 +147,7 @@ padding:50px 20px;
 text-align:center;
 }
 
+/* SLIDER */
 .slider{
 max-width:800px;
 margin:20px auto;
@@ -156,7 +169,184 @@ transition:opacity 1.2s ease-in-out;
 border-radius:14px;
 }
 
-.slide.active{opacity:1;}
+.slide.active{
+opacity:1;
+}
+
+/* CATEGORIE */
+.cards{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+margin-top:20px;
+}
+
+.card{
+background:linear-gradient(145deg,#ffffff,#f3f6f3);
+width:270px;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,0.12);
+transition:0.3s;
+position:relative;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 0 25px rgba(46,125,50,0.6),
+0 20px 40px rgba(0,0,0,0.2);
+}
+
+.card h3{
+font-size:22px;
+margin-bottom:10px;
+color:#145a14;
+}
+
+.card p{
+font-size:14px;
+color:#555;
+margin-bottom:15px;
+}
+
+.card button{
+background:linear-gradient(90deg,#145a14,#1f7a1f);
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:30px;
+cursor:pointer;
+width:100%;
+}
+
+.card button:hover{
+transform:scale(1.05);
+}
+
+/* CONTATTI */
+#contatti{
+background:linear-gradient(135deg,#0f3d0f,#145a14);
+color:white;
+padding:45px 20px;
+}
+
+.contact-grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-top:15px;
+}
+
+.contact-card{
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
+padding:14px;
+border-radius:16px;
+width:220px;
+backdrop-filter:blur(10px);
+transition:0.3s;
+font-size:14px;
+}
+
+.contact-card:hover{
+transform:translateY(-8px);
+background:rgba(255,255,255,0.15);
+}
+
+/* FOOTER */
+footer{
+background:#081b08;
+color:white;
+text-align:center;
+padding:30px 20px;
+position:relative;
+overflow:hidden;
+}
+
+/* social */
+.footer-social{
+margin:20px 0;
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.social-btn{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px 22px;
+border-radius:50px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+position:relative;
+overflow:hidden;
+transition:0.3s;
+}
+
+.social-btn svg{
+width:22px;
+height:22px;
+fill:white;
+}
+
+.social-btn.instagram{
+background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+}
+
+.social-btn.youtube{
+background:linear-gradient(45deg,#ff0000,#c4302b);
+}
+
+.social-btn:hover{
+transform:scale(1.08);
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* shine effect */
+.social-btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-75%;
+width:50%;
+height:100%;
+background:rgba(255,255,255,0.25);
+transform:skewX(-25deg);
+transition:0.5s;
+}
+
+.social-btn:hover::before{
+left:130%;
+}
+
+/* FOOTER ANIMAZIONE LUCE */
+footer::before{
+content:"";
+position:absolute;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+animation: moveLight 6s infinite linear;
+}
+
+@keyframes moveLight{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+/* COPYRIGHT */
+.footer-copy{
+margin-top:15px;
+font-size:12px;
+opacity:0.7;
+}
 
 </style>
 </head>
@@ -164,7 +354,6 @@ border-radius:14px;
 <body>
 
 <header>
-
 <svg class="logo" viewBox="0 0 200 200">
 <defs>
 <linearGradient id="gold" x1="0" x2="1">
@@ -173,19 +362,16 @@ border-radius:14px;
 <stop offset="100%" stop-color="#fff8dc"/>
 </linearGradient>
 </defs>
-
 <path d="M100 20 C60 40, 40 90, 70 130 C90 160, 120 160, 140 130 C170 90, 140 40, 100 20 Z"/>
-<path d="M100 130 L100 180" stroke="url(#gold)" stroke-width="6"/>
+<path d="M100 130 L100 180" stroke="url(#gold)" stroke-width="6" stroke-linecap="round"/>
 </svg>
 
 <h1>🌿 Verde Istinto</h1>
 <p>Allevamento pulcini selezionati</p>
 </header>
 
-<!-- 🔍 LENTE FUNZIONANTE -->
 <div class="search-wrapper">
 <button class="search-btn" onclick="toggleSearch()">🔍</button>
-
 <div class="search-box" id="searchBox">
 <input id="searchInput" oninput="searchBreed()" placeholder="Cerca razza...">
 <div id="results"></div>
@@ -193,26 +379,17 @@ border-radius:14px;
 </div>
 
 <nav>
-
 <a href="#chi">Chi Siamo</a>
 <a href="#slider">Razze</a>
 <a href="#categorie">Categorie</a>
 <a href="#contatti">Contatti</a>
-
 </nav>
 
 <div class="hero">
 Qualità, selezione e crescita naturale
 </div>
 
-<section id="chi">
-<h2>Chi Siamo</h2>
-<p>Testo originale invariato...</p>
-</section>
-
 <section id="slider">
-<h2>Le Nostre Razze</h2>
-
 <div class="slider">
 <img class="slide active" src="foto/ancona.jpg">
 <img class="slide" src="foto/brahma.jpg">
@@ -228,75 +405,50 @@ Qualità, selezione e crescita naturale
 </div>
 </section>
 
-<section id="categorie">
-<h2>Categorie</h2>
-<p>contenuto originale invariato...</p>
-</section>
-
-<section id="contatti">
-<h2>Contatti</h2>
-<p>contenuto originale invariato...</p>
-</section>
-
 <footer>
-<p>© 2026 Verde Istinto</p>
+<div class="footer-copy">© 2026 Verde Istinto</div>
 </footer>
 
 <script>
 
-/* ===== LENTE FUNZIONANTE (UNICO SCRIPT PULITO) ===== */
-
 function toggleSearch(){
-  const box = document.getElementById("searchBox");
-  box.style.display = box.style.display === "block" ? "none" : "block";
+const box = document.getElementById("searchBox");
+box.style.display = (box.style.display === "block") ? "none" : "block";
 }
 
 const breeds = [
-  { name:"ancona", img:"foto/ancona.jpg", link:"ovaiole.html#ancona" },
-  { name:"isa brown", img:"foto/isa-brown.jpg", link:"ovaiole.html#isa-brown" },
-  { name:"sussex", img:"foto/sussex.jpg", link:"ovaiole.html#sussex" },
-  { name:"livorno", img:"foto/livorno.jpg", link:"ovaiole.html#livorno" },
-  { name:"moroseta", img:"foto/moroseta.jpg", link:"ornamentali.html#moroseta" },
-  { name:"padovana", img:"foto/padovana.jpg", link:"ornamentali.html#padovana" },
-  { name:"sebright", img:"foto/sebright.jpg", link:"ornamentali.html#sebright" },
-  { name:"lakenvelder", img:"foto/lakenvelder.jpg", link:"rustici.html#lakenvelder" },
-  { name:"marans", img:"foto/marans.jpg", link:"rustici.html#marans" },
-  { name:"livorno collo oro", img:"foto/livornocollooro.jpg", link:"rustici.html#livorno-collo-oro" },
-  { name:"brahma", img:"foto/brahma.jpg", link:"rustici.html#brahma" }
+{name:"ancona",img:"foto/ancona.jpg"},
+{name:"isa brown",img:"foto/isa-brown.jpg"},
+{name:"sussex",img:"foto/sussex.jpg"},
+{name:"livorno",img:"foto/livorno.jpg"},
+{name:"moroseta",img:"foto/moroseta.jpg"},
+{name:"padovana",img:"foto/padovana.jpg"},
+{name:"sebright",img:"foto/sebright.jpg"},
+{name:"lakenvelder",img:"foto/lakenvelder.jpg"},
+{name:"marans",img:"foto/marans.jpg"},
+{name:"brahma",img:"foto/brahma.jpg"}
 ];
 
 function searchBreed(){
-  const input = document.getElementById("searchInput").value.toLowerCase().trim();
-  const results = document.getElementById("results");
+const input = document.getElementById("searchInput").value.toLowerCase().trim();
+const results = document.getElementById("results");
 
-  results.innerHTML = "";
-  if(input.length < 1) return;
+results.innerHTML="";
+if(input.length<1)return;
 
-  breeds
-    .filter(b => b.name.includes(input))
-    .forEach(b => {
-      results.innerHTML += `
-        <div class="result" onclick="goToBreed('${b.link}')">
-          <img src="${b.img}">
-          <span>${b.name}</span>
-        </div>
-      `;
-    });
+breeds.filter(b=>b.name.includes(input)).forEach(b=>{
+results.innerHTML += `<div class="result"><img src="${b.img}"><span>${b.name}</span></div>`;
+});
 }
 
-function goToBreed(link){
-  window.location.href = link;
-}
+let slides=document.querySelectorAll(".slide");
+let index=0;
 
-/* SLIDER */
-let slides = document.querySelectorAll(".slide");
-let index = 0;
-
-setInterval(() => {
-  slides.forEach(s => s.classList.remove("active"));
-  index = (index + 1) % slides.length;
-  slides[index].classList.add("active");
-}, 4000);
+setInterval(()=>{
+slides.forEach(s=>s.classList.remove("active"));
+index=(index+1)%slides.length;
+slides[index].classList.add("active");
+},4000);
 
 </script>
 
