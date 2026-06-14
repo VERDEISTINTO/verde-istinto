@@ -25,6 +25,14 @@ padding:25px;
 position:relative;
 }
 
+/* 🔥 LOGO SVG */
+.logo{
+width:110px;
+height:110px;
+margin:0 auto 10px;
+display:block;
+}
+
 header h1{
 margin:0;
 font-size:38px;
@@ -139,7 +147,7 @@ padding:50px 20px;
 text-align:center;
 }
 
-/* ===== SLIDER (FADING ANIMATO) ===== */
+/* SLIDER */
 .slider{
 max-width:800px;
 margin:20px auto;
@@ -216,7 +224,7 @@ width:100%;
 transform:scale(1.05);
 }
 
-/* CONTATTI (più piccoli) */
+/* CONTATTI */
 #contatti{
 background:linear-gradient(135deg,#0f3d0f,#145a14);
 color:white;
@@ -247,16 +255,6 @@ transform:translateY(-8px);
 background:rgba(255,255,255,0.15);
 }
 
-.contact-card h3{
-margin:0 0 6px;
-font-size:15px;
-}
-
-.contact-card p{
-margin:3px 0;
-font-size:13px;
-}
-
 /* FOOTER */
 footer{
 background:#081b08;
@@ -267,22 +265,10 @@ position:relative;
 overflow:hidden;
 }
 
-.footer-brand h2{
-margin:0;
-font-size:26px;
-}
-
-.footer-brand p{
-font-size:14px;
-opacity:0.8;
-margin-top:8px;
-}
-
 .footer-social{
 margin:20px 0;
 display:flex;
 justify-content:center;
-flex-wrap:wrap;
 gap:15px;
 }
 
@@ -292,41 +278,25 @@ text-decoration:none;
 padding:10px 16px;
 border-radius:25px;
 background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.2);
 transition:0.3s;
 font-weight:bold;
-display:flex;
-align-items:center;
-gap:8px;
 }
 
 .footer-social a:hover{
 background:#25d366;
 transform:scale(1.1);
-box-shadow:0 0 15px rgba(37,211,102,0.6);
 }
 
-.footer-copy{
-margin-top:15px;
-font-size:12px;
-opacity:0.7;
+/* 🌟 LOGO ANIMATO GOLD */
+@keyframes shine {
+0%{filter: drop-shadow(0 0 5px gold);}
+50%{filter: drop-shadow(0 0 20px gold);}
+100%{filter: drop-shadow(0 0 5px gold);}
 }
 
-/* luce animata */
-footer::before{
-content:"";
-position:absolute;
-top:-50%;
-left:-50%;
-width:200%;
-height:200%;
-background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
-animation: moveLight 6s infinite linear;
-}
-
-@keyframes moveLight{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
+.logo path{
+animation: shine 2.5s infinite;
+fill:url(#gold);
 }
 
 </style>
@@ -335,6 +305,24 @@ animation: moveLight 6s infinite linear;
 <body>
 
 <header>
+
+<!-- 🔥 LOGO SVG PREMIUM GOLD -->
+<svg class="logo" viewBox="0 0 200 200">
+<defs>
+<linearGradient id="gold" x1="0" x2="1">
+<stop offset="0%" stop-color="#fff3b0"/>
+<stop offset="50%" stop-color="#d4af37"/>
+<stop offset="100%" stop-color="#fff8dc"/>
+</linearGradient>
+</defs>
+
+<!-- foglia stilizzata -->
+<path d="M100 20 C60 40, 40 90, 70 130 C90 160, 120 160, 140 130 C170 90, 140 40, 100 20 Z"/>
+
+<!-- gambo -->
+<path d="M100 130 L100 180" stroke="url(#gold)" stroke-width="6" stroke-linecap="round"/>
+</svg>
+
 <h1>🌿 Verde Istinto</h1>
 <p>Allevamento pulcini selezionati</p>
 </header>
@@ -406,13 +394,10 @@ Qualità, selezione e crescita naturale
 </div>
 </section>
 
-<!-- CONTATTI -->
 <section id="contatti">
-
 <h2>📞 Contatti</h2>
 
 <div class="contact-grid">
-
 <div class="contact-card">
 <h3>📍 Dove siamo</h3>
 <p>Puglia, Italia</p>
@@ -427,24 +412,14 @@ Qualità, selezione e crescita naturale
 <h3>✉️ Email</h3>
 <p>info@verdeistinto.it</p>
 </div>
-
 </div>
 </section>
 
 <footer>
 
-<div class="footer-brand">
-<h2>🌿 Verde Istinto</h2>
-<p>Allevamento pulcini selezionati</p>
-</div>
-
 <div class="footer-social">
 <a href="https://www.instagram.com/verde_istinto/" target="_blank">📸 Instagram</a>
 <a href="https://www.youtube.com/@verdeistinto" target="_blank">▶ YouTube</a>
-</div>
-
-<div class="footer-copy">
-© 2026 Verde Istinto - Tutti i diritti riservati
 </div>
 
 </footer>
@@ -456,58 +431,15 @@ let box = document.getElementById("searchBox");
 box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
-/* ===== SLIDER AUTOMATICO ===== */
+/* SLIDER */
 let slides = document.querySelectorAll(".slide");
 let index = 0;
 
-function showSlide(i){
-slides.forEach(s => s.classList.remove("active"));
-slides[i].classList.add("active");
-}
-
 setInterval(() => {
+slides.forEach(s => s.classList.remove("active"));
 index = (index + 1) % slides.length;
-showSlide(index);
+slides[index].classList.add("active");
 }, 4000);
-
-/* SEARCH */
-const breeds = [
-{ name:"Ancona", page:"ovaiole.html#Ancona", img:"foto/ancona.jpg" },
-{ name:"Brahma", page:"rustici.html#Brahma", img:"foto/brahma.jpg" },
-{ name:"Isa Brown", page:"ovaiole.html#IsaBrown", img:"foto/isa-brown.jpg" },
-{ name:"Lakenvelder", page:"rustici.html#Lakenvelder", img:"foto/lakenvelder.jpg" },
-{ name:"Livorno", page:"ovaiole.html#Livorno", img:"foto/livorno.jpg" },
-{ name:"Livorno Collo Oro", page:"rustici.html#LivornoColloOro", img:"foto/livornocollooro.jpg" },
-{ name:"Marans", page:"rustici.html#Marans", img:"foto/marans.jpg" },
-{ name:"Moroseta", page:"ornamentali.html#Moroseta", img:"foto/moroseta.jpg" },
-{ name:"Padovana", page:"ornamentali.html#Padovana", img:"foto/padovana.jpg" },
-{ name:"Sebright", page:"ornamentali.html#Sebright", img:"foto/sebright.jpg" },
-{ name:"Sussex", page:"ovaiole.html#Sussex", img:"foto/sussex.jpg" }
-];
-
-function searchBreed(){
-
-let val = document.getElementById("searchInput").value.toLowerCase();
-let results = document.getElementById("results");
-
-results.innerHTML = "";
-
-breeds
-.filter(b => b.name.toLowerCase().includes(val))
-.forEach(b=>{
-
-let div = document.createElement("div");
-div.className = "result";
-div.innerHTML = `<img src="${b.img}"><span>${b.name}</span>`;
-
-div.onclick = () => {
-window.location.href = b.page;
-};
-
-results.appendChild(div);
-
-});
-}
 
 </script>
 
