@@ -373,7 +373,11 @@ opacity:0.7;
 </header>
 
 <div class="search-wrapper">
-<button class="search-btn" onclick="toggleSearch()">🔍</button>
+<button class="search-btn" onclick="toggleSearch()">
+<svg viewBox="0 0 24 24">
+<path d="M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
+</svg>
+</button>
 <div class="search-box" id="searchBox">
 <input id="searchInput" oninput="searchBreed()" placeholder="Cerca razza...">
 <div id="results"></div>
@@ -551,10 +555,71 @@ YouTube
 
 <script>
 
+<script>
+
 function toggleSearch(){
-let box = document.getElementById("searchBox");
-box.style.display = box.style.display === "block" ? "none" : "block";
+const box = document.getElementById("searchBox");
+box.style.display = (box.style.display === "block") ? "none" : "block";
 }
+
+/* RICERCA RAZZE */
+const breeds = [
+{ name:"ancona", img:"foto/ancona.jpg" },
+{ name:"isa brown", img:"foto/isa-brown.jpg" },
+{ name:"sussex", img:"foto/sussex.jpg" },
+{ name:"livorno", img:"foto/livorno.jpg" },
+{ name:"moroseta", img:"foto/moroseta.jpg" },
+{ name:"padovana", img:"foto/padovana.jpg" },
+{ name:"sebright", img:"foto/sebright.jpg" },
+{ name:"lakenvelder", img:"foto/lakenvelder.jpg" },
+{ name:"marans", img:"foto/marans.jpg" },
+{ name:"livorno collo oro", img:"foto/livornocollooro.jpg" },
+{ name:"brahma", img:"foto/brahma.jpg" }
+];
+
+function searchBreed(){
+const input = document.getElementById("searchInput").value.toLowerCase();
+const results = document.getElementById("results");
+
+results.innerHTML = "";
+
+if(input.length < 1) return;
+
+breeds
+.filter(b => b.name.includes(input))
+.forEach(b => {
+results.innerHTML += `
+<div class="result" onclick="goToBreed('${b.name}')">
+<img src="${b.img}">
+<span>${b.name}</span>
+</div>`;
+});
+}
+
+function goToBreed(name){
+
+const map = {
+"ancona":"ovaiole.html#ancona",
+"isa brown":"ovaiole.html#isa-brown",
+"sussex":"ovaiole.html#sussex",
+"livorno":"ovaiole.html#livorno",
+"moroseta":"ornamentali.html#moroseta",
+"padovana":"ornamentali.html#padovana",
+"sebright":"ornamentali.html#sebright",
+"lakenvelder":"rustici.html#lakenvelder",
+"marans":"rustici.html#marans",
+"livorno collo oro":"rustici.html#livorno-collo-oro",
+"brahma":"rustici.html#brahma"
+};
+
+const key = name.toLowerCase().trim();
+
+if(map[key]){
+window.location.href = map[key];
+}
+}
+
+</script>
 
 /* SLIDER */
 let slides = document.querySelectorAll(".slide");
