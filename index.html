@@ -46,38 +46,61 @@ letter-spacing:1px;
 }
 
 /* SEARCH */
-.search-btn svg{
-width:22px;
-height:22px;
-fill:#145a14;
+.search-wrapper{
+position:fixed;
+top:15px;
+right:15px;
+z-index:9999;
 }
 
 .search-btn{
+background:white;
+border:none;
+border-radius:50%;
+width:45px;
+height:45px;
+cursor:pointer;
+font-size:20px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.search-box{
+display:none;
+position:absolute;
+right:0;
+top:55px;
+width:260px;
+background:white;
+border-radius:12px;
+box-shadow:0 6px 20px rgba(0,0,0,0.2);
+overflow:hidden;
+}
+
+.search-box input{
+width:100%;
+padding:10px;
+border:none;
+outline:none;
+border-bottom:1px solid #eee;
+}
+
+.result{
 display:flex;
 align-items:center;
-justify-content:center;
-transition:0.3s;
+gap:10px;
+padding:8px;
+cursor:pointer;
 }
 
-.search-btn:hover{
-transform:rotate(15deg) scale(1.1);
-background:#e8f5e9;
+.result:hover{background:#f0f0f0;}
+
+.result img{
+width:40px;
+height:40px;
+object-fit:cover;
+border-radius:6px;
 }
 
-/* animazione apertura box */
-.search-box{
-transform:scale(0.95);
-opacity:0;
-transform-origin:top right;
-transition:0.25s ease;
-pointer-events:none;
-}
-
-.search-box.active{
-transform:scale(1);
-opacity:1;
-pointer-events:auto;
-}
 /* NAV */
 nav{
 background:#0f3d0f;
@@ -332,24 +355,29 @@ opacity:0.7;
 
 <header>
 
+<svg class="logo" viewBox="0 0 200 200">
+<defs>
+<linearGradient id="gold" x1="0" x2="1">
+<stop offset="0%" stop-color="#fff3b0"/>
+<stop offset="50%" stop-color="#d4af37"/>
+<stop offset="100%" stop-color="#fff8dc"/>
+</linearGradient>
+</defs>
+
+<path d="M100 20 C60 40, 40 90, 70 130 C90 160, 120 160, 140 130 C170 90, 140 40, 100 20 Z"/>
+<path d="M100 130 L100 180" stroke="url(#gold)" stroke-width="6" stroke-linecap="round"/>
+</svg>
+
 <h1>🌿 Verde Istinto</h1>
 <p>Allevamento pulcini selezionati</p>
 </header>
 
 <div class="search-wrapper">
-  <button class="search-btn" onclick="toggleSearch()">
-    
-    <!-- lente SVG più moderna -->
-    <svg viewBox="0 0 24 24">
-      <path d="M10 2a8 8 0 1 1 5.3 14.1l4.3 4.3-1.4 1.4-4.3-4.3A8 8 0 0 1 10 2zm0 2a6 6 0 1 0 0 12A6 6 0 0 0 10 4z"/>
-    </svg>
-
-  </button>
-
-  <div class="search-box" id="searchBox">
-    <input id="searchInput" oninput="searchBreed()" placeholder="Cerca razza...">
-    <div id="results"></div>
-  </div>
+<button class="search-btn" onclick="toggleSearch()">🔍</button>
+<div class="search-box" id="searchBox">
+<input id="searchInput" oninput="searchBreed()" placeholder="Cerca razza...">
+<div id="results"></div>
+</div>
 </div>
 
 <nav>
@@ -523,37 +551,9 @@ YouTube
 
 <script>
 
-const breeds = [
-"Ancona","Brahma","Isa Brown","Lakenvelder","Livorno",
-"Livorno Collo Oro","Marans","Moroseta","Padovana","Sebright","Sussex"
-];
-
 function toggleSearch(){
 let box = document.getElementById("searchBox");
-box.classList.toggle("active");
-document.getElementById("results").innerHTML = "";
-document.getElementById("searchInput").value = "";
-}
-
-function searchBreed(){
-let input = document.getElementById("searchInput").value.toLowerCase();
-let results = document.getElementById("results");
-
-results.innerHTML = "";
-
-let filtered = breeds.filter(b => b.toLowerCase().includes(input));
-
-filtered.forEach(b => {
-let div = document.createElement("div");
-div.className = "result";
-div.innerHTML = "🐣 " + b;
-
-div.onclick = () => {
-alert("Hai selezionato: " + b);
-};
-
-results.appendChild(div);
-});
+box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
 /* SLIDER */
