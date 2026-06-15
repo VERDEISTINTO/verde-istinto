@@ -125,23 +125,33 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
 
 <script>
 
-// 🔥 SCROLL AUTOMATICO + HIGHLIGHT
 window.addEventListener("load", () => {
 
-let hash = window.location.hash.replace("#","");
+const hash = window.location.hash.substring(1);
 
 if(hash){
-let el = document.getElementById(hash);
+
+const el = document.getElementById(hash);
 
 if(el){
-el.scrollIntoView({behavior:"smooth", block:"center"});
+
+setTimeout(() => {
+
+el.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
 el.classList.add("active");
+
+},300);
+
 }
+
 }
 
 });
 
 </script>
-
 </body>
 </html>
